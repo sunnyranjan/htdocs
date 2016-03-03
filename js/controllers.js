@@ -79,7 +79,7 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
         var properties = ["none","education", "home", "infrastructure", "neighbour", "shop", "tree", "sport"];
         vm.svg = {}, vm.icon = {}, vm.options = {};
         vm.options.ages = ["keine Angabe","1-12","12-18","18-65", "Über 65"];
-        vm.options.sexes = ["keine Angabe", "Mann", "Frau"]
+        vm.options.sexes = ["keine Angabe", "Mann", "Frau"];
 
         //for shooping (shoping cart)
         vm.svg.shop = "M16,0.094C7.215,0.094,0.094,7.216,0.094,16c0,8.783,7.121,15.906,15.906,15.906S31.906,24.783,31.906,16 " +
