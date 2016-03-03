@@ -1,0 +1,106 @@
+<div class="container-fluid"  style="height:100%">
+
+     <div id="map" style="height:100%;width:100%;"></div>
+    <div style="display:none;">
+        <div class="container-fluid">
+        <div id="infoWindowContent">
+            <div data-ng-show="vm.step1"   class="row " layout-padding="">
+                <div class="col-sm-12 infoWindowHeadline"> <h5>Klicke auf einen Ort in der Karte, zu dem du was sagen möchtest!</h5></div>
+                <div class="col-sm-4">
+                    <button type="button" class="btn btn-circle btn-raised btn-default home text-center" ng-click="categoryChange('home')"></button> Wohnen
+                </div>
+                <div class="col-sm-4">
+                    <button type="button" class="btn btn-circle btn-raised btn-default neighbour text-center" ng-click="categoryChange('neighbour')"></button> Nachbarschaft
+                </div>
+                <div class="col-sm-4">
+                    <button type="button" class="btn btn-circle btn-raised btn-default infrastructure text-center" ng-click="categoryChange('infrastructure')"></button> Verkehr
+                </div>
+                <div class="col-sm-4">
+                    <button type="button" class="btn btn-circle btn-raised btn-default tree text-center" ng-click="categoryChange('tree')"></button> Plätze und Grünflächen
+                </div>
+                <div class="col-sm-4">
+                    <button type="button" class="btn btn-circle btn-raised btn-default shopping text-center" ng-click="categoryChange('shop')"></button> Einkaufen
+                </div>
+                <div class="col-sm-4">
+                    <button type="button" class="btn btn-circle btn-raised btn-default sport text-center" ng-click="categoryChange('sport')"></button> Sport und Freizeit
+                </div>
+                <div class="col-sm-4">
+                    <button type="button" class="btn btn-circle btn-raised btn-default education text-center" ng-click="categoryChange('education')"></button> Bildung und Kultur
+                </div>
+                <div class="col-sm-4">
+                    <button type="button" class="btn btn-circle btn-raised btn-default other text-center" ng-click="categoryChange('none')"></button> Weiß nicht
+                </div>
+                <div class="col-sm-4">
+                    <button type="button" class="btn btn-circle btn-raised btn-primary text-center" data-ng-click = "jumpNext()">ok</button>
+                </div>
+            </div>
+
+            <div data-ng-show="vm.step2"   class="row " layout-padding="">
+                <div class="col-sm-12 infoWindowHeadline"> <h5>Wie findest du den Ort? Wähle zwischen Rot für sehr schlecht und Grün für sehr gut.</h5></div>
+                <div class="col-sm-2 text-center">
+                    <button type="button" class="btn btn-circle btn-raised  red " ng-click="colorChange('#CD333F', -2)"></button>
+                </div>
+                <div class="col-sm-2 text-center">
+                    <button type="button" class="btn btn-circle btn-raised  orange text-center" ng-click="colorChange('#EB6841', -1)"></button>
+                </div>
+                <div class="col-sm-2 text-center">
+                    <button type="button" class="btn btn-circle btn-raised  yellow text-center" ng-click="colorChange('#EDC951', 0)"></button>
+                </div>
+                <div class="col-sm-2 text-center">
+                    <button type="button" class="btn btn-circle btn-raised  lightgreen text-center" ng-click="colorChange('#88A65E', 1)"></button>
+                </div>
+                <div class="col-sm-2 text-center">
+                    <button type="button" class="btn btn-circle btn-raised  green text-center" ng-click="colorChange('#5E8C6A', 2)"></button>
+                </div>
+
+
+            </div>
+            <div data-ng-show="vm.step3"   class="row " layout-padding="">
+                <div class="col-sm-12 infoWindowHeadline"> <h5>Schreib einen Kommentar oder deine Idee.</h5></div>
+                <div class="col-sm-12">
+                    <md-input-container style="width:100%; font-size:15px !important">
+                    <label>Hier Schreiben</label>
+                    <textarea type="text" ng-model="comments"></textarea>
+                </md-input-container>
+                    <div class="col-sm-6">
+                        <md-input-container style="width: 100%;font-size:15px !important">
+                            <label>Wie alt bist du?</label>
+                            <md-select ng-model="userAge">
+                                <md-option ng-repeat="age in vm.options.ages" value="{{age}}">{{age}}</md-option>
+                            </md-select>
+                        </md-input-container>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <md-input-container style="width: 100%;font-size:15px !important">
+                        <label>Geschlecht</label>
+                        <md-select ng-model="userSex">
+                            <md-option ng-repeat="sex in vm.options.sexes" value="{{sex}}">{{sex}}</md-option>
+                        </md-select>
+                    </md-input-container>
+                    </div>
+                    <div class="col-sm-6 text-left">
+                        <button type="button" class="btn btn-default btn-raised " >Bild</button>
+                    </div>
+                    <div class="col-sm-6 text-right">
+                        <button type="button" class="btn btn-primary btn-raised " ng-click="formSubmit()">Absenden</button>
+                    </div>
+                    <div class="col-sm-6">
+
+                    </div>
+
+
+
+
+                </div>
+
+
+            </div>
+        </div>
+
+
+        </div>
+    </div>
+
+
+</div>
