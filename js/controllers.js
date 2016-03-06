@@ -343,15 +343,7 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
                 placeMarker(event.latLng, map);
             });
 
-            google.maps.event.addListener(vm.infobox, 'domready', function () {
-                this.getContent().parentNode.style.overflow = 'auto';
 
-
-            });
-            google.maps.event.addListener(vm.infobox,'closeclick',function(){
-                if (marker)
-                    marker.setMap(null);
-            });
 
 
 
@@ -389,24 +381,33 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
 
 
                 var myOptions = {
-                    content: vm.contentNode
-                    ,disableAutoPan: false
-                    ,maxWidth: 0
-                    ,pixelOffset: new google.maps.Size(-140, 0)
-                    ,zIndex: null
+                    content: vm.contentNode,
+                    alignBottom: true,
+                    zIndex: 99999,
+                    pixelOffset: new google.maps.Size(-300, 0),
+                    infoBoxClearance: new google.maps.Size(100, -100)
 
-                    ,closeBoxMargin: "10px 2px 2px 2px"
-                    ,closeBoxURL: "http://www.google.com/intl/en_us/mapfiles/close.gif"
-                    ,infoBoxClearance: new google.maps.Size(1, 1)
-                    ,isHidden: false
-                    ,pane: "floatPane"
-                    ,enableEventPropagation: false
                 };
+
+                var windowWidth = $( window ).width();
                 if(angular.isDefined(vm.infobox)) {
                     vm.infobox.setMap(null);
                 }
                 vm.infobox = new InfoBox(myOptions);
+                if(windowWidth > 0 && windowWidth < 768) {
+                    vm.infobox.setOptions({'pixelOffset': new google.maps.Size(-150, 5)});
+                }
+                else {
+                    vm.infobox.setOptions({'pixelOffset': new google.maps.Size(-300, 5)});
+                }
                 vm.infobox.open(map, marker);
+
+
+
+                google.maps.event.addListener(vm.infobox,'closeclick',function(){
+                    if (marker)
+                        marker.setMap(null);
+                });
 
             }
 

@@ -575,3 +575,29 @@ body {
     }
 }
 
+.gm-style-iw {
+    width: auto !important;
+    height: auto !important;
+
+}
+.gm-style-iw div {
+    width: auto !important;
+    height: auto !important;
+}
+
+@media only screen and (max-width : 767px) {
+    .infoWindowClass {
+        width: 300px !important;
+    }
+}
+
+
+@media only screen and (min-width : 768px) {
+    .infoWindowClass {
+        width: 600px !important;
+    }
+}
+
+
+
+
