@@ -197,7 +197,7 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
             saveUserComment.comments = $scope.comments;
             saveUserComment.userAge = $scope.userAge;
             saveUserComment.userSex = $scope.userSex;
-            vm.infowindow.close();
+            vm.infobox.close();
             marker.setMap(null);
 
             var content = '<div class="container-fluid" style="background-color:'+ $scope.color+ ' ">'+
@@ -216,15 +216,15 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
                 clickable: true
             });
 
-            var infowindowToMarker = new google.maps.InfoWindow ;
-            infowindowToMarker.set('isCustomInfoWindow', true);
+            var infoboxToMarker = new google.maps.infobox ;
+            infoboxToMarker.set('isCustominfobox', true);
 
             savedMarker.addListener('click', function(event) {console.log(this)
 
-                //infowindowToMarker.setPosition(event.latLng);
+                //infoboxToMarker.setPosition(event.latLng);
                 // open the info window
-                infowindowToMarker.setContent(content)
-                infowindowToMarker.open(map, savedMarker);
+                infoboxToMarker.setContent(content)
+                infoboxToMarker.open(map, savedMarker);
 
             });
             reinitialize();
@@ -252,10 +252,14 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
 
 
 
-        $.getScript('https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyDGUoGibBjOs0LpwHxkgTsnGJAF-u8Z80A&region=DE', initMap);
+        $.getScript('https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyDGUoGibBjOs0LpwHxkgTsnGJAF-u8Z80A&region=DE', mapsAPIReady);
+
+        function mapsAPIReady() {
+            $.getScript('js/infobox.js', initMap);
+
+        }
 
         function initMap() {
-
 
             //first and foremost initialize the map
             map = new google.maps.Map(document.getElementById('map'), {
@@ -284,7 +288,7 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
                 vm.step2 = true ;
                 vm.step3 = false ;
 
-            }
+            };
 
             // initialize a round symbol marker
             vm.svg.none = google.maps.SymbolPath.CIRCLE;
@@ -318,42 +322,33 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
 
             });
 
-            //initialize the infowindow
-            vm.infowindow = new google.maps.InfoWindow;
+
+            //initialize the infobox
+            vm.infobox;
 
             //set the flag that it is a custom info window
-            vm.infowindow.set('isCustomInfoWindow', true);
+            //vm.infobox.set('isCustominfobox', true);
             // disable all non custom info windows
-            //disablePOIInfoWindow();
+            //disablePOIinfobox();
 
-            //add a click event to the map to initialize the marker and infowindow
+            //add a click event to the map to initialize the marker and infobox
             map.addListener('click', function (event) {
+
 
                 vm.step1 = true;
                 vm.step2=false;
                 vm.step3= false;
                 //in jquery u must scope apply
                 $scope.$apply();
-
-
-                vm.infowindow.setContent(vm.contentNode);
-                // function to place the marker
                 placeMarker(event.latLng, map);
-                vm.infowindow.setZIndex(99999);
-                //$scope.latitudeLongitude = event.latLng.lat();
-                // also move the infowindow to the clicked point
-                vm.infowindow.setPosition(event.latLng);
-                // open the info window
-                vm.infowindow.open(map, this);
-
             });
 
-            google.maps.event.addListener(vm.infowindow, 'domready', function () {
+            google.maps.event.addListener(vm.infobox, 'domready', function () {
                 this.getContent().parentNode.style.overflow = 'auto';
 
 
             });
-            google.maps.event.addListener(vm.infowindow,'closeclick',function(){
+            google.maps.event.addListener(vm.infobox,'closeclick',function(){
                 if (marker)
                     marker.setMap(null);
             });
@@ -376,14 +371,6 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
 
 
 
-            function disablePOIInfoWindow() {
-                var fnSet = google.maps.InfoWindow.prototype.set;
-                google.maps.InfoWindow.prototype.set = function () {
-                    if (this.get('isCustomInfoWindow'))
-                        fnSet.apply(this, arguments);
-                };
-            }
-
             function placeMarker(latLng, map) {
                 $scope.category= "none";
                 $scope.latitude = latLng.lat();
@@ -398,6 +385,28 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
                     draggable: true,
                     animation: google.maps.Animation.DROP
                 });
+
+
+
+                var myOptions = {
+                    content: vm.contentNode
+                    ,disableAutoPan: false
+                    ,maxWidth: 0
+                    ,pixelOffset: new google.maps.Size(-140, 0)
+                    ,zIndex: null
+
+                    ,closeBoxMargin: "10px 2px 2px 2px"
+                    ,closeBoxURL: "http://www.google.com/intl/en_us/mapfiles/close.gif"
+                    ,infoBoxClearance: new google.maps.Size(1, 1)
+                    ,isHidden: false
+                    ,pane: "floatPane"
+                    ,enableEventPropagation: false
+                };
+                if(angular.isDefined(vm.infobox)) {
+                    vm.infobox.setMap(null);
+                }
+                vm.infobox = new InfoBox(myOptions);
+                vm.infobox.open(map, marker);
 
             }
 
