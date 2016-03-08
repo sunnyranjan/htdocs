@@ -71,7 +71,7 @@ richardplatzControllers.controller('AppCtrl', function ($scope, $timeout, $mdSid
 
 
 richardplatzControllers.controller('homeController', ['$scope', '$userComment', '$window',
-    function ($scope, $userComment, $window) {
+    function ($scope, $userComment, $window) {$scope.theme = 'lime';
         var vm = this;
         var map;
         var marker;
@@ -385,20 +385,22 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
                     alignBottom: true,
                     zIndex: 99999,
                     pixelOffset: new google.maps.Size(-300, 0),
-                    infoBoxClearance: new google.maps.Size(100, -100)
+                    closeBoxMargin: "0px"
+
+
 
                 };
 
-                var windowWidth = $( window ).width();
+                var windowWidth = $(window).width();
                 if(angular.isDefined(vm.infobox)) {
                     vm.infobox.setMap(null);
                 }
                 vm.infobox = new InfoBox(myOptions);
-                if(windowWidth > 0 && windowWidth < 768) {
-                    vm.infobox.setOptions({'pixelOffset': new google.maps.Size(-150, 5)});
+                if(windowWidth > 0 && windowWidth < 600) {
+                    vm.infobox.setOptions({'pixelOffset': new google.maps.Size(-windowWidth/2, -18)});
                 }
                 else {
-                    vm.infobox.setOptions({'pixelOffset': new google.maps.Size(-300, 5)});
+                    vm.infobox.setOptions({'pixelOffset': new google.maps.Size(-300, -18)});
                 }
                 vm.infobox.open(map, marker);
 

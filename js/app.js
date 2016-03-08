@@ -11,8 +11,14 @@ var richardplatzApp = angular.module('richardplatzApp', [
   'richardplatzServices'
 ]);
 
-richardplatzApp.config(['$routeProvider',
-  function($routeProvider) {
+richardplatzApp.config(['$routeProvider','$mdThemingProvider',
+  function($routeProvider, $mdThemingProvider) {
+
+      $mdThemingProvider.theme('lime')
+          .primaryPalette('light-blue')
+          .accentPalette('light-blue')
+          .warnPalette('light-blue');
+
     $routeProvider.
       when('/home', {
         templateUrl: 'partials/home.html',
