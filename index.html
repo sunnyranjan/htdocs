@@ -37,21 +37,6 @@
     <link rel="stylesheet" href="css/app.css">
     <link rel="stylesheet" href="css/animations.css">
 
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/angular-animate/angular-animate.js"></script>
-    <script src="bower_components/angular-route/angular-route.js"></script>
-    <script src="bower_components/angular-resource/angular-resource.js"></script>
-    <script src="bower_components/angular-aria/angular-aria.min.js"></script>
-    <script src="bower_components/angular-messages/angular-messages.min.js"></script>
-    <script src="bower_components/angular-material/angular-material.min.js"></script>
-    <script src="bower_components/angular-material/svg-assets-cache.js"></script>
-
-    <script src="js/app.js"></script>
-    <script src="js/animations.js"></script>
-    <script src="js/controllers.js"></script>
-    <script src="js/filters.js"></script>
-    <script src="js/services.js"></script>
 </head>
 <body>
 
@@ -85,8 +70,44 @@
 
     </md-sidenav>
 
+    <div class="modal fade" id="info-bubble" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-body">
+                    <p>One fine body&hellip;</p>
+                    <p> gawcfniounilqecneilucfzmelcmgeilqfuömw
+                    e.kcnejkhcfzeiufcfwefk
+                    dl dhkgj </p>
+                </div>
+
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
 </div>
 
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/angular-resource/angular-resource.js"></script>
+<script src="bower_components/angular-aria/angular-aria.min.js"></script>
+<script src="bower_components/angular-messages/angular-messages.min.js"></script>
+<script src="bower_components/angular-material/angular-material.min.js"></script>
+<script src="bower_components/angular-material/svg-assets-cache.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+
+<script src="js/app.js"></script>
+<script src="js/animations.js"></script>
+<script src="js/controllers.js"></script>
+<script src="js/filters.js"></script>
+<script src="js/services.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#info-bubble').modal();
+        console.log("fire")});
+</script>
 
 
 </body>

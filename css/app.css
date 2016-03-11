@@ -665,6 +665,13 @@ body {
     padding-top : 10px !important;
 
 }
+.modal-backdrop.in
+{
+    opacity:0.8 !important;
+    position:fixed;
+    height:100%  !important;
+    background-color: #c2c2c2;
+}
 
 
 
