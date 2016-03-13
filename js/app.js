@@ -24,18 +24,22 @@ richardplatzApp.config(['$routeProvider', '$mdThemingProvider',
                 controller: 'homeController',
                 controllerAs: 'vm',
                 resolve: {
-                    _categories: function ($http) {
-                        var cat =$http.get('http://api.yourkiez.de/categories.json');
-                        return cat.promise;
+                    _categories: ['$http', '$q', function ($http, $q) {
+                        var delay = $q.defer();
+                        activate();
 
-                            //.then(successCallback, errorCallback);
-                        /*function successCallback (responseSuccess) {
-                            return responseSuccess.data;
+                        return delay.promise;
+                        function activate () {
+                            $http.get('http://api.yourkiez.de/categories.json').then(successCallback, errorCallback);
+                            function successCallback (responseSuccess) {
+                                delay.resolve(responseSuccess);
+                            }
+                            function errorCallback (responseError) {
+                                delay.resolve(responseError);
+                            }
                         }
-                        function errorCallback (responseError) {
-                            return responseError.data;
-                        }*/
-                    }
+
+                    }]
                 }
             }).
             when('/projekt', {
