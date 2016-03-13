@@ -25,13 +25,16 @@ richardplatzApp.config(['$routeProvider', '$mdThemingProvider',
                 controllerAs: 'vm',
                 resolve: {
                     _categories: function ($http) {
-                        $http.get('http://api.yourkiez.de/categories.json').then(successCallback, errorCallback);
-                        function successCallback (responseSuccess) {
+                        var cat =$http.get('http://api.yourkiez.de/categories.json');
+                        return cat.promise;
+
+                            //.then(successCallback, errorCallback);
+                        /*function successCallback (responseSuccess) {
                             return responseSuccess.data;
                         }
                         function errorCallback (responseError) {
                             return responseError.data;
-                        }
+                        }*/
                     }
                 }
             }).
