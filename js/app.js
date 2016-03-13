@@ -24,7 +24,7 @@ richardplatzApp.config(['$routeProvider', '$mdThemingProvider',
                 controller: 'homeController',
                 controllerAs: 'vm',
                 resolve: {
-                    _categories: ['$http', function ($http) {
+                    _categories: function ($http) {
                         $http.get('http://api.yourkiez.de/categories.json').then(successCallback, errorCallback);
                         function successCallback (responseSuccess) {
                             return responseSuccess.data;
@@ -32,7 +32,7 @@ richardplatzApp.config(['$routeProvider', '$mdThemingProvider',
                         function errorCallback (responseError) {
                             return responseError.data;
                         }
-                    }]
+                    }
                 }
             }).
             when('/projekt', {
