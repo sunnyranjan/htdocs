@@ -69,7 +69,7 @@ richardplatzControllers.controller('AppCtrl', function ($scope, $timeout, $mdSid
 
 
 
-richardplatzControllers.controller('homeController', ['$scope', '$userComment', '$window','$http', '_categories', _ratings,
+richardplatzControllers.controller('homeController', ['$scope', '$userComment', '$window','$http', '_categories', '_ratings',
     function ($scope, $userComment, $window,$http, _categories, _ratings) {
         var vm = this;
 
@@ -293,7 +293,7 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
             function success (response){
                 console.log(response)
                 }
-            
+
 
 
             //first and foremost initialize the map
