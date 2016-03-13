@@ -69,10 +69,9 @@ richardplatzControllers.controller('AppCtrl', function ($scope, $timeout, $mdSid
 
 
 
-richardplatzControllers.controller('homeController', ['$scope', '$userComment', '$window','$http', '_categories',
-    function ($scope, $userComment, $window,$http, _categories) {
+richardplatzControllers.controller('homeController', ['$scope', '$userComment', '$window','$http', '_categories', _ratings,
+    function ($scope, $userComment, $window,$http, _categories, _ratings) {
         var vm = this;
-        console.log(_categories)
 
         //enable caching for better user performance
         $.ajaxSetup({
@@ -98,6 +97,14 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
         vm.svg = {}, vm.icon = {}, vm.options = {};
         vm.options.ages = ["keine Angabe","1-12","12-18","18-65", "Über 65"];
         vm.options.sexes = ["keine Angabe", "Mann", "Frau"];
+        vm.categoryMapObject = {};
+        angular.forEach(_categories.category, function (value, key) {
+
+        });
+        vm.ratingsMapObject = {};
+        angular.forEach(_ratings.ratings, function (value, key) {
+
+        });
 
         //for shooping (shoping cart)
         vm.svg.shop = "M16,0.094C7.215,0.094,0.094,7.216,0.094,16c0,8.783,7.121,15.906,15.906,15.906S31.906,24.783,31.906,16 " +
@@ -182,12 +189,12 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
             markerIcon[v]= {};
         });
 
-        $scope.category ="none";
+        $scope.category = 1;
         $scope.comments = "";
         $scope.userAge = "";
         $scope.userSex = "";
-        $scope.categoryChange= function (category){
-            $scope.category = category;
+        $scope.categoryChange= function (category, categoryId){
+            $scope.category = categoryId;
         };
         $scope.colorChange =  function (color, rating) {
             if(angular.isDefined(marker)) {
@@ -255,7 +262,7 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
         function reinitialize(){
             $scope.latitude= "";
             $scope.longitude= "";
-            $scope.category= "";
+            $scope.category= 1;
              $scope.color= "";
              $scope.rating= "";
              $scope.comments= "";
@@ -384,7 +391,7 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
 
 
             function placeMarker(latLng, map) {
-                $scope.category= "none";
+                $scope.category= 1;
                 $scope.latitude = latLng.lat();
                 $scope.longitude = latLng.lng();
 

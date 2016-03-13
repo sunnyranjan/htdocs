@@ -14,13 +14,13 @@
                         <div class="col-sm-4 col-xs-6 text-center wrapCategory">
                             <div class="cateoryText">Wohnen</div>
                             <button type="button" class="btn btn-circle btn-raised btn-default home text-center"
-                                    ng-click="categoryChange('home')"></button>
+                                    ng-click="categoryChange('home', 7)"></button>
 
                         </div>
                         <div class="col-sm-4 col-xs-6 text-center wrapCategory">
                             <div class="cateoryText">Nachbarschaft</div>
                             <button type="button" class="btn btn-circle btn-raised btn-default neighbour text-center"
-                                    ng-click="categoryChange('neighbour')"></button>
+                                    ng-click="categoryChange('neighbour',4)"></button>
 
                         </div>
 
@@ -28,7 +28,7 @@
                             <div class="cateoryText">Verkehr</div>
                             <button type="button"
                                     class="btn btn-circle btn-raised btn-default infrastructure text-center"
-                                    ng-click="categoryChange('infrastructure')"></button>
+                                    ng-click="categoryChange('infrastructure',8)"></button>
 
                         </div>
 
@@ -36,19 +36,19 @@
                         <div class="col-sm-4 col-xs-6 text-center wrapCategory">
                             <div class="cateoryText">Plätze und Grünflächen</div>
                             <button type="button" class="btn btn-circle btn-raised btn-default tree text-center"
-                                    ng-click="categoryChange('tree')"></button>
+                                    ng-click="categoryChange('tree',5)"></button>
 
                         </div>
                         <div class="col-sm-4 col-xs-6 text-center wrapCategory">
                             <div class="cateoryText">Einkaufen</div>
                             <button type="button" class="btn btn-circle btn-raised btn-default shopping text-center"
-                                    ng-click="categoryChange('shop')"></button>
+                                    ng-click="categoryChange('shop',3)"></button>
 
                         </div>
                         <div class="col-sm-4 col-xs-6 text-center wrapCategory">
                             <div class="cateoryText">Sport und Freizeit</div>
                             <button type="button" class="btn btn-circle btn-raised btn-default sport text-center"
-                                    ng-click="categoryChange('sport')"></button>
+                                    ng-click="categoryChange('sport',6)"></button>
 
                         </div>
 
@@ -56,13 +56,13 @@
                         <div class="col-sm-4 col-xs-6 text-center wrapCategory">
                             <div class="cateoryText">Bildung und Kultur</div>
                             <button type="button" class="btn btn-circle btn-raised btn-default education text-center"
-                                    ng-click="categoryChange('education')"></button>
+                                    ng-click="categoryChange('education',2)"></button>
 
                         </div>
                         <div class="col-sm-4 col-xs-6 text-center wrapCategory">
                             <div class="cateoryText">Weiß nicht</div>
                             <button type="button" class="btn btn-circle btn-raised btn-default other text-center"
-                                    ng-click="categoryChange('none')"></button>
+                                    ng-click="categoryChange('none',1)"></button>
 
                         </div>
                         <div class="col-sm-4 col-xs-6 text-center wrapCategory">
@@ -131,15 +131,20 @@
                                 </md-select>
                             </md-input-container>
                         </div>
-                        <div class="col-sm-6 text-left">
+
+                        <div class="col-sm-6 text-left hidden-sm hidden-xs">
                             <button type="button" class="btn btn-default btn-raised ">Bild</button>
                         </div>
-                        <div class="col-sm-6 text-right">
+                        <div class="col-sm-6 text-right hidden-sm hidden-xs">
                             <button type="button" class="btn btn-info btn-raised " ng-click="formSubmit()">Absenden
                             </button>
                         </div>
-                        <div class="col-sm-6">
-
+                        <div class="col-sm-12 text-center visible-sm visible-xs">
+                            <button type="button" class="btn btn-default btn-raised ">Bild</button>
+                        </div>
+                        <div class="col-sm-12 text-center visible-sm visible-xss">
+                            <button type="button" class="btn btn-info btn-raised " ng-click="formSubmit()">Absenden
+                            </button>
                         </div>
 
 
