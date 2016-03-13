@@ -71,7 +71,8 @@ richardplatzControllers.controller('AppCtrl', function ($scope, $timeout, $mdSid
 
 richardplatzControllers.controller('homeController', ['$scope', '$userComment', '$window','$http', '_categories',
     function ($scope, $userComment, $window,$http, _categories) {
-        console.log(_categories)
+        var vm = this;
+        console.log(_categories);
 
         //enable caching for better user performance
         $.ajaxSetup({
@@ -95,7 +96,7 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
         function errorCallback(response) {
             console.log(response);
         }
-        var vm = this;
+
         var map;
         var marker;
         var markerIcon = {} ;
