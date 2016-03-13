@@ -4,7 +4,6 @@
 var richardplatzControllers = angular.module('richardplatzControllers', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache']);
 
 richardplatzControllers.controller('AppCtrl', function ($scope, $timeout, $mdSidenav, $element) {
-    console.log($element.height())
 
     $scope.toggleRight = buildToggler('right');
     $scope.isOpenRight = function () {
@@ -70,14 +69,30 @@ richardplatzControllers.controller('AppCtrl', function ($scope, $timeout, $mdSid
 
 
 
-richardplatzControllers.controller('homeController', ['$scope', '$userComment', '$window','$http',
-    function ($scope, $userComment, $window,$http) {$scope.theme = 'lime';
+richardplatzControllers.controller('homeController', ['$scope', '$userComment', '$window','$http', '_categories',
+    function ($scope, $userComment, $window,$http, _categories) {
+
+        //enable caching for better user performance
+        $.ajaxSetup({
+            cache: true
+        });
+
+
+        //first and foremost thing should be to load the google maps and infobox
+        $.getScript('https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyDGUoGibBjOs0LpwHxkgTsnGJAF-u8Z80A&region=DE', mapsAPIReady);
+
+        function mapsAPIReady() {
+            $.getScript('js/infobox.js', initMap);
+
+        }
+
+        $scope.theme = 'lime';
         $http.get('http://api.yourkiez.de/comments.json').then(successCallback, errorCallback);
         function successCallback (response){
             console.log(response);
         }
         function errorCallback(response) {
-            console.log(repsonse);
+            console.log(response);
         }
         var vm = this;
         var map;
@@ -204,6 +219,7 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
             saveUserComment.comments = $scope.comments;
             saveUserComment.userAge = $scope.userAge;
             saveUserComment.userSex = $scope.userSex;
+            console.log(saveUserComment);
             vm.infobox.close();
             marker.setMap(null);
 
@@ -252,19 +268,7 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
 
         }
 
-        //enable caching for better user performance
-        $.ajaxSetup({
-            cache: true
-        });
 
-
-
-        $.getScript('https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyDGUoGibBjOs0LpwHxkgTsnGJAF-u8Z80A&region=DE', mapsAPIReady);
-
-        function mapsAPIReady() {
-            $.getScript('js/infobox.js', initMap);
-
-        }
 
         function initMap() {
 
