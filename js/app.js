@@ -32,10 +32,10 @@ richardplatzApp.config(['$routeProvider', '$mdThemingProvider',
                         function activate () {
                             $http.get('http://api.yourkiez.de/categories.json').then(successCallback, errorCallback);
                             function successCallback (responseSuccess) {
-                                delay.resolve(responseSuccess);
+                                delay.resolve(responseSuccess.data);
                             }
                             function errorCallback (responseError) {
-                                delay.resolve(responseError);
+                                delay.resolve(responseError.data);
                             }
                         }
 
