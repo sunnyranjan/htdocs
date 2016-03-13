@@ -89,13 +89,7 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
         }
 
         $scope.theme = 'lime';
-        $http.get('http://api.yourkiez.de/comments.json').then(successCallback, errorCallback);
-        function successCallback (response){
-            console.log(response);
-        }
-        function errorCallback(response) {
-            console.log(response);
-        }
+
 
         var map;
         var marker;
@@ -273,6 +267,19 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
 
 
         function initMap() {
+
+            $http.get('http://api.yourkiez.de/comments.json').then(successCallback, errorCallback);
+            function successCallback (response){
+                if(response.data.comments.length > 0 ){
+                    // here we generate the markers
+                    angular.forEach(response.data.comments, function (value, key) {
+
+                    })
+                }
+            }
+            function errorCallback(response) {
+                console.log(response);
+            }
 
             //first and foremost initialize the map
             map = new google.maps.Map(document.getElementById('map'), {

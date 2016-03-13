@@ -39,7 +39,24 @@ richardplatzApp.config(['$routeProvider', '$mdThemingProvider',
                             }
                         }
 
+                    }],
+                    _ratings: ['$http', '$q', function ($http, $q) {
+                        var delay = $q.defer();
+                        activate();
+
+                        return delay.promise;
+                        function activate () {
+                            $http.get('http://api.yourkiez.de/ratings.json').then(successCallback, errorCallback);
+                            function successCallback (responseSuccess) {
+                                delay.resolve(responseSuccess.data);
+                            }
+                            function errorCallback (responseError) {
+                                delay.resolve(responseError.data);
+                            }
+                        }
+
                     }]
+
                 }
             }).
             when('/projekt', {
