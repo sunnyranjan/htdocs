@@ -293,7 +293,7 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
             function success (response){
                 console.log(response)
                 }
-            }
+            
 
 
             //first and foremost initialize the map
