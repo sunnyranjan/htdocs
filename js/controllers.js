@@ -70,8 +70,12 @@ richardplatzControllers.controller('AppCtrl', function ($scope, $timeout, $mdSid
 
 
 
-richardplatzControllers.controller('homeController', ['$scope', '$userComment', '$window',
-    function ($scope, $userComment, $window) {$scope.theme = 'lime';
+richardplatzControllers.controller('homeController', ['$scope', '$userComment', '$window','$http',
+    function ($scope, $userComment, $window,$http) {$scope.theme = 'lime';
+        $http.get('http://api.yourkiez.de/comments.json').then(successCallback, errorCallback);
+        function successCallback (response){
+            console.log(response);
+        }
         var vm = this;
         var map;
         var marker;
