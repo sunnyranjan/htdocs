@@ -293,6 +293,7 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
             function success (response){
                 console.log(response)
                 }
+            function error (){}
 
 
 
