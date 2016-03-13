@@ -72,6 +72,7 @@ richardplatzControllers.controller('AppCtrl', function ($scope, $timeout, $mdSid
 richardplatzControllers.controller('homeController', ['$scope', '$userComment', '$window','$http', '_categories',
     function ($scope, $userComment, $window,$http, _categories) {
         var vm = this;
+        console.log(_categories)
 
         //enable caching for better user performance
         $.ajaxSetup({
