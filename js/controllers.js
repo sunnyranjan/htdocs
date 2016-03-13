@@ -275,6 +275,7 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
 
         function initMap() {
 
+
             $http.get('http://api.yourkiez.de/comments.json').then(successCallback, errorCallback);
             function successCallback (response){
                 if(response.data.comments.length > 0 ){
@@ -287,6 +288,13 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
             function errorCallback(response) {
                 console.log(response);
             }
+            //like
+            $http.post('http://api.yourkiez.de/comments/like/2.json').then(success, error);
+            function success (response){
+                console.log(response)
+                }
+            }
+
 
             //first and foremost initialize the map
             map = new google.maps.Map(document.getElementById('map'), {
