@@ -76,6 +76,9 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
         function successCallback (response){
             console.log(response);
         }
+        function errorCallback(response) {
+            console.log(repsonse);
+        }
         var vm = this;
         var map;
         var marker;
