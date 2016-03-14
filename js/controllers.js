@@ -94,8 +94,18 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
         var markerIcon = {};
         var properties = ["none", "education", "home", "infrastructure", "neighbour", "shop", "tree", "sport"];
         vm.svg = {}, vm.icon = {}, vm.options = {};
-        vm.options.ages = ["keine Angabe", "1-12", "12-18", "18-65", "Über 65"];
-        vm.options.sexes = ["keine Angabe", "Mann", "Frau"];
+        vm.options.ages = [
+            {label: "keine Angabe", value: 1},
+            {label: "1-12", value: 2},
+            {label: "13-18", value: 3},
+            {label: "19-65", value: 4},
+            {label: "Über 65", value: 5}
+        ];
+        vm.options.sexes = [
+            {label: "keine Angabe", value: 1},
+            {label: "Mann", value: 2},
+            {label: "Frau", value: 3}
+        ];
         vm.categoryMapObject = {};
         angular.forEach(_categories.category, function (value, key) {
 

@@ -118,7 +118,7 @@
                             <md-input-container style="width: 100%;font-size:15px !important">
                                 <label>Wie alt bist du?</label>
                                 <md-select ng-model="userAge">
-                                    <md-option ng-repeat="age in vm.options.ages" value="{{age}}">{{age}}</md-option>
+                                    <md-option ng-repeat="age in vm.options.ages" value="{{age.value}}">{{age.label}}</md-option>
                                 </md-select>
                             </md-input-container>
                         </div>
@@ -127,7 +127,7 @@
                             <md-input-container style="width: 100%;font-size:15px !important">
                                 <label>Geschlecht</label>
                                 <md-select ng-model="userSex">
-                                    <md-option ng-repeat="sex in vm.options.sexes" value="{{sex}}">{{sex}}</md-option>
+                                    <md-option ng-repeat="sex in vm.options.sexes" value="{{sex.value}}">{{sex.label}}</md-option>
                                 </md-select>
                             </md-input-container>
                         </div>
