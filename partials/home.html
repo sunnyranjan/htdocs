@@ -131,6 +131,12 @@
                                 </md-select>
                             </md-input-container>
                         </div>
+                        <div class="col-sm-12" style="width: 100%;font-size:15px !important">
+                            <md-input-container>
+                                <label>Email</label>
+                                <input ng-model="user.email" type="email">
+                            </md-input-container>
+                        </div>
 
                         <div class="col-sm-6 text-left hidden-sm hidden-xs">
                             <button type="button" class="btn btn-default btn-raised ">Bild</button>
@@ -142,7 +148,7 @@
                         <div class="col-sm-12 text-center visible-sm visible-xs">
                             <button type="button" class="btn btn-default btn-raised ">Bild</button>
                         </div>
-                        <div class="col-sm-12 text-center visible-sm visible-xss">
+                        <div class="col-sm-12 text-center visible-sm visible-xs">
                             <button type="button" class="btn btn-info btn-raised " ng-click="formSubmit()">Absenden
                             </button>
                         </div>
