@@ -68,9 +68,8 @@ richardplatzControllers.controller('AppCtrl', function ($scope, $timeout, $mdSid
     });
 
 
-
-richardplatzControllers.controller('homeController', ['$scope', '$userComment', '$window','$http', '_categories', '_ratings',
-    function ($scope, $userComment, $window,$http, _categories, _ratings) {
+richardplatzControllers.controller('homeController', ['$scope', '$userComment', '$window', '$http', '_categories', '_ratings',
+    function ($scope, $userComment, $window, $http, _categories, _ratings) {
         var vm = this;
 
         //enable caching for better user performance
@@ -92,10 +91,10 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
 
         var map;
         var marker;
-        var markerIcon = {} ;
-        var properties = ["none","education", "home", "infrastructure", "neighbour", "shop", "tree", "sport"];
+        var markerIcon = {};
+        var properties = ["none", "education", "home", "infrastructure", "neighbour", "shop", "tree", "sport"];
         vm.svg = {}, vm.icon = {}, vm.options = {};
-        vm.options.ages = ["keine Angabe","1-12","12-18","18-65", "Über 65"];
+        vm.options.ages = ["keine Angabe", "1-12", "12-18", "18-65", "Über 65"];
         vm.options.sexes = ["keine Angabe", "Mann", "Frau"];
         vm.categoryMapObject = {};
         angular.forEach(_categories.category, function (value, key) {
@@ -185,25 +184,25 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
 
         vm.contentNode = $('#infoWindowContent')[0];
 
-        angular.forEach(properties, function (v,k) {
-            markerIcon[v]= {};
+        angular.forEach(properties, function (v, k) {
+            markerIcon[v] = {};
         });
 
         $scope.category = 1;
         $scope.comments = "";
         $scope.userAge = "";
         $scope.userSex = "";
-        $scope.categoryChange= function (category, categoryId){
+        $scope.categoryChange = function (category, categoryId) {
             $scope.category = category;
             $scope.categoryId = categoryId;
         };
-        $scope.colorChange =  function (color, rating) {
-            if(angular.isDefined(marker)) {
+        $scope.colorChange = function (color, rating) {
+            if (angular.isDefined(marker)) {
 
             }
-            vm.step1 = false ;
-            vm.step2 = false ;
-            vm.step3 = true ;
+            vm.step1 = false;
+            vm.step2 = false;
+            vm.step3 = true;
 
             $scope.color = color;
             $scope.rating = rating;
@@ -216,24 +215,24 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
 
             var saveUserComment = {};
             saveUserComment.latitude = $scope.latitude;
-            saveUserComment.longitude =  $scope.longitude;
-            saveUserComment.category =$scope.category;
+            saveUserComment.longitude = $scope.longitude;
+            saveUserComment.categoryId = $scope.categoryId;
+            saveUserComment.ratingId = $scope.rating;
+            saveUserComment.description = $scope.comments;
+            saveUserComment.ageId = $scope.userAge;
+            saveUserComment.sexId = $scope.userSex;
             saveUserComment.color = $scope.color;
-            saveUserComment.rating = $scope.rating;
-            saveUserComment.comments = $scope.comments;
-            saveUserComment.userAge = $scope.userAge;
-            saveUserComment.userSex = $scope.userSex;
             console.log(saveUserComment);
             vm.infobox.close();
             marker.setMap(null);
 
-            var content = '<div class="container-fluid" style="background-color:'+ $scope.color+ ' ">'+
-                        '<div class="col-sm-12"> '+
-                        '<h4>'+ saveUserComment.comments + '</h4></div></div>'
+            var content = '<div class="container-fluid" style="background-color:' + $scope.color + ' ">' +
+                '<div class="col-sm-12"> ' +
+                '<h4>' + saveUserComment.comments + '</h4></div></div>'
 
-            var latlng =  new google.maps.LatLng($scope.latitude, $scope.longitude);
-            var saveicon = angular.copy(vm.icon[saveUserComment.category]);
-            saveicon.fillColor = saveUserComment.color;
+            var latlng = new google.maps.LatLng($scope.latitude, $scope.longitude);
+            var saveicon = angular.copy(vm.icon[$scope.category]);
+            saveicon.fillColor = $scope.color;
 
             var savedMarker = new google.maps.Marker({
                 icon: saveicon,
@@ -243,10 +242,11 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
                 clickable: true
             });
 
-            var infoboxToMarker = new google.maps.infobox ;
+            var infoboxToMarker = new google.maps.infobox;
             infoboxToMarker.set('isCustominfobox', true);
 
-            savedMarker.addListener('click', function(event) {console.log(this)
+            savedMarker.addListener('click', function (event) {
+                console.log(this)
 
                 //infoboxToMarker.setPosition(event.latLng);
                 // open the info window
@@ -260,19 +260,18 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
         }
 
 
-        function reinitialize(){
-            $scope.latitude= "";
-            $scope.longitude= "";
-            $scope.category= "none";
-            $scope.categoryId=1;
-             $scope.color= "";
-             $scope.rating= "";
-             $scope.comments= "";
-             $scope.userAge= "";
-            $scope.userSex= "";
+        function reinitialize() {
+            $scope.latitude = "";
+            $scope.longitude = "";
+            $scope.category = "none";
+            $scope.categoryId = 1;
+            $scope.color = "";
+            $scope.rating = "";
+            $scope.comments = "";
+            $scope.userAge = "";
+            $scope.userSex = "";
 
         }
-
 
 
         function initMap() {
@@ -280,40 +279,40 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
             getListOfComments();
 
             //function to get list of comment
-            function getListOfComments(){
+            function getListOfComments() {
                 $http.get('http://api.yourkiez.de/comments.json').then(successCallback, errorCallback);
             }
 
             // http success
-            function successCallback (response){
+            function successCallback(response) {
                 console.log(response)
-                if(response.data.comments.length > 0 ){
+                if (response.data.comments.length > 0) {
                     // here we generate the markers
                     angular.forEach(response.data.comments, function (value, key) {
 
                     })
                 }
             }
+
             function errorCallback(response) {
                 console.log(response);
             }
 
 
             /*
-            //like
-            $http.post('http://api.yourkiez.de/comments/like/2.json').then(successLike, errorLike);
-            function successLike (response){
-                console.log(response)
-                }
-            function errorLike (){}
+             //like
+             $http.post('http://api.yourkiez.de/comments/like/2.json').then(successLike, errorLike);
+             function successLike (response){
+             console.log(response)
+             }
+             function errorLike (){}
 
-            //unlike
-            $http.post('http://api.yourkiez.de/comments/unlike/2.json').then(successUnlike, errorUnlike);
-            function successUnlike (response){
-                console.log(response)
-            }
-            function errorUnlike (){}*/
-
+             //unlike
+             $http.post('http://api.yourkiez.de/comments/unlike/2.json').then(successUnlike, errorUnlike);
+             function successUnlike (response){
+             console.log(response)
+             }
+             function errorUnlike (){}*/
 
 
             //first and foremost initialize the map
@@ -336,12 +335,12 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
                 }
             });
             vm.step1 = true;
-            vm.step2=false;
-            vm.step3= false;
+            vm.step2 = false;
+            vm.step3 = false;
             $scope.jumpNext = function () {
-                vm.step1 = false ;
-                vm.step2 = true ;
-                vm.step3 = false ;
+                vm.step1 = false;
+                vm.step2 = true;
+                vm.step3 = false;
 
             };
 
@@ -363,7 +362,7 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
                         }
                         break;
                     default:
-                        vm.icon[v]= {
+                        vm.icon[v] = {
                             path: vm.svg[v],
                             fillColor: 'grey',
                             fillOpacity: 0.9,
@@ -391,15 +390,12 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
 
 
                 vm.step1 = true;
-                vm.step2=false;
-                vm.step3= false;
+                vm.step2 = false;
+                vm.step3 = false;
                 //in jquery u must scope apply
                 $scope.$apply();
                 placeMarker(event.latLng, map);
             });
-
-
-
 
 
             // finish infobox related stuff
@@ -407,20 +403,16 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
             //start marker related stuff
 
 
-
-
-            $scope.$watch('category', function(n, o) {
-                if(angular.isDefined(marker))
-                marker.setIcon(vm.icon[n]);
+            $scope.$watch('category', function (n, o) {
+                if (angular.isDefined(marker))
+                    marker.setIcon(vm.icon[n]);
 
             });
 
 
-
-
             function placeMarker(latLng, map) {
-                $scope.category= "none";
-                $scope.categoryId= 1;
+                $scope.category = "none";
+                $scope.categoryId = 1;
                 $scope.latitude = latLng.lat();
                 $scope.longitude = latLng.lng();
 
@@ -435,7 +427,6 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
                 });
 
 
-
                 var myOptions = {
                     content: vm.contentNode,
                     alignBottom: true,
@@ -444,16 +435,15 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
                     closeBoxMargin: "0px"
 
 
-
                 };
 
                 var windowWidth = $(window).width();
-                if(angular.isDefined(vm.infobox)) {
+                if (angular.isDefined(vm.infobox)) {
                     vm.infobox.setMap(null);
                 }
                 vm.infobox = new InfoBox(myOptions);
-                if(windowWidth > 0 && windowWidth < 600) {
-                    vm.infobox.setOptions({'pixelOffset': new google.maps.Size(-windowWidth/2, -18)});
+                if (windowWidth > 0 && windowWidth < 600) {
+                    vm.infobox.setOptions({'pixelOffset': new google.maps.Size(-windowWidth / 2, -18)});
                 }
                 else {
                     vm.infobox.setOptions({'pixelOffset': new google.maps.Size(-300, -18)});
@@ -461,8 +451,7 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
                 vm.infobox.open(map, marker);
 
 
-
-                google.maps.event.addListener(vm.infobox,'closeclick',function(){
+                google.maps.event.addListener(vm.infobox, 'closeclick', function () {
                     if (marker)
                         marker.setMap(null);
                 });
@@ -471,8 +460,6 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
 
 
         }
-
-
 
 
     }]);

@@ -1,0 +1,17 @@
+{
+  "id": 1,
+  "categoryId": 1,
+  "ratingId": 1,
+  "ageId": 1,
+  "sexId": 1,
+  "imageId": null,
+  "longitude": "111.1111",
+  "latitude": "222.2222",
+  "contact": "test@something.com",
+  "description": "this is a test comment 1",
+  "liked": 0,
+  "disliked": 0,
+  "moderated": "1",
+  "created": "2016-03-13T20:08:32+0000",
+  "modified": "2016-03-14T19:03:18+0000"
+}
