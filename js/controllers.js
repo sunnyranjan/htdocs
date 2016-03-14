@@ -214,14 +214,13 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
 
 
             var saveUserComment = {};
-            saveUserComment.latitude = $scope.latitude;
-            saveUserComment.longitude = $scope.longitude;
+            saveUserComment.latitude = $scope.latitude.toString();
+            saveUserComment.longitude = $scope.longitude.toString();
             saveUserComment.categoryId = $scope.categoryId;
             saveUserComment.ratingId = $scope.rating;
             saveUserComment.description = $scope.comments;
             saveUserComment.ageId = $scope.userAge;
             saveUserComment.sexId = $scope.userSex;
-            saveUserComment.color = $scope.color;
             console.log(saveUserComment);
             vm.infobox.close();
             marker.setMap(null);
