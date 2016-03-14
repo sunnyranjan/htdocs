@@ -195,6 +195,7 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
         $scope.userSex = "";
         $scope.categoryChange= function (category, categoryId){
             $scope.category = category;
+            $scope.categoryId = categoryId;
         };
         $scope.colorChange =  function (color, rating) {
             if(angular.isDefined(marker)) {
@@ -263,6 +264,7 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
             $scope.latitude= "";
             $scope.longitude= "";
             $scope.category= "none";
+            $scope.categoryId=1;
              $scope.color= "";
              $scope.rating= "";
              $scope.comments= "";
@@ -284,6 +286,7 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
 
             // http success
             function successCallback (response){
+                console.log(response)
                 if(response.data.comments.length > 0 ){
                     // here we generate the markers
                     angular.forEach(response.data.comments, function (value, key) {
@@ -417,6 +420,7 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
 
             function placeMarker(latLng, map) {
                 $scope.category= "none";
+                $scope.categoryId= 1;
                 $scope.latitude = latLng.lat();
                 $scope.longitude = latLng.lng();
 
