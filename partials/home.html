@@ -104,60 +104,72 @@
 
                 </div>
                 <div data-ng-show="vm.step3" class="insidePane" md-theme={{theme}}>
-                    <div class=" infoWindowHeadline text-center"><h5 class=" ">Schreib einen Kommentar oder deine Idee.</h5></div>
+                    <div class=" infoWindowHeadline text-center"><h5 class=" ">Schreib einen Kommentar oder deine
+                        Idee.</h5></div>
                     <div class="row paddingTop">
-                    <div class="col-sm-12">
                         <div class="col-sm-12">
-                        <md-input-container  style="width:100%; font-size:15px !important">
-                            <label>Hier Schreiben</label>
-                            <textarea type="text" ng-model="comments"></textarea>
-                        </md-input-container>
+                            <div class="col-sm-12">
+                                <md-input-container style="width:100%; font-size:15px !important">
+                                    <label>Hier Schreiben</label>
+                                    <textarea type="text" ng-model="comments"></textarea>
+                                </md-input-container>
+
+                            </div>
+                            <div class="col-sm-6">
+                                <md-input-container style="width: 100%;font-size:15px !important">
+                                    <label>Wie alt bist du?</label>
+                                    <md-select ng-model="userAge">
+                                        <md-option ng-repeat="age in vm.options.ages" value="{{age.value}}">
+                                            {{age.label}}
+                                        </md-option>
+                                    </md-select>
+                                </md-input-container>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <md-input-container style="width: 100%;font-size:15px !important">
+                                    <label>Geschlecht</label>
+                                    <md-select ng-model="userSex">
+                                        <md-option ng-repeat="sex in vm.options.sexes" value="{{sex.value}}">
+                                            {{sex.label}}
+                                        </md-option>
+                                    </md-select>
+                                </md-input-container>
+                            </div>
+                            <div class="col-sm-6">
+                                <md-input-container style="width: 100%;font-size:15px !important">
+                                    <label>Email(Optional)</label>
+                                    <input ng-model="user.email" type="email">
+                                </md-input-container>
+                            </div>
+                            <div class="col-sm-6 ">
+                                Diese dient auschließlich dazu Kontakt zwischen Dir und uns herzustellen. Die Adresse
+                                wird anderen nicht angezeigt. Es erfolgt keine anderweitige Verwendung.
+                            </div>
 
                         </div>
-                        <div class="col-sm-6">
-                            <md-input-container style="width: 100%;font-size:15px !important">
-                                <label>Wie alt bist du?</label>
-                                <md-select ng-model="userAge">
-                                    <md-option ng-repeat="age in vm.options.ages" value="{{age.value}}">{{age.label}}</md-option>
-                                </md-select>
-                            </md-input-container>
-                        </div>
+                    </div>
 
-                        <div class="col-sm-6">
-                            <md-input-container style="width: 100%;font-size:15px !important">
-                                <label>Geschlecht</label>
-                                <md-select ng-model="userSex">
-                                    <md-option ng-repeat="sex in vm.options.sexes" value="{{sex.value}}">{{sex.label}}</md-option>
-                                </md-select>
-                            </md-input-container>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <!--<div class="col-sm-6 text-left hidden-sm hidden-xs">
+                                                <button type="button" class="btn btn-default btn-raised ">Bild</button>
+                                            </div>-->
+                            <div class="col-sm-6 text-center hidden-sm hidden-xs clearfix">
+                                <button type="button" class="btn btn-info btn-raised " ng-click="formSubmit()">
+                                    Absenden
+                                </button>
+                            </div>
+                            <!-- <div class="col-sm-12 text-center visible-sm visible-xs">
+                                 <button type="button" class="btn btn-default btn-raised ">Bild</button>
+                             </div>-->
+                            <div class="col-sm-12 text-center visible-sm visible-xs clearfix">
+                                <button type="button" class="btn btn-info btn-raised " ng-click="formSubmit()">
+                                    Absenden
+                                </button>
+                            </div>
                         </div>
-                        <div class="col-sm-6" >
-                            <md-input-container style="width: 100%;font-size:15px !important">
-                                <label>Email(Optional)</label>
-                                <input ng-model="user.email" type="email">
-                            </md-input-container>
-                        </div>
-                        <div class="col-sm-6 ">
-                            Diese dient auschließlich dazu Kontakt zwischen Dir und uns herzustellen. Die Adresse wird anderen nicht angezeigt. Es erfolgt keine anderweitige Verwendung.
-                        </div>
-
-                        <!--<div class="col-sm-6 text-left hidden-sm hidden-xs">
-                            <button type="button" class="btn btn-default btn-raised ">Bild</button>
-                        </div>-->
-                        <div class="col-sm-6 text-center hidden-sm hidden-xs clearfix">
-                            <button type="button" class="btn btn-info btn-raised " ng-click="formSubmit()">Absenden
-                            </button>
-                        </div>
-                       <!-- <div class="col-sm-12 text-center visible-sm visible-xs">
-                            <button type="button" class="btn btn-default btn-raised ">Bild</button>
-                        </div>-->
-                        <div class="col-sm-12 text-center visible-sm visible-xs clearfix">
-                            <button type="button" class="btn btn-info btn-raised " ng-click="formSubmit()">Absenden
-                            </button>
-                        </div>
-
-
-                    </div></div>
+                    </div>
 
 
                 </div>
