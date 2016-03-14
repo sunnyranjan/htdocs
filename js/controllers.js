@@ -275,8 +275,14 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
 
         function initMap() {
 
+            getListOfComments();
 
-            $http.get('http://api.yourkiez.de/comments.json').then(successCallback, errorCallback);
+            //function to get list of comment
+            function getListOfComments(){
+                $http.get('http://api.yourkiez.de/comments.json').then(successCallback, errorCallback);
+            }
+
+            // http success
             function successCallback (response){
                 if(response.data.comments.length > 0 ){
                     // here we generate the markers
@@ -288,12 +294,24 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
             function errorCallback(response) {
                 console.log(response);
             }
+
+
+
+            /*
             //like
-            $http.post('http://api.yourkiez.de/comments/like/2.json').then(success, error);
-            function success (response){
+            $http.post('http://api.yourkiez.de/comments/like/2.json').then(successLike, errorLike);
+            function successLike (response){
                 console.log(response)
                 }
-            function error (){}
+            function errorLike (){}
+
+            //unlike
+            $http.post('http://api.yourkiez.de/comments/unlike/2.json').then(successUnlike, errorUnlike);
+            function successUnlike (response){
+                console.log(response)
+            }
+            function errorUnlike (){}
+            */
 
 
 
