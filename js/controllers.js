@@ -73,7 +73,19 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
     function ($scope, $userComment, $window,$http, _categories, _ratings) {
         var vm = this;
 
+        //enable caching for better user performance
+        $.ajaxSetup({
+            cache: true
+        });
 
+
+        //first and foremost thing should be to load the google maps and infobox
+        $.getScript('https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyDGUoGibBjOs0LpwHxkgTsnGJAF-u8Z80A&region=DE', mapsAPIReady);
+
+        function mapsAPIReady() {
+            $.getScript('js/infobox.js', initMap);
+
+        }
 
         $scope.theme = 'lime';
 
@@ -182,7 +194,7 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
         $scope.userAge = "";
         $scope.userSex = "";
         $scope.categoryChange= function (category, categoryId){
-            $scope.category = categoryId;
+            $scope.category = category;
         };
         $scope.colorChange =  function (color, rating) {
             if(angular.isDefined(marker)) {
@@ -250,7 +262,7 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
         function reinitialize(){
             $scope.latitude= "";
             $scope.longitude= "";
-            $scope.category= 1;
+            $scope.category= "none";
              $scope.color= "";
              $scope.rating= "";
              $scope.comments= "";
@@ -259,25 +271,29 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
 
         }
 
-        //enable caching for better user performance
-        $.ajaxSetup({
-            cache: true
-        });
-
-
-        //first and foremost thing should be to load the google maps and infobox
-        $.getScript('https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyDGUoGibBjOs0LpwHxkgTsnGJAF-u8Z80A&region=DE', mapsAPIReady);
-
-        function mapsAPIReady() {
-            $.getScript('js/infobox.js', initMap);
-
-        }
-
 
 
         function initMap() {
 
+            getListOfComments();
 
+            //function to get list of comment
+            function getListOfComments(){
+                $http.get('http://api.yourkiez.de/comments.json').then(successCallback, errorCallback);
+            }
+
+            // http success
+            function successCallback (response){
+                if(response.data.comments.length > 0 ){
+                    // here we generate the markers
+                    angular.forEach(response.data.comments, function (value, key) {
+
+                    })
+                }
+            }
+            function errorCallback(response) {
+                console.log(response);
+            }
 
 
             /*
@@ -293,8 +309,7 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
             function successUnlike (response){
                 console.log(response)
             }
-            function errorUnlike (){}
-            */
+            function errorUnlike (){}*/
 
 
 
@@ -401,7 +416,7 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
 
 
             function placeMarker(latLng, map) {
-                $scope.category= 1;
+                $scope.category= "none";
                 $scope.latitude = latLng.lat();
                 $scope.longitude = latLng.lng();
 
