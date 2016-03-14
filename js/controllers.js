@@ -106,6 +106,7 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
             {label: "Mann", value: 2},
             {label: "Frau", value: 3}
         ];
+        $scope.emailUser = "";
         vm.categoryMapObject = {};
         angular.forEach(_categories.category, function (value, key) {
 
@@ -231,39 +232,52 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
             saveUserComment.description = $scope.comments;
             saveUserComment.ageId = $scope.userAge;
             saveUserComment.sexId = $scope.userSex;
+            saveUserComment.contact = $scope.emailUser;
             console.log(saveUserComment);
-            vm.infobox.close();
-            marker.setMap(null);
 
-            var content = '<div class="container-fluid" style="background-color:' + $scope.color + ' ">' +
-                '<div class="col-sm-12"> ' +
-                '<h4>' + saveUserComment.comments + '</h4></div></div>'
+            //now we post the comment
+            $http.post("http://api.yourkiez.de/comments.json",  JSON.stringify(saveUserComment)).then(successPost, errorPost);
 
-            var latlng = new google.maps.LatLng($scope.latitude, $scope.longitude);
-            var saveicon = angular.copy(vm.icon[$scope.category]);
-            saveicon.fillColor = $scope.color;
+            function successPost (){
+                vm.infobox.close();
+                marker.setMap(null);
 
-            var savedMarker = new google.maps.Marker({
-                icon: saveicon,
-                position: latlng,
-                map: map,
-                draggable: false,
-                clickable: true
-            });
+                var content = '<div class="container-fluid" style="background-color:' + $scope.color + ' ">' +
+                    '<div class="col-sm-12"> ' +
+                    '<h4>' + saveUserComment.comments + '</h4></div></div>'
 
-            var infoboxToMarker = new google.maps.infobox;
-            infoboxToMarker.set('isCustominfobox', true);
+                var latlng = new google.maps.LatLng($scope.latitude, $scope.longitude);
+                var saveicon = angular.copy(vm.icon[$scope.category]);
+                saveicon.fillColor = $scope.color;
 
-            savedMarker.addListener('click', function (event) {
-                console.log(this)
+                var savedMarker = new google.maps.Marker({
+                    icon: saveicon,
+                    position: latlng,
+                    map: map,
+                    draggable: false,
+                    clickable: true
+                });
 
-                //infoboxToMarker.setPosition(event.latLng);
-                // open the info window
-                infoboxToMarker.setContent(content)
-                infoboxToMarker.open(map, savedMarker);
+                var infoboxToMarker = new google.maps.infobox;
+                infoboxToMarker.set('isCustominfobox', true);
 
-            });
-            reinitialize();
+                savedMarker.addListener('click', function (event) {
+                    console.log(this)
+
+                    //infoboxToMarker.setPosition(event.latLng);
+                    // open the info window
+                    infoboxToMarker.setContent(content)
+                    infoboxToMarker.open(map, savedMarker);
+
+                });
+                reinitialize();
+
+            }
+            function errorPost () {
+
+            }
+
+
 
 
         }
@@ -279,7 +293,7 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
             $scope.comments = "";
             $scope.userAge = "";
             $scope.userSex = "";
-
+            $scope.emailUser = "";
         }
 
 
