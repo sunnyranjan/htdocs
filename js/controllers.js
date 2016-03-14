@@ -275,26 +275,7 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
 
         function initMap() {
 
-            getListOfComments();
-
-            //function to get list of comment
-            function getListOfComments(){
-                $http.get('http://api.yourkiez.de/comments.json').then(successCallback, errorCallback);
-            }
-
-            // http success
-            function successCallback (response){
-                if(response.data.comments.length > 0 ){
-                    // here we generate the markers
-                    angular.forEach(response.data.comments, function (value, key) {
-
-                    })
-                }
-            }
-            function errorCallback(response) {
-                console.log(response);
-            }
-
+ 
 
 
             /*
