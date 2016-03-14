@@ -73,19 +73,7 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
     function ($scope, $userComment, $window,$http, _categories, _ratings) {
         var vm = this;
 
-        //enable caching for better user performance
-        $.ajaxSetup({
-            cache: true
-        });
 
-
-        //first and foremost thing should be to load the google maps and infobox
-        $.getScript('https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyDGUoGibBjOs0LpwHxkgTsnGJAF-u8Z80A&region=DE', mapsAPIReady);
-
-        function mapsAPIReady() {
-            $.getScript('js/infobox.js', initMap);
-
-        }
 
         $scope.theme = 'lime';
 
@@ -271,11 +259,25 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
 
         }
 
+        //enable caching for better user performance
+        $.ajaxSetup({
+            cache: true
+        });
+
+
+        //first and foremost thing should be to load the google maps and infobox
+        $.getScript('https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyDGUoGibBjOs0LpwHxkgTsnGJAF-u8Z80A&region=DE', mapsAPIReady);
+
+        function mapsAPIReady() {
+            $.getScript('js/infobox.js', initMap);
+
+        }
+
 
 
         function initMap() {
 
- 
+
 
 
             /*
