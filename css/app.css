@@ -5,26 +5,26 @@ body, html {
     font-weight: 300;
 }
 .education {
-    background-image:url(../img/svg/education.png);
+    background-image:url(../img/svg/education.svg);
 }
 .home {
-    background-image:url(../img/svg/home.png);
+    background-image:url(../img/svg/home.svg);
 }
 .infrastructure {
-    background-image:url(../img/svg/infrastructure.png);
+    background-image:url(../img/svg/infrastructure.svg);
 }
 
 .neighbour {
-    background-image:url(../img/svg/neighbour.png);
+    background-image:url(../img/svg/neighbour.svg);
 }
 .shopping {
-    background-image:url(../img/svg/shopping.png);
+    background-image:url(../img/svg/shopping.svg);
 }
 .sport {
-    background-image:url(../img/svg/sport.png);
+    background-image:url(../img/svg/sport.svg);
 }
 .tree {
-    background-image:url(../img/svg/tree.png);
+    background-image:url(../img/svg/tree.svg);
 }
 
 .other {
