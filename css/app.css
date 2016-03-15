@@ -641,6 +641,9 @@ body {
     border: 3px solid #5E8C6A;
     border-radius: 16px;
 }
+.commentFetched {
+    padding: 0 10px;
+}
 
 
 #infoWindowContent {

@@ -375,7 +375,7 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
                                  iconComment = angular.copy(vm.icon.infrastructure);
                                 break;
                         }
-                        
+
 
                         switch(colorId) {
                             case 1:
@@ -414,6 +414,8 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
                             map: map,
                             animation: google.maps.Animation.DROP
                         });
+
+                        $(commentNodeCopies).find('.userCommentFormatted').text(value.description)
 
                         $compile(commentNodeCopies)($scope);
 
