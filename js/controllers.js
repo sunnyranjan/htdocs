@@ -343,7 +343,7 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
                         longitudeComment = value.longitude;
                         colorId = value.ratingId;
                         categoryId = value.categoryId;
-                        var commentNodeCopies = $('.commentClass')[0].clone();
+                        var commentNodeCopies = $('.commentClass').clone()[0];
                         angular.element(document).injector().invoke(function($compile) {
                             var scope = angular.element(commentNodeCopies).scope();
                             $compile(content)(scope);
