@@ -400,7 +400,7 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
                         var commentBoxOptions = {
                             content: angular.copy(vm.commentNode),
                             alignBottom: true,
-                            pixelOffset: new google.maps.Size(-100, 0),
+                            pixelOffset: new google.maps.Size(-100, -18),
                             closeBoxMargin: "0px"
                         };
 
