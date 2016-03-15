@@ -412,7 +412,7 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
 
 
                         var commentBoxOptions = {
-                            content: $('.commentClass')[0],
+                            content: commentNodeCopies,
                             alignBottom: true,
                             pixelOffset: new google.maps.Size(-100, -18),
                             closeBoxMargin: "0px",
