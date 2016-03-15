@@ -414,11 +414,13 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
                             map: map,
                             animation: google.maps.Animation.DROP
                         });
+
+                        var childScope = $scope.$new(true);
                         $scope.commentIdUser = value.id;
                         $(commentNodeCopies).find('.userCommentFormatted').text(value.description);
 
 
-                        $compile(commentNodeCopies)($scope);
+                        $compile(commentNodeCopies)(childScope);
 
                         var commentBoxOptions = {
                             content: commentNodeCopies,
