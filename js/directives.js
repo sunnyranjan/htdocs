@@ -2,7 +2,7 @@
 
 /* Directives */
 angular.module('richardPlatzDirectives', [])
-    .directive('directUpdate', function (scope, element) {
+    .directive('directUpdate', function () {
 
         return {
             restrict: 'E',
