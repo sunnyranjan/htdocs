@@ -254,7 +254,7 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
 
                     var content = '<div class="container-fluid" >' +
                         '<div class="col-sm-12" style="border: 1px solid' + $scope.color + ' !important; background-color:white !important '+' "> ' +
-                        '<h4>' + saveUserComment.description + '</h4></div></div>'
+                        '<p class="text-center">' + saveUserComment.description + '</p></div></div>'
 
                     var latlng = new google.maps.LatLng($scope.latitude, $scope.longitude);
                     var saveicon = angular.copy(vm.icon[$scope.category]);
@@ -267,12 +267,38 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
                         draggable: false,
                         clickable: true
                     });
+                    var newCommentColor;
+
+                    switch(colorId) {
+                        case 1:
+                            newCommentColor = "veryBad";
+                            break;
+                        case 2:
+                            newCommentColor = "bad";
+                            break;
+                        case 3:
+                            newCommentColor = "ok";
+                            break;
+                        case 4:
+                            newCommentColor = "good";
+                            break;
+                        case 5:
+                            newCommentColor = "veryGood";
+                            break;
+                    }
+
 
                     var newCommentBoxOptions = {
                         content: content,
                         alignBottom: true,
                         pixelOffset: new google.maps.Size(-100, -18),
                         closeBoxMargin: "0px",
+                        boxClass: newCommentColor,
+                        boxSytle: {
+                            'width':'200px',
+                            'max-height':'200px'
+
+                        }
 
                     };
 
