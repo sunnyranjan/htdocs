@@ -196,7 +196,7 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
             "c-0.193,1.864-1.77,3.321-3.683,3.321c-0.775,0-1.493-0.231-2.087-0.639l-1.545,1.599c0,0-0.314,1.682-0.286,2.595 s0.687,3.648,0.687,3.648h-4.454V28.616z";
 
         vm.contentNode = $('#infoWindowContent')[0];
-        vm.commentNode = $('#comment')[0];
+        vm.commentNode = $('.commentClass')[0];
 
         angular.forEach(properties, function (v, k) {
             markerIcon[v] = {};
