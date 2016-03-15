@@ -509,8 +509,8 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
             //first and foremost initialize the map
             map = new google.maps.Map(document.getElementById('map'), {
                 center: {lat: 52.472489, lng: 13.448529},
-                zoom: 17,
-                minZoom: 11,
+                zoom: 16,
+                minZoom: 16,
                 //styles: [{ featureType: "poi", elementType: "labels", stylers: [{ visibility: "off" }]}],
                 streetViewControl: false,
                 mapTypeControlOptions: {
