@@ -68,8 +68,8 @@ richardplatzControllers.controller('AppCtrl', function ($scope, $timeout, $mdSid
     });
 
 
-richardplatzControllers.controller('homeController', ['$scope', '$userComment', '$window', '$http', '_categories', '_ratings',
-    function ($scope, $userComment, $window, $http, _categories, _ratings) {
+richardplatzControllers.controller('homeController', ['$scope', '$userComment', '$window', '$http', '_categories', '_ratings','$timeout',
+    function ($scope, $userComment, $window, $http, _categories, _ratings,$timeout) {
         var vm = this;
 
         //enable caching for better user performance
@@ -115,6 +115,8 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
         angular.forEach(_ratings.ratings, function (value, key) {
 
         });
+        vm.successMessage = false;
+        vm.errorMessage= false;
 
         //for shooping (shoping cart)
         vm.svg.shop = "M16,0.094C7.215,0.094,0.094,7.216,0.094,16c0,8.783,7.121,15.906,15.906,15.906S31.906,24.783,31.906,16 " +
@@ -222,8 +224,6 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
 
 
         $scope.formSubmit = function () {
-
-
             var saveUserComment = {};
             saveUserComment.latitude = $scope.latitude.toString();
             saveUserComment.longitude = $scope.longitude.toString();
@@ -239,41 +239,50 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
             $http.post("http://api.yourkiez.de/comments.json",  JSON.stringify(saveUserComment)).then(successPost, errorPost);
 
             function successPost (){
-                vm.infobox.close();
-                marker.setMap(null);
+                vm.successMessage = true;
 
-                var content = '<div class="container-fluid" style="background-color:' + $scope.color + ' ">' +
-                    '<div class="col-sm-12"> ' +
-                    '<h4>' + saveUserComment.comments + '</h4></div></div>'
 
-                var latlng = new google.maps.LatLng($scope.latitude, $scope.longitude);
-                var saveicon = angular.copy(vm.icon[$scope.category]);
-                saveicon.fillColor = $scope.color;
+                $timeout(function (){
+                    //remove infobox
+                    vm.infobox.setMap(null);
+                    //remove the marker
+                    marker.setMap(null);
 
-                var savedMarker = new google.maps.Marker({
-                    icon: saveicon,
-                    position: latlng,
-                    map: map,
-                    draggable: false,
-                    clickable: true
-                });
+                    var content = '<div class="container-fluid" style="background-color:' + $scope.color + ' ">' +
+                        '<div class="col-sm-12"> ' +
+                        '<h4>' + saveUserComment.comments + '</h4></div></div>'
 
-                var infoboxToMarker = new google.maps.infobox;
-                infoboxToMarker.set('isCustominfobox', true);
+                    var latlng = new google.maps.LatLng($scope.latitude, $scope.longitude);
+                    var saveicon = angular.copy(vm.icon[$scope.category]);
+                    saveicon.fillColor = $scope.color;
 
-                savedMarker.addListener('click', function (event) {
-                    console.log(this)
+                    var savedMarker = new google.maps.Marker({
+                        icon: saveicon,
+                        position: latlng,
+                        map: map,
+                        draggable: false,
+                        clickable: true
+                    });
 
-                    //infoboxToMarker.setPosition(event.latLng);
-                    // open the info window
-                    infoboxToMarker.setContent(content)
-                    infoboxToMarker.open(map, savedMarker);
+                    var infoboxToMarker = new InfoBox();
 
-                });
-                reinitialize();
+                    savedMarker.addListener('click', function (event) {
+                        console.log(this)
+
+                        //infoboxToMarker.setPosition(event.latLng);
+                        // open the info window
+                        infoboxToMarker.setContent(content)
+                        infoboxToMarker.open(map, savedMarker);
+
+                    });
+                    reinitialize();
+
+                },1000);
+
 
             }
             function errorPost () {
+                vm.errorMessage = true
 
             }
 
@@ -294,6 +303,8 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
             $scope.userAge = "";
             $scope.userSex = "";
             $scope.emailUser = "";
+            vm.successMessage = false;
+            vm.errorMessage= false;
         }
 
 
@@ -411,10 +422,11 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
             //add a click event to the map to initialize the marker and infobox
             map.addListener('click', function (event) {
 
-
                 vm.step1 = true;
                 vm.step2 = false;
                 vm.step3 = false;
+                vm.successMessage = false;
+                vm.errorMessage= false;
                 //in jquery u must scope apply
                 $scope.$apply();
                 placeMarker(event.latLng, map);
