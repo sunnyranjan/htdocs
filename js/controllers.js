@@ -346,7 +346,7 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
                         var commentNodeCopies = $('.commentClass').clone()[0];
                         angular.element(document).injector().invoke(function($compile) {
                             var scope = angular.element(commentNodeCopies).scope();
-                            $compile(content)(scope);
+                            $compile(commentNodeCopies)(scope);
                         });
 
                         //first place markers on all moderated comments
