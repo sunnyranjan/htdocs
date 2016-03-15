@@ -621,23 +621,25 @@ body {
     padding:10px !important;
 }
 
-.veryBad {
+.veryBad > img  {
     border: 1px solid #CD333F;
+    border-radius: 16px;
 }
-.bad {
+.bad  > img {
     border: 1px solid #EB6841;
-
+    border-radius: 16px;
 }
-.ok{
+.ok  > img {
     border: 1px solid #EDC951;
-
+    border-radius: 16px;
 }
-.good{
+.good  > img {
     border: 1px solid #88A65E;
-
+    border-radius: 16px;
 }
-.veryGood {
+.veryGood > img  {
     border: 1px solid #5E8C6A;
+    border-radius: 16px;
 }
 
 
