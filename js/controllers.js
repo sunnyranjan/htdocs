@@ -252,8 +252,8 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
                     //remove the marker
                     marker.setMap(null);
 
-                    var content = '<div class="container-fluid" style="border: 1px solid' + $scope.color + ' ">' +
-                        '<div class="col-sm-12"> ' +
+                    var content = '<div class="container-fluid" >' +
+                        '<div class="col-sm-12" style="border: 1px solid' + $scope.color + 'background-color:white '+' "> ' +
                         '<h4>' + saveUserComment.description + '</h4></div></div>'
 
                     var latlng = new google.maps.LatLng($scope.latitude, $scope.longitude);
@@ -273,7 +273,7 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
                         alignBottom: true,
                         pixelOffset: new google.maps.Size(-100, -18),
                         closeBoxMargin: "0px",
-                       
+
                     };
 
                     var infoboxToMarker = new InfoBox(newCommentBoxOptions);
