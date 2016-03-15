@@ -375,6 +375,7 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
                                  iconComment = angular.copy(vm.icon.infrastructure);
                                 break;
                         }
+                        console.log($(commentNodeCopies).find('.commentClass'));
 
                         switch(colorId) {
                             case 1:
