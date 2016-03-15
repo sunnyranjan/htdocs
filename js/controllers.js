@@ -253,7 +253,7 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
                     marker.setMap(null);
 
                     var content = '<div class="container-fluid" >' +
-                        '<div class="col-sm-12" style="border: 1px solid' + $scope.color + 'background-color:white '+' "> ' +
+                        '<div class="col-sm-12" style="border: 1px solid' + $scope.color + ' !important; background-color:white !important '+' "> ' +
                         '<h4>' + saveUserComment.description + '</h4></div></div>'
 
                     var latlng = new google.maps.LatLng($scope.latitude, $scope.longitude);
