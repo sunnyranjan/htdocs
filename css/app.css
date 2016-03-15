@@ -612,13 +612,32 @@ body {
     }
 }
 .commentClass {
-    width: 150px;
+    width: 200px;
     max-height: 200px;
     overflow: auto;
     background-color: transparent;
-    border: 1px solid #03a9f4;
     border-radius: 2px;
     margin:0px !important;
+    padding:10px !important;
+}
+
+.veryBad {
+    border: 1px solid #CD333F;
+}
+.bad {
+    border: 1px solid #EB6841;
+
+}
+.ok{
+    border: 1px solid #EDC951;
+
+}
+.good{
+    border: 1px solid #88A65E;
+
+}
+.veryGood {
+    border: 1px solid #5E8C6A;
 }
 
 

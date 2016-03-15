@@ -334,6 +334,7 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
                 var comment;
                 var latiudeComment, longitudeComment;
                 var iconComment;
+                var boxClassColor;
 
                 if (response.data.comments.length > 0) {
                     // here we generate the markers
@@ -373,18 +374,23 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
                         switch(colorId) {
                             case 1:
                                 iconComment.fillColor = "#CD333F";
+                                boxClassColor = "veryBad";
                                 break;
                             case 2:
                                 iconComment.fillColor = "#EB6841";
+                                boxClassColor = "bad";
                                 break;
                             case 3:
                                 iconComment.fillColor = "#EDC951";
+                                boxClassColor = "ok";
                                 break;
                             case 4:
                                 iconComment.fillColor = "#88A65E";
+                                boxClassColor = "good";
                                 break;
                             case 5:
                                 iconComment.fillColor = "#5E8C6A";
+                                boxClassColor = "veryGood";
                                 break;
                         }
 
@@ -400,8 +406,9 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
                         var commentBoxOptions = {
                             content: angular.copy(vm.commentNode),
                             alignBottom: true,
-                            pixelOffset: new google.maps.Size(-75, -18),
-                            closeBoxMargin: "0px"
+                            pixelOffset: new google.maps.Size(-100, -18),
+                            closeBoxMargin: "0px",
+                            boxClass:boxClassColor
                         };
 
                         var commentInfobox = new InfoBox(commentBoxOptions);
