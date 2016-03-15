@@ -527,7 +527,7 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
                 strokeColor: '#03a9f4',
                 strokeOpacity: 0.7,
                 strokeWeight: 1,
-                fillColor:'transparent'
+                fillOpacity:0.1
 
             });
 
