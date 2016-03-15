@@ -439,11 +439,11 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
                             // open the info window
                            // infoboxToMarker.setContent(content)
                             commentInfobox.open(map, Commentmarker);
-                            $scope.updateLike = function (){
-                                console.log('update')
+                            $scope.updateLike = function (id){
+                                console.log(id)
                             }
-                            $scope.updateUnlike = function () {
-                                console.log("-1")
+                            $scope.updateUnlike = function (id) {
+                                console.log(id)
                             }
 
                         });
