@@ -68,8 +68,8 @@ richardplatzControllers.controller('AppCtrl', function ($scope, $timeout, $mdSid
     });
 
 
-richardplatzControllers.controller('homeController', ['$scope', '$userComment', '$window', '$http', '_categories', '_ratings','$timeout',
-    function ($scope, $userComment, $window, $http, _categories, _ratings,$timeout) {
+richardplatzControllers.controller('homeController', ['$scope', '$userComment', '$window', '$http', '_categories', '_ratings','$timeout', '$compile',
+    function ($scope, $userComment, $window, $http, _categories, _ratings, $timeout,$compile) {
         var vm = this;
 
         //enable caching for better user performance
