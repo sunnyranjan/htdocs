@@ -375,16 +375,13 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
                                  iconComment = angular.copy(vm.icon.infrastructure);
                                 break;
                         }
-
-                        var blah = $(commentNodeCopies)[0];
-
-                        console.log($(blah).find('.insideCommentPane'));
+                        
 
                         switch(colorId) {
                             case 1:
                                 iconComment.fillColor = "#CD333F";
                                 boxClassColor = "veryBad";
-                                $(commentNodeCopies).find('.insideCommentPane').css({'color': '#CD333F'});
+                                $(commentNodeCopies).find('.insideCommentPane').css({border: '1px solid #CD333F'});
                                 break;
                             case 2:
                                 iconComment.fillColor = "#EB6841";
