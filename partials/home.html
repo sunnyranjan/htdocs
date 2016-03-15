@@ -188,7 +188,7 @@
     <div style="display:none;">
         <div class="container-fluid">
             <div  class='commentClass'>
-                <div class="insideCommentPane">
+                <div class="insideCommentPane" ng-init="commentId = {{vm.commentId}}">
                     <div class="row">
                         <div class="col-sm-12 commentFetched">
                             <div class="col-sm-12 userCommentFormatted">
@@ -197,7 +197,7 @@
                         </div>
                         <div class="col-sm-6">
                             <div class="col-xs-6">
-                                <button type="button" class="btn btn-info btn-circle btn-raised btn-xs" ng-click="updateLike()">
+                                <button type="button" class="btn btn-info btn-circle btn-raised btn-xs"  ng-click="updateLike()">
                                     <span class="glyphicon glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
                                 </button>
                             </div>
