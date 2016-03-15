@@ -422,6 +422,7 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
 
 
                         $compile(commentNodeCopies)(childScope);
+                        childScope.commentIdUser = value.id;
 
                         var commentBoxOptions = {
                             content: commentNodeCopies,
