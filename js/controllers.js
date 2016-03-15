@@ -524,11 +524,10 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
 
             var richardPlatzBorder = new google.maps.Polygon({
                 paths: polygonCoord,
-                strokeColor: '#FF0000',
-                strokeOpacity: 0.8,
-                strokeWeight: 3,
-                fillColor: '#FF0000',
-                fillOpacity: 0.35
+                strokeColor: '#03a9f4',
+                strokeOpacity: 0.7,
+                strokeWeight: 1
+
             });
 
             richardPlatzBorder.setMap(map);
