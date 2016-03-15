@@ -252,9 +252,9 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
                     //remove the marker
                     marker.setMap(null);
 
-                    var content = '<div class="container-fluid" style="background-color:' + $scope.color + ' ">' +
+                    var content = '<div class="container-fluid" style="border-color:' + $scope.color + ' ">' +
                         '<div class="col-sm-12"> ' +
-                        '<h4>' + saveUserComment.comments + '</h4></div></div>'
+                        '<h4>' + saveUserComment.description + '</h4></div></div>'
 
                     var latlng = new google.maps.LatLng($scope.latitude, $scope.longitude);
                     var saveicon = angular.copy(vm.icon[$scope.category]);
