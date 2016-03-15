@@ -15,7 +15,10 @@ richardPlatzDirectives
             controller: ['$scope', '$element', '$compile', function ($scope, $element, $compile) {
                 var vm = this;
                 console.log("oshfoiwrfwo");
-            }]
+            }],
+            compile: function (){
+                console.log('äääääää')
+            }
 
         };
 

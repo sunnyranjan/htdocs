@@ -481,7 +481,7 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
             map = new google.maps.Map(document.getElementById('map'), {
                 center: {lat: 52.472489, lng: 13.448529},
                 zoom: 17,
-                minZoom: 16,
+                minZoom: 11,
                 //styles: [{ featureType: "poi", elementType: "labels", stylers: [{ visibility: "off" }]}],
                 streetViewControl: false,
                 mapTypeControlOptions: {
@@ -496,6 +496,8 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
                     position: google.maps.ControlPosition.TOP_LEFT
                 }
             });
+
+
             vm.step1 = true;
             vm.step2 = false;
             vm.step3 = false;
@@ -505,6 +507,31 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
                 vm.step3 = false;
 
             };
+
+            var polygonCoord = [
+                {lat:52.473932,lng: 13.456454},
+                {lat:52.472705,lng: 13.455735},
+                {lat:52.471722,lng: 13.454572},
+                {lat:52.470734,lng: 13.452331},
+                {lat:52.469023,lng: 13.441489},
+                {lat:52.473930,lng: 13.440374},
+                {lat:52.474403,lng: 13.444707},
+                {lat:52.474852,lng: 13.446731},
+                {lat:52.476316,lng: 13.447391},
+                {lat:52.475735,lng: 13.449030},
+                {lat:52.476833,lng: 13.450316}
+            ];
+
+            var richardPlatzBorder = new google.maps.Polygon({
+                paths: polygonCoord,
+                strokeColor: '#FF0000',
+                strokeOpacity: 0.8,
+                strokeWeight: 3,
+                fillColor: '#FF0000',
+                fillOpacity: 0.35
+            });
+
+            richardPlatzBorder.setMap(map);
 
             // initialize a round symbol marker
             vm.svg.none = google.maps.SymbolPath.CIRCLE;
