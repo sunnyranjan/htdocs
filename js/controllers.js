@@ -211,6 +211,7 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
             $scope.categoryId = categoryId;
         };
         $scope.colorChange = function (color, rating) {
+            //change the color of the icon
             if (angular.isDefined(marker)) {
                 var markerIcon =marker.getIcon();
                 markerIcon.fillColor =  color;
@@ -348,7 +349,57 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
                         colorId = value.ratingId;
                         categoryId = value.categoryId;
                         //first place markers on all moderated comments
-                        
+                        switch (categoryId) {
+                            case 1:
+                                 iconComment = angular.copy(vm.icon.none);
+                                break;
+                            case 2:
+                                 iconComment = angular.copy(vm.icon.education);
+                                break;
+                            case 3:
+                                 iconComment = angular.copy(vm.icon.shop);
+                                break;
+                            case 4:
+                                 iconComment = angular.copy(vm.icon.neighbour);
+                                break;
+                            case 5:
+                                 iconComment = angular.copy(vm.icon.tree);
+                                break;
+                            case 6:
+                                 iconComment = angular.copy(vm.icon.sport);
+                                break;
+                            case 7:
+                                 iconComment = angular.copy(vm.icon.home);
+                                break;
+                            case 8:
+                                 iconComment = angular.copy(vm.icon.infrastructure);
+                                break;
+                        }
+
+                        switch(colorId) {
+                            case 1:
+                                iconComment.fillColor = "#CD333F";
+                                break;
+                            case 2:
+                                iconComment.fillColor = "#EB6841";
+                                break;
+                            case 3:
+                                iconComment.fillColor = "#EDC951";
+                                break;
+                            case 4:
+                                iconComment.fillColor = "#88A65E";
+                                break;
+                            case 5:
+                                iconComment.fillColor = "#5E8C6A";
+                                break;
+                        }
+
+                        var Commentmarker = new google.maps.Marker({
+                            icon: iconComment,
+                            position: new google.maps.LatLng(latiudeComment,longitudeComment),
+                            map: map,
+                            animation: google.maps.Animation.DROP
+                        });
 
 
                     })
