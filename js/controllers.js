@@ -253,7 +253,7 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
                     marker.setMap(null);
 
                     var content = '<div class="container-fluid" >' +
-                        '<div class="col-sm-12" style="border: 1px solid' + $scope.color + ' !important; background-color:white !important; max-height:200px !important; width:200px !important '+' "> ' +
+                        '<div class="col-sm-12" style="border: 1px solid' + $scope.color + ' !important; background-color:white !important; max-height:200px !important; width:200px !important ; padding: 10px'+' "> ' +
                         '<p class="text-center">' + saveUserComment.description + '</p></div></div>'
 
                     var latlng = new google.maps.LatLng($scope.latitude, $scope.longitude);
@@ -269,7 +269,7 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
                     });
                     var newCommentColor;
 
-                    switch($scope.ratingId) {
+                    switch($scope.rating) {
                         case 1:
                             newCommentColor = "veryBad";
                             break;
@@ -293,12 +293,7 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
                         alignBottom: true,
                         pixelOffset: new google.maps.Size(-100, -18),
                         closeBoxMargin: "0px",
-                        boxClass: newCommentColor,
-                        boxSytle: {
-                            'width':'200px',
-                            'max-height':'200px'
-
-                        }
+                        boxClass: newCommentColor
 
                     };
 
