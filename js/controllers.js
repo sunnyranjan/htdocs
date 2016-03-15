@@ -533,6 +533,17 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
             });
 
             richardPlatzBorder.setMap(map);
+            richardPlatzBorder.addListener('click', function (event) {
+
+                vm.step1 = true;
+                vm.step2 = false;
+                vm.step3 = false;
+                vm.successMessage = false;
+                vm.errorMessage= false;
+                //in jquery u must scope apply
+                $scope.$apply();
+                placeMarker(event.latLng, map);
+            });
 
             // initialize a round symbol marker
             vm.svg.none = google.maps.SymbolPath.CIRCLE;
