@@ -338,7 +338,7 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
                 var commentBoxOptions = {
                     content: vm.commentNode,
                     alignBottom: true,
-                    pixelOffset: new google.maps.Size(-300, 0),
+                    pixelOffset: new google.maps.Size(-100, 0),
                     closeBoxMargin: "0px"
                 };
                 if (response.data.comments.length > 0) {
@@ -394,11 +394,25 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
                                 break;
                         }
 
+                        //Now place the marker at the corresponding location
                         var Commentmarker = new google.maps.Marker({
                             icon: iconComment,
                             position: new google.maps.LatLng(latiudeComment,longitudeComment),
                             map: map,
                             animation: google.maps.Animation.DROP
+                        });
+
+                        var commentInfobox = new InfoBox(commentBoxOptions)
+
+                        //now we attach a click event to marker that will open a infobox window
+                        Commentmarker.addListener('click', function (event) {
+                            console.log(this)
+
+                            //infoboxToMarker.setPosition(event.latLng);
+                            // open the info window
+                           // infoboxToMarker.setContent(content)
+                            commentInfobox.open(map, Commentmarker);
+
                         });
 
 
