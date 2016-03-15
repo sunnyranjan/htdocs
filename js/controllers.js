@@ -325,6 +325,7 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
             // http success
             function successCallback(response) {
                 console.log(response);
+                var commentId;
                 var iconForEachcomment;
                 var commentBoxOptions;
                 var colorId;
@@ -339,13 +340,13 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
                 if (response.data.comments.length > 0) {
                     // here we generate the markers
                     angular.forEach(response.data.comments, function (value, key) {
+                        commentId = value.id;
                         latiudeComment = value.latitude;
                         longitudeComment = value.longitude;
                         colorId = value.ratingId;
                         categoryId = value.categoryId;
                         var commentNodeCopies = $('.commentClass').clone()[0];
-                        $compile(commentNodeCopies)($scope);
-                      
+
 
                         //first place markers on all moderated comments
                         switch (categoryId) {
@@ -374,17 +375,18 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
                                  iconComment = angular.copy(vm.icon.infrastructure);
                                 break;
                         }
+                        console.log( commentNodeCopies.find('.commentClass'))
 
                         switch(colorId) {
                             case 1:
                                 iconComment.fillColor = "#CD333F";
                                 boxClassColor = "veryBad";
-                                $(commentNodeCopies).find('.commentClass').css({border: '1px solid #CD333F'});
+                                commentNodeCopies.find('.commentClass').css({border: '1px solid #CD333F'});
                                 break;
                             case 2:
                                 iconComment.fillColor = "#EB6841";
                                 boxClassColor = "bad";
-                                $(commentNodeCopies).find('.commentClass').css({border: '1px solid #EB6841'});
+                                commentNodeCopies.find('.commentClass').css({border: '1px solid #EB6841'});
 
                                 break;
                             case 3:
@@ -413,6 +415,7 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
                             animation: google.maps.Animation.DROP
                         });
 
+                        $compile(commentNodeCopies)($scope);
 
                         var commentBoxOptions = {
                             content: commentNodeCopies,
