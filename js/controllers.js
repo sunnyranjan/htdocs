@@ -269,7 +269,7 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
                     });
                     var newCommentColor;
 
-                    switch(colorId) {
+                    switch($scope.ratingId) {
                         case 1:
                             newCommentColor = "veryBad";
                             break;
