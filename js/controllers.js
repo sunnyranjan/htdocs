@@ -343,6 +343,7 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
                         longitudeComment = value.longitude;
                         colorId = value.ratingId;
                         categoryId = value.categoryId;
+                        var commentNodeCopies = angular.copy(vm.commentNode);
                         //first place markers on all moderated comments
                         switch (categoryId) {
                             case 1:
@@ -375,22 +376,29 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
                             case 1:
                                 iconComment.fillColor = "#CD333F";
                                 boxClassColor = "veryBad";
+                                commentNodeCopies.find('.commentClass').css({border: '1px solid #CD333F'});
                                 break;
                             case 2:
                                 iconComment.fillColor = "#EB6841";
                                 boxClassColor = "bad";
+                                commentNodeCopies.find('.commentClass').css({border: '1px solid #EB6841'});
+
                                 break;
                             case 3:
                                 iconComment.fillColor = "#EDC951";
                                 boxClassColor = "ok";
+                                commentNodeCopies.find('.commentClass').css({border: '1px solid #EDC951'});
+
                                 break;
                             case 4:
                                 iconComment.fillColor = "#88A65E";
                                 boxClassColor = "good";
+                                commentNodeCopies.find('.commentClass').css({border: '1px solid #88A65E'});
                                 break;
                             case 5:
                                 iconComment.fillColor = "#5E8C6A";
                                 boxClassColor = "veryGood";
+                                commentNodeCopies.find('.commentClass').css({border: '1px solid #5E8C6A'});
                                 break;
                         }
 
@@ -404,7 +412,7 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
 
 
                         var commentBoxOptions = {
-                            content: angular.copy(vm.commentNode),
+                            content: commentNodeCopies,
                             alignBottom: true,
                             pixelOffset: new google.maps.Size(-100, -18),
                             closeBoxMargin: "0px",
