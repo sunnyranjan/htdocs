@@ -384,29 +384,29 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
                             case 1:
                                 iconComment.fillColor = "#CD333F";
                                 boxClassColor = "veryBad";
-                                $(commentNodeCopies).find('.commentClass').css({'color': '#CD333F'});
+                                $(commentNodeCopies).find('.insideCommentPane').css({'color': '#CD333F'});
                                 break;
                             case 2:
                                 iconComment.fillColor = "#EB6841";
                                 boxClassColor = "bad";
-                                $(commentNodeCopies).find('.commentClass').css({border: '1px solid #EB6841'});
+                                $(commentNodeCopies).find('.insideCommentPane').css({border: '1px solid #EB6841'});
 
                                 break;
                             case 3:
                                 iconComment.fillColor = "#EDC951";
                                 boxClassColor = "ok";
-                                $(commentNodeCopies).find('.commentClass').css({border: '1px solid #EDC951'});
+                                $(commentNodeCopies).find('.insideCommentPane').css({border: '1px solid #EDC951'});
 
                                 break;
                             case 4:
                                 iconComment.fillColor = "#88A65E";
                                 boxClassColor = "good";
-                                $(commentNodeCopies).find('.commentClass').css({border: '1px solid #88A65E'});
+                                $(commentNodeCopies).find('.insideCommentPane').css({border: '1px solid #88A65E'});
                                 break;
                             case 5:
                                 iconComment.fillColor = "#5E8C6A";
                                 boxClassColor = "veryGood";
-                                $(commentNodeCopies).find('.commentClass').css({border: '1px solid #5E8C6A'});
+                                $(commentNodeCopies).find('.insideCommentPane').css({border: '1px solid #5E8C6A'});
                                 break;
                         }
 
