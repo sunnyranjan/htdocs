@@ -1,8 +1,10 @@
 'use strict';
 
 /* Directives */
-angular.module('richardPlatzDirectives', [])
+var richardPlatzDirectives = angular.module('richardPlatzDirectives', [])
+richardPlatzDirectives
     .directive('directUpdate', function () {
+        console.log("erewre")
         return {
             restrict: 'E',
             priority: 500,
