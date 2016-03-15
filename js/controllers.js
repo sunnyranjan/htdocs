@@ -416,8 +416,9 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
                         });
 
                         var childScope = $scope.$new(true);
-                        $scope.commentIdUser = value.id;
+                        childScope.commentIdUser = value.id;
                         $(commentNodeCopies).find('.userCommentFormatted').text(value.description);
+                        console.log(childScope)
 
 
                         $compile(commentNodeCopies)(childScope);
