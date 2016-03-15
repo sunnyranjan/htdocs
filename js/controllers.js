@@ -414,7 +414,7 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
                             map: map,
                             animation: google.maps.Animation.DROP
                         });
-                        vm.commentId = value.id;
+                        $scope.commentIdUser = value.id;
                         $(commentNodeCopies).find('.userCommentFormatted').text(value.description);
 
 
