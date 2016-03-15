@@ -612,8 +612,8 @@ body {
     }
 }
 .commentClass {
-    width: 100px;
-    max-height: 100px;
+    width: 150px;
+    max-height: 200px;
     overflow: auto;
     background-color: transparent;
     border: 1px solid #03a9f4;
