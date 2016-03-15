@@ -196,6 +196,7 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
             "c-0.193,1.864-1.77,3.321-3.683,3.321c-0.775,0-1.493-0.231-2.087-0.639l-1.545,1.599c0,0-0.314,1.682-0.286,2.595 s0.687,3.648,0.687,3.648h-4.454V28.616z";
 
         vm.contentNode = $('#infoWindowContent')[0];
+        vm.commentNode = $('#comment')[0];
 
         angular.forEach(properties, function (v, k) {
             markerIcon[v] = {};
@@ -211,6 +212,9 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
         };
         $scope.colorChange = function (color, rating) {
             if (angular.isDefined(marker)) {
+                var markerIcon =marker.getIcon();
+                markerIcon.fillColor =  color;
+                marker.setIcon(markerIcon);
 
             }
             vm.step1 = false;
@@ -319,10 +323,33 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
 
             // http success
             function successCallback(response) {
-                console.log(response)
+                console.log(response);
+                var iconForEachcomment;
+                var commentBoxOptions;
+                var colorId;
+                var categoryId;
+                var color;
+                var category;
+                var comment;
+                var latiudeComment, longitudeComment;
+                var iconComment;
+
+                var commentBoxOptions = {
+                    content: vm.commentNode,
+                    alignBottom: true,
+                    pixelOffset: new google.maps.Size(-300, 0),
+                    closeBoxMargin: "0px"
+                };
                 if (response.data.comments.length > 0) {
                     // here we generate the markers
                     angular.forEach(response.data.comments, function (value, key) {
+                        latiudeComment = value.latitude;
+                        longitudeComment = value.longitude;
+                        colorId = value.ratingId;
+                        categoryId = value.categoryId;
+                        //first place markers on all moderated comments
+                        
+
 
                     })
                 }
@@ -468,8 +495,6 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
                     zIndex: 99999,
                     pixelOffset: new google.maps.Size(-300, 0),
                     closeBoxMargin: "0px"
-
-
                 };
 
                 var windowWidth = $(window).width();
