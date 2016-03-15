@@ -378,7 +378,7 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
 
                         var blah = $(commentNodeCopies)[0];
 
-                        console.log($(blah).find('.commentClass'));
+                        console.log($(blah).find('.insideCommentPane'));
 
                         switch(colorId) {
                             case 1:
