@@ -344,10 +344,8 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
                         colorId = value.ratingId;
                         categoryId = value.categoryId;
                         var commentNodeCopies = $('.commentClass').clone()[0];
-
-                            var scope = angular.element(commentNodeCopies).scope();
-                            $compile(commentNodeCopies)(scope);
-
+                        $compile(commentNodeCopies)($scope);
+                      
 
                         //first place markers on all moderated comments
                         switch (categoryId) {
