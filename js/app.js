@@ -5,6 +5,7 @@
 var richardplatzApp = angular.module('richardplatzApp', [
     'ngRoute',
     'richardplatzAnimations',
+    'richardPlatzDirectives',
     'richardplatzControllers',
     'richardplatzFilters',
     'richardplatzServices'

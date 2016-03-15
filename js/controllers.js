@@ -1,6 +1,5 @@
 'use strict';
 /* Controllers */
-
 var richardplatzControllers = angular.module('richardplatzControllers', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache']);
 
 richardplatzControllers.controller('AppCtrl', function ($scope, $timeout, $mdSidenav, $element) {
