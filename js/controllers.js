@@ -442,7 +442,7 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
                                 console.log('update')
                             }
                             $scope.updateUnlike = function () {
-                                console.("-1")
+                                console.log("-1")
                             }
 
                         });
