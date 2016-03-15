@@ -622,23 +622,23 @@ body {
 }
 
 .veryBad > img  {
-    border: 1px solid #CD333F;
+    border: 3px solid #CD333F;
     border-radius: 16px;
 }
 .bad  > img {
-    border: 1px solid #EB6841;
+    border: 3px solid #EB6841;
     border-radius: 16px;
 }
 .ok  > img {
-    border: 1px solid #EDC951;
+    border: 3px solid #EDC951;
     border-radius: 16px;
 }
 .good  > img {
-    border: 1px solid #88A65E;
+    border: 3px solid #88A65E;
     border-radius: 16px;
 }
 .veryGood > img  {
-    border: 1px solid #5E8C6A;
+    border: 3px solid #5E8C6A;
     border-radius: 16px;
 }
 
