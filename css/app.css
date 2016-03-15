@@ -633,7 +633,7 @@ body {
 
 
 /*close button styling*/
-.infoBox > img {
+#infoWindowContent .infoBox > img {
     border: 3px solid #03a9f4 !important;
     border-radius: 16px;
 
