@@ -618,7 +618,7 @@ body {
     background-color: transparent;
     border-radius: 2px;
     margin:0px !important;
-    padding:10px !important;
+    padding:0px !important;
 }
 
 .veryBad > img  {
