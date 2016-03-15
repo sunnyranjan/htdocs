@@ -1,8 +1,8 @@
 'use strict';
 
 /* Directives */
-var richardPlatzDirectives = angular.module('richardPlatzDirectives', []);
-richardPlatzDirectives.directive('directUpdate', function (scope, element) {
+angular.module('richardPlatzDirectives', [])
+    .directive('directUpdate', function (scope, element) {
 
         return {
             restrict: 'E',
@@ -14,10 +14,8 @@ richardPlatzDirectives.directive('directUpdate', function (scope, element) {
             controller: ['$scope', '$element', '$compile', function ($scope, $element, $compile) {
                 var vm = this;
                 console.log(this);
+            }]
 
-
-            }],
-            controllerAs: 'vm'
         };
 
 })
