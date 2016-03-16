@@ -195,7 +195,7 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
             "c-0.193,1.864-1.77,3.321-3.683,3.321c-0.775,0-1.493-0.231-2.087-0.639l-1.545,1.599c0,0-0.314,1.682-0.286,2.595 s0.687,3.648,0.687,3.648h-4.454V28.616z";
 
         vm.contentNode = $('#infoWindowContent')[0];
-        vm.commentNode = $('.commentClass')[0];
+        vm.commentNode = $('#infoCommentWindow')[0];
 
         angular.forEach(properties, function (v, k) {
             markerIcon[v] = {};
@@ -253,7 +253,8 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
                     marker.setMap(null);
 
                     var content = '<div class="container-fluid" >' +
-                        '<div class="col-sm-12" style="border: 1px solid' + $scope.color + ' !important; background-color:white !important; max-height:200px !important; width:200px !important ; padding: 10px'+' "> ' +
+                        '<div class="col-sm-12" style="border: 1px solid' + $scope.color +
+                        ' !important; background-color:white !important; max-height:200px !important; width:200px !important ; padding: 10px'+' "> ' +
                         '<p class="text-center">' + saveUserComment.description + '</p></div></div>'
 
                     var latlng = new google.maps.LatLng($scope.latitude, $scope.longitude);
@@ -350,32 +351,37 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
                 $http.get('http://api.yourkiez.de/comments.json').then(successCallback, errorCallback);
             }
 
+
             // http success
             function successCallback(response) {
-                console.log(response);
-                var commentId;
-                var iconForEachcomment;
-                var commentBoxOptions;
-                var colorId;
-                var categoryId;
-                var color;
-                var category;
-                var comment;
-                var latiudeComment, longitudeComment;
-                var iconComment;
-                var boxClassColor;
+
 
                 if (response.data.comments.length > 0) {
+
                     // here we generate the markers
                     angular.forEach(response.data.comments, function (value, key) {
+
+
+                        console.log(response);
+                        var commentId;
+                        var iconForEachcomment;
+                        var commentBoxOptions;
+                        var colorId;
+                        var categoryId;
+                        var color;
+                        var category;
+                        var comment;
+                        var latiudeComment, longitudeComment;
+                        var iconComment;
+                        var boxClassColor;
+                        var userComment;
                         commentId = value.id;
                         latiudeComment = value.latitude;
                         longitudeComment = value.longitude;
                         colorId = value.ratingId;
                         categoryId = value.categoryId;
-                        var commentNodeCopies = $('.commentClass').clone()[0];
-
-
+                        userComment = value.description;
+                        
                         //first place markers on all moderated comments
                         switch (categoryId) {
                             case 1:
@@ -409,29 +415,29 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
                             case 1:
                                 iconComment.fillColor = "#CD333F";
                                 boxClassColor = "veryBad";
-                                $(commentNodeCopies).find('.insideCommentPane').css({border: '1px solid #CD333F'});
+                                $(vm.commentNode).find('.insideCommentPane').css({border: '1px solid #CD333F'});
                                 break;
                             case 2:
                                 iconComment.fillColor = "#EB6841";
                                 boxClassColor = "bad";
-                                $(commentNodeCopies).find('.insideCommentPane').css({border: '1px solid #EB6841'});
+                                $(vm.commentNode).find('.insideCommentPane').css({border: '1px solid #EB6841'});
 
                                 break;
                             case 3:
                                 iconComment.fillColor = "#EDC951";
                                 boxClassColor = "ok";
-                                $(commentNodeCopies).find('.insideCommentPane').css({border: '1px solid #EDC951'});
+                                $(vm.commentNode).find('.insideCommentPane').css({border: '1px solid #EDC951'});
 
                                 break;
                             case 4:
                                 iconComment.fillColor = "#88A65E";
                                 boxClassColor = "good";
-                                $(commentNodeCopies).find('.insideCommentPane').css({border: '1px solid #88A65E'});
+                                $(vm.commentNode).find('.insideCommentPane').css({border: '1px solid #88A65E'});
                                 break;
                             case 5:
                                 iconComment.fillColor = "#5E8C6A";
                                 boxClassColor = "veryGood";
-                                $(commentNodeCopies).find('.insideCommentPane').css({border: '1px solid #5E8C6A'});
+                                $(vm.commentNode).find('.insideCommentPane').css({border: '1px solid #5E8C6A'});
                                 break;
                         }
 
@@ -443,43 +449,37 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
                             animation: google.maps.Animation.DROP
                         });
 
-                        var childScope = $scope.$new(true);
-                        childScope.commentIdUser = value.id;
-                        $(commentNodeCopies).find('.userCommentFormatted').text(value.description);
-                        console.log(childScope)
-
-
-                        $compile(commentNodeCopies)(childScope);
-                        childScope.commentIdUser = value.id;
 
                         var commentBoxOptions = {
-                            content: commentNodeCopies,
+                            content: vm.commentNode,
                             alignBottom: true,
                             pixelOffset: new google.maps.Size(-100, -18),
                             closeBoxMargin: "0px",
                             boxClass:boxClassColor
                         };
 
-                        var commentInfobox = new InfoBox(commentBoxOptions);
-
 
                         //now we attach a click event to marker that will open a infobox window
                         Commentmarker.addListener('click', function (event) {
                             console.log(this)
 
-                            //infoboxToMarker.setPosition(event.latLng);
-                            // open the info window
-                           // infoboxToMarker.setContent(content)
-                            commentInfobox.open(map, Commentmarker);
-                            $scope.updateLike = function (id){
-                                console.log(id)
-                            }
-                            $scope.updateUnlike = function (id) {
-                                console.log(id)
-                            }
+                            // Here we save all necessary information about comment box attached
+                            // to each marker
+                            var commentBoxParams = {
+                                options : commentBoxOptions,
+                                id : commentId,
+                                commentText: userComment,
+                                borderColor: iconComment.fillColor,
+                                marker: Commentmarker
+                            };
+                            console.log(value.id)
+
+                            if(vm.commentInfobox)
+                                vm.commentInfobox.setMap(null);
+
+                            generateCommentBox(commentBoxParams);
 
                         });
-
 
                     })
                 }
@@ -490,20 +490,45 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
             }
 
 
-            /*
-             //like
-             $http.post('http://api.yourkiez.de/comments/like/2.json').then(successLike, errorLike);
-             function successLike (response){
-             console.log(response)
-             }
-             function errorLike (){}
+            function generateCommentBox(commentBoxParams){
 
-             //unlike
-             $http.post('http://api.yourkiez.de/comments/unlike/2.json').then(successUnlike, errorUnlike);
-             function successUnlike (response){
-             console.log(response)
-             }
-             function errorUnlike (){}*/
+                //first of all set the current id for updating
+                //like and dislike
+                $scope.currentCommentId = commentBoxParams.id;
+                $scope.currentUserComment = commentBoxParams.commentText;
+                vm.commentInfobox = new InfoBox(commentBoxParams.options);
+
+                //change the color of the box according to the rating
+                $(vm.commentNode).find('.insideCommentPane').css({border: '1px solid ' + commentBoxParams.borderColor});
+                //open the infobox
+                vm.commentInfobox.open(map, commentBoxParams.marker);
+                //since it is a jquery callback function, we need to
+                // manually trigger a digest cycle for changes in
+                //angular side
+                $scope.$apply();
+            }
+
+
+            $scope.updateLike = function (){
+                //like
+                $http.post('http://api.yourkiez.de/comments/like/' +$scope.currentCommentId +'.json').then(successLike, errorLike);
+                function successLike (response){
+                    console.log(response)
+                }
+                function errorLike (){}
+
+                console.log($scope.currentCommentId)
+            }
+            $scope.updateUnlike = function () {
+                //unlike
+                $http.post('http://api.yourkiez.de/comments/unlike/' +$scope.currentCommentId +'.json').then(successUnlike, errorUnlike);
+                function successUnlike (response){
+                    console.log(response)
+                }
+                function errorUnlike (){}
+                console.log($scope.currentCommentId)
+            }
+
 
 
             //first and foremost initialize the map
@@ -646,6 +671,7 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
                 $scope.categoryId = 1;
                 $scope.latitude = latLng.lat();
                 $scope.longitude = latLng.lng();
+                $scope.$apply();
 
                 if (marker)
                     marker.setMap(null);
@@ -670,6 +696,7 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
                 if (angular.isDefined(vm.infobox)) {
                     vm.infobox.setMap(null);
                 }
+
                 vm.infobox = new InfoBox(myOptions);
                 if (windowWidth > 0 && windowWidth < 600) {
                     vm.infobox.setOptions({'pixelOffset': new google.maps.Size(-windowWidth / 2, -18)});
