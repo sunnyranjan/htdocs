@@ -470,7 +470,11 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
                                 id : commentId,
                                 commentText: userComment,
                                 borderColor: iconComment.fillColor,
-                                marker: Commentmarker
+                                marker: Commentmarker,
+                                likes: value.liked,
+                                unlikes: value.disliked,
+                                likesEnabled: true,
+                                unlikesEnabled: true
                             };
                             console.log(value.id)
 
@@ -496,10 +500,22 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
                 //like and dislike
                 $scope.currentCommentId = commentBoxParams.id;
                 $scope.currentUserComment = commentBoxParams.commentText;
+                $scope.currentUserLikes = commentBoxParams.likes;
+                $scope.currentUserUnlikes = commentBoxParams.unlikes;
                 vm.commentInfobox = new InfoBox(commentBoxParams.options);
 
                 //change the color of the box according to the rating
                 $(vm.commentNode).find('.insideCommentPane').css({border: '1px solid ' + commentBoxParams.borderColor});
+
+                //Now we need to see if the like and unlike buttons are enabled or disabled
+                // per comment
+                if(commentBoxParams){
+
+                }
+
+
+
+
                 //open the infobox
                 vm.commentInfobox.open(map, commentBoxParams.marker);
                 //since it is a jquery callback function, we need to

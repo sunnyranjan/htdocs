@@ -715,7 +715,17 @@ body {
     background-color: #c2c2c2;
 }
 
+.no-padding  {
+    padding: 0 !important;
+}
 
+.modal-content{
+    -webkit-box-shadow: 0 5px 15px rgba(0,0,0,0);
+    -moz-box-shadow: 0 5px 15px rgba(0,0,0,0);
+    -o-box-shadow: 0 5px 15px rgba(0,0,0,0);
+    box-shadow: 0 5px 15px rgba(0,0,0,0);
+    border: none !important;
+}
 
 
 
