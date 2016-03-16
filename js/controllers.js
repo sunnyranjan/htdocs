@@ -667,8 +667,7 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
 
 
             function placeMarker(latLng, map) {
-                $scope.category = "none";
-                $scope.categoryId = 1;
+                reinitialize();
                 $scope.latitude = latLng.lat();
                 $scope.longitude = latLng.lng();
                 $scope.$apply();
