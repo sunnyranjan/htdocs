@@ -1,6 +1,11 @@
 'use strict';
 /* Controllers */
 var richardplatzControllers = angular.module('richardplatzControllers', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache',]);
+richardplatzControllers.controller('modalController', function($scope) {
+    $scope.closeSpeechBubble = function () {
+        $('#info-bubble').modal('hide');
+    }
+})
 
 richardplatzControllers.controller('AppCtrl', function ($scope, $timeout, $mdSidenav, $element) {
 
@@ -86,7 +91,6 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
         }
 
         $scope.theme = 'lime';
-
 
         var map;
         var marker;
@@ -556,8 +560,7 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
                 streetViewControl: false,
                 mapTypeControlOptions: {
                     mapTypeIds: [
-                        google.maps.MapTypeId.ROADMAP,
-                        google.maps.MapTypeId.HYBRID
+                        google.maps.MapTypeId.ROADMAP
                     ],
                     style: google.maps.MapTypeControlStyle.DEFAULT,
                     position: google.maps.ControlPosition.BOTTOM_LEFT

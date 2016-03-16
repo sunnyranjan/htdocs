@@ -65,14 +65,13 @@
                 <md-icon md-svg-icon="img/icons/menu.svg"></md-icon>
             </md-button>
 
-
         </md-content>
 
     </md-sidenav>
 
-    <div class="modal fade" id="info-bubble" tabindex="-1" role="dialog">
+    <div class="modal fade" id="info-bubble" tabindex="-1" role="dialog" ng-controller="modalController">
         <div class="modal-dialog">
-            <div class="modal-content" style="padding:0 !important; background-color:transparent !important;">
+            <div class="modal-content" style="padding:0 !important; background-color:transparent !important;" data-ng-click = "closeSpeechBubble()">
                    <img src="img/svg/startscreen.svg" class="img-responsive">
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
