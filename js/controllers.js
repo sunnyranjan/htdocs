@@ -556,18 +556,11 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
                 center: {lat: 52.472489, lng: 13.448529},
                 zoom: 16,
                 minZoom: 16,
+                zoomControl:false,
+                mapTypeControl: false,
                 //styles: [{ featureType: "poi", elementType: "labels", stylers: [{ visibility: "off" }]}],
-                streetViewControl: false,
-                mapTypeControlOptions: {
-                    mapTypeIds: [
-                        google.maps.MapTypeId.ROADMAP
-                    ],
-                    style: google.maps.MapTypeControlStyle.DEFAULT,
-                    position: google.maps.ControlPosition.BOTTOM_LEFT
-                },
-                zoomControlOptions: {
-                    position: google.maps.ControlPosition.TOP_LEFT
-                }
+                streetViewControl: false
+
             });
 
 
