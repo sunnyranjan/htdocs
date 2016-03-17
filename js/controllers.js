@@ -63,6 +63,39 @@ richardplatzControllers.controller('AppCtrl', function ($scope, $timeout, $mdSid
         };
     })
     .controller('RightCtrl', function ($scope, $timeout, $mdSidenav, $log) {
+
+        $scope.navigation  = [
+            {
+                name:"Karte",
+                url:"",
+                icon:"fa-map-marker"
+            },
+            {
+                name:"Hilfe",
+                url:"",
+                icon: "fa-info"
+            },
+            {
+                name:"Um was geht es",
+                url:"", icon: "fa-question"
+            },
+            {
+                name:"Termine",
+                url:"",
+                icon:"fa-calendar"
+            },
+            {
+                name:"Nutzungsbedingungen",
+                url:"",
+                icon:"fa-user"
+            },
+            {
+                name:"Impressum",
+                url:"",
+                icon:"fa-paragraph"
+            }
+        ]
+
         $scope.close = function () {
             $mdSidenav('right').close()
                 .then(function () {

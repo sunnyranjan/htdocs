@@ -27,7 +27,7 @@
     <![endif]-->
     <!-- Bootstrap -->
 
-
+    <link rel="stylesheet" href="img/font-awesome-4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/normalize.css">
     <!--<link rel="stylesheet" href="css/main.css">-->
     <script src="js/vendor/modernizr-2.8.3.min.js"></script>
@@ -68,9 +68,23 @@
             <header class="nav-header text-center">
                 <a ng-href="/" class="docs-logo" href="/">
                     <img src="img/svg/logo_richard.svg" alt="" height="250" >
-
                 </a>
             </header>
+            <ul>
+                <li data-ng-repeat="nav in navigation" data-ng-class="vm.getClass('{{nav.url}}')">
+                    <menu-link section="page">
+
+                        <a class="md-button md-ink-ripple" ng-class="{'active' : isSelected()}"
+                           ng-href="{{nav.url}}" ng-click="focusSection()"
+                           title="{{nav.name}}"
+                           href="{{nav.url}}"
+                           aria-label="">
+                            <i data-ng-class="nav.icon" class="fa fa-lg fa-fw text-left"></i>   {{nav.name}}
+                        <div class="md-ripple-container"></div></a>
+                    </menu-link>
+
+                </li>
+            </ul>
 
 
 
