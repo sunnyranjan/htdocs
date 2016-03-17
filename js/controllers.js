@@ -67,37 +67,37 @@ richardplatzControllers.controller('AppCtrl', function ($scope, $timeout, $mdSid
         $scope.navigation  = [
             {
                 name:"Karte",
-                url:"karte",
+                url:"#/karte",
                 icon:"fa-map-marker"
             },
             {
                 name:"Hilfe",
-                url:"hiilfe",
+                url:"#/hilfe",
                 icon: "fa-info"
             },
             {
                 name:"Um was geht es",
-                url:"projekt",
+                url:"#/projekt",
                 icon: "fa-question"
             },
             {
                 name:"Termine",
-                url:"termine",
+                url:"#/termine",
                 icon:"fa-calendar"
             },
             {
                 name:"Nutzungsbedingungen",
-                url:"nutzungsbedingungen",
+                url:"#/nutzungsbedingungen",
                 icon:"fa-user"
             },
             {
                 name:"Kommentare",
-                url:"kommentare",
+                url:"#/kommentare",
                 icon:"fa-comment"
             },
             {
                 name:"Impressum",
-                url:"impressum",
+                url:"#/impressum",
                 icon:"fa-paragraph"
             }
         ]
@@ -770,6 +770,25 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
 
     }]);
 
+/*
+* hilfe controller
+* */
+richardplatzControllers.controller('hilfeController', ['$scope', '$routeParams', 'Phone',
+    function ($scope, $routeParams, Phone) {
+        $scope.phone = Phone.get({phoneId: $routeParams.phoneId}, function (phone) {
+            $scope.mainImageUrl = phone.images[0];
+        });
+
+        $scope.setImage = function (imageUrl) {
+            $scope.mainImageUrl = imageUrl;
+        };
+    }]);
+
+
+
+
+
+
 richardplatzControllers.controller('projektController', ['$scope', '$routeParams', '$userComment',
     function ($scope, $routeParams, $userComment) {
         $scope.phone = $userComment.get({phoneId: $routeParams.phoneId}, function (phone) {
@@ -780,6 +799,44 @@ richardplatzControllers.controller('projektController', ['$scope', '$routeParams
             $scope.mainImageUrl = imageUrl;
         };
     }]);
+
+
+
+richardplatzControllers.controller('termineController', ['$scope', '$routeParams', 'Phone',
+    function ($scope, $routeParams, Phone) {
+        $scope.phone = Phone.get({phoneId: $routeParams.phoneId}, function (phone) {
+            $scope.mainImageUrl = phone.images[0];
+        });
+
+        $scope.setImage = function (imageUrl) {
+            $scope.mainImageUrl = imageUrl;
+        };
+    }]);
+
+
+richardplatzControllers.controller('nutzungsbedingungenController', ['$scope', '$routeParams', 'Phone',
+    function ($scope, $routeParams, Phone) {
+        $scope.phone = Phone.get({phoneId: $routeParams.phoneId}, function (phone) {
+            $scope.mainImageUrl = phone.images[0];
+        });
+
+        $scope.setImage = function (imageUrl) {
+            $scope.mainImageUrl = imageUrl;
+        };
+    }]);
+
+
+richardplatzControllers.controller('kommentareController', ['$scope', '$routeParams', 'Phone',
+    function ($scope, $routeParams, Phone) {
+        $scope.phone = Phone.get({phoneId: $routeParams.phoneId}, function (phone) {
+            $scope.mainImageUrl = phone.images[0];
+        });
+
+        $scope.setImage = function (imageUrl) {
+            $scope.mainImageUrl = imageUrl;
+        };
+    }]);
+
 
 richardplatzControllers.controller('impressumController', ['$scope', '$routeParams', 'Phone',
     function ($scope, $routeParams, Phone) {
@@ -792,24 +849,6 @@ richardplatzControllers.controller('impressumController', ['$scope', '$routePara
         };
     }]);
 
-richardplatzControllers.controller('hilfeController', ['$scope', '$routeParams', 'Phone',
-    function ($scope, $routeParams, Phone) {
-        $scope.phone = Phone.get({phoneId: $routeParams.phoneId}, function (phone) {
-            $scope.mainImageUrl = phone.images[0];
-        });
 
-        $scope.setImage = function (imageUrl) {
-            $scope.mainImageUrl = imageUrl;
-        };
-    }]);
 
-richardplatzControllers.controller('commentsController', ['$scope', '$routeParams', 'Phone',
-    function ($scope, $routeParams, Phone) {
-        $scope.phone = Phone.get({phoneId: $routeParams.phoneId}, function (phone) {
-            $scope.mainImageUrl = phone.images[0];
-        });
 
-        $scope.setImage = function (imageUrl) {
-            $scope.mainImageUrl = imageUrl;
-        };
-    }]);

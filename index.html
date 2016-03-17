@@ -72,7 +72,7 @@
             </header>
             <ul>
                 <li data-ng-repeat="nav in navigation" data-ng-class="vm.getClass('{{nav.url}}')">
-                    <menu-link section="page">
+                    <menu-link section="page"  ng-click="close()">
 
                         <a class="md-button md-ink-ripple text-left side-menu" ng-class="{'active' : isSelected()}"
                            ng-href="{{nav.url}}" ng-click="focusSection()"
