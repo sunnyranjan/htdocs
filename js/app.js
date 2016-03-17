@@ -82,7 +82,7 @@ richardplatzApp.config(['$routeProvider', '$mdThemingProvider',
             }).
             when('/kommentare', {
                 templateUrl: 'partials/kommentare.html',
-                controller: 'commentsController',
+                controller: 'kommentareController',
                 controllerAs: 'ko'
             }).
             when('/impressum', {

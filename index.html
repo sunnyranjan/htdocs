@@ -74,11 +74,11 @@
                 <li data-ng-repeat="nav in navigation" data-ng-class="vm.getClass('{{nav.url}}')">
                     <menu-link section="page">
 
-                        <a class="md-button md-ink-ripple" ng-class="{'active' : isSelected()}"
+                        <a class="md-button md-ink-ripple text-left side-menu" ng-class="{'active' : isSelected()}"
                            ng-href="{{nav.url}}" ng-click="focusSection()"
                            title="{{nav.name}}"
                            href="{{nav.url}}"
-                           aria-label="">
+                           aria-label="" >
                             <i data-ng-class="nav.icon" class="fa fa-lg fa-fw text-left"></i>   {{nav.name}}
                         <div class="md-ripple-container"></div></a>
                     </menu-link>
