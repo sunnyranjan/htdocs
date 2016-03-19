@@ -407,18 +407,7 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
 
 
                         console.log(response);
-                        var commentId;
-                        var iconForEachcomment;
-                        var commentBoxOptions;
-                        var colorId;
-                        var categoryId;
-                        var color;
-                        var category;
-                        var comment;
-                        var latiudeComment, longitudeComment;
-                        var iconComment;
-                        var boxClassColor;
-                        var userComment;
+                        var commentId,colorId,categoryId,latiudeComment, longitudeComment,iconComment, boxClassColor, userComment;
                         commentId = value.id;
                         latiudeComment = value.latitude;
                         longitudeComment = value.longitude;
@@ -519,9 +508,6 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
                                 likes: value.liked,
                                 unlikes: value.disliked
                             };
-
-
-                            console.log()
 
                             if(vm.commentInfobox)
                                 vm.commentInfobox.setMap(null);
