@@ -400,6 +400,7 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
 
 
                 if (response.data.comments.length > 0) {
+                    $scope.arrayofLikes = {};
 
                     // here we generate the markers
                     angular.forEach(response.data.comments, function (value, key) {
@@ -501,6 +502,7 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
                             boxClass:boxClassColor
                         };
 
+                        $scope.arrayofLikes[commentId] = true;
 
                         //now we attach a click event to marker that will open a infobox window
                         Commentmarker.addListener('click', function (event) {
@@ -515,11 +517,11 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
                                 borderColor: iconComment.fillColor,
                                 marker: Commentmarker,
                                 likes: value.liked,
-                                unlikes: value.disliked,
-                                likesEnabled: true,
-                                unlikesEnabled: true
+                                unlikes: value.disliked
                             };
-                            console.log(value.id)
+
+
+                            console.log()
 
                             if(vm.commentInfobox)
                                 vm.commentInfobox.setMap(null);
@@ -549,15 +551,15 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
 
                 //change the color of the box according to the rating
                 $(vm.commentNode).find('.insideCommentPane').css({border: '1px solid ' + commentBoxParams.borderColor});
-
                 //Now we need to see if the like and unlike buttons are enabled or disabled
                 // per comment
-                if(commentBoxParams){
 
+                console.log(commentBoxParams.likesUnlikesEnabled)
+                if(!$scope.arrayofLikes[commentBoxParams.id])
+                $(vm.commentNode).find('.buttonRating').prop('disabled', true)
+                else {
+                    $(vm.commentNode).find('.buttonRating').prop('disabled', false)
                 }
-
-
-
 
                 //open the infobox
                 vm.commentInfobox.open(map, commentBoxParams.marker);
@@ -565,28 +567,34 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
                 // manually trigger a digest cycle for changes in
                 //angular side
                 $scope.$apply();
-            }
 
 
-            $scope.updateLike = function (){
-                //like
-                $http.post('http://api.yourkiez.de/comments/like/' +$scope.currentCommentId +'.json').then(successLike, errorLike);
-                function successLike (response){
-                    console.log(response)
+                $scope.updateLike = function (){
+                    //like
+                    $http.post('http://api.yourkiez.de/comments/like/' +$scope.currentCommentId +'.json').then(successLike, errorLike);
+                    function successLike (response){
+                        $scope.arrayofLikes[$scope.currentCommentId] = false;
+                        $(vm.commentNode).find('.buttonRating').prop('disabled', true)
+                        console.log(commentBoxParams)
+                    }
+                    function errorLike (){}
+
+                    console.log($scope.currentCommentId)
                 }
-                function errorLike (){}
-
-                console.log($scope.currentCommentId)
-            }
-            $scope.updateUnlike = function () {
-                //unlike
-                $http.post('http://api.yourkiez.de/comments/unlike/' +$scope.currentCommentId +'.json').then(successUnlike, errorUnlike);
-                function successUnlike (response){
-                    console.log(response)
+                $scope.updateUnlike = function () {
+                    //unlike
+                    $http.post('http://api.yourkiez.de/comments/dislike/' +$scope.currentCommentId +'.json').then(successUnlike, errorUnlike);
+                    function successUnlike (response){
+                        $scope.arrayofLikes[$scope.currentCommentId] = false;
+                        $(vm.commentNode).find('.buttonRating').prop('disabled', true)
+                        console.log(commentBoxParams)
+                    }
+                    function errorUnlike (){}
+                    console.log($scope.currentCommentId)
                 }
-                function errorUnlike (){}
-                console.log($scope.currentCommentId)
             }
+
+
 
 
 
