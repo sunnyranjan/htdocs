@@ -126,7 +126,6 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
 
         function mapsAPIReady() {
             $.getScript('js/infobox.js', initMap);
-
         }
 
         $scope.theme = 'lime';
