@@ -251,6 +251,9 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
         $scope.categoryChange = function (category, categoryId) {
             $scope.category = category;
             $scope.categoryId = categoryId;
+            vm.step1 = false;
+            vm.step2 = true;
+            vm.step3 = false;
         };
         $scope.colorChange = function (color, rating) {
             //change the color of the icon
@@ -560,23 +563,22 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
                     $http.post('http://api.yourkiez.de/comments/like/' +$scope.currentCommentId +'.json').then(successLike, errorLike);
                     function successLike (response){
                         $scope.arrayofLikes[$scope.currentCommentId] = false;
-                        $(vm.commentNode).find('.buttonRating').prop('disabled', true)
-                        console.log(commentBoxParams)
+                        $(vm.commentNode).find('.buttonRating').prop('disabled', true);
+
                     }
                     function errorLike (){}
 
-                    console.log($scope.currentCommentId)
                 }
                 $scope.updateUnlike = function () {
                     //unlike
                     $http.post('http://api.yourkiez.de/comments/dislike/' +$scope.currentCommentId +'.json').then(successUnlike, errorUnlike);
+
                     function successUnlike (response){
                         $scope.arrayofLikes[$scope.currentCommentId] = false;
-                        $(vm.commentNode).find('.buttonRating').prop('disabled', true)
-                        console.log(commentBoxParams)
+                        $(vm.commentNode).find('.buttonRating').prop('disabled', true);
+
                     }
                     function errorUnlike (){}
-                    console.log($scope.currentCommentId)
                 }
             }
 
@@ -600,12 +602,7 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
             vm.step1 = true;
             vm.step2 = false;
             vm.step3 = false;
-            $scope.jumpNext = function () {
-                vm.step1 = false;
-                vm.step2 = true;
-                vm.step3 = false;
 
-            };
 
             var polygonCoord = [
                 {lat:52.473932,lng: 13.456454},
@@ -733,7 +730,8 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
                     alignBottom: true,
                     zIndex: 99999,
                     pixelOffset: new google.maps.Size(-300, 0),
-                    closeBoxMargin: "0px"
+                    closeBoxMargin: "0px",
+                    infoBoxClearance: new google.maps.Size(0, 140)
                 };
 
                 var windowWidth = $(window).width();
@@ -767,80 +765,40 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
 /*
 * hilfe controller
 * */
-richardplatzControllers.controller('hilfeController', ['$scope', '$routeParams', 'Phone',
-    function ($scope, $routeParams, Phone) {
-        $scope.phone = Phone.get({phoneId: $routeParams.phoneId}, function (phone) {
-            $scope.mainImageUrl = phone.images[0];
-        });
+richardplatzControllers.controller('hilfeController', ['$scope', '$routeParams',
+    function ($scope, $routeParams ) {
 
-        $scope.setImage = function (imageUrl) {
-            $scope.mainImageUrl = imageUrl;
-        };
+    }]);
+
+
+richardplatzControllers.controller('projektController', ['$scope', '$routeParams',
+    function ($scope, $routeParams) {
+
     }]);
 
 
 
+richardplatzControllers.controller('termineController', ['$scope', '$routeParams',
+    function ($scope, $routeParams) {
 
-
-
-richardplatzControllers.controller('projektController', ['$scope', '$routeParams', '$userComment',
-    function ($scope, $routeParams, $userComment) {
-        $scope.phone = $userComment.get({phoneId: $routeParams.phoneId}, function (phone) {
-            $scope.mainImageUrl = phone.images[0];
-        });
-
-        $scope.setImage = function (imageUrl) {
-            $scope.mainImageUrl = imageUrl;
-        };
     }]);
 
 
+richardplatzControllers.controller('nutzungsbedingungenController', ['$scope', '$routeParams',
+    function ($scope, $routeParams) {
 
-richardplatzControllers.controller('termineController', ['$scope', '$routeParams', 'Phone',
-    function ($scope, $routeParams, Phone) {
-        $scope.phone = Phone.get({phoneId: $routeParams.phoneId}, function (phone) {
-            $scope.mainImageUrl = phone.images[0];
-        });
-
-        $scope.setImage = function (imageUrl) {
-            $scope.mainImageUrl = imageUrl;
-        };
     }]);
 
 
-richardplatzControllers.controller('nutzungsbedingungenController', ['$scope', '$routeParams', 'Phone',
-    function ($scope, $routeParams, Phone) {
-        $scope.phone = Phone.get({phoneId: $routeParams.phoneId}, function (phone) {
-            $scope.mainImageUrl = phone.images[0];
-        });
+richardplatzControllers.controller('kommentareController', ['$scope', '$routeParams',
+    function ($scope, $routeParams) {
 
-        $scope.setImage = function (imageUrl) {
-            $scope.mainImageUrl = imageUrl;
-        };
     }]);
 
 
-richardplatzControllers.controller('kommentareController', ['$scope', '$routeParams', 'Phone',
-    function ($scope, $routeParams, Phone) {
-        $scope.phone = Phone.get({phoneId: $routeParams.phoneId}, function (phone) {
-            $scope.mainImageUrl = phone.images[0];
-        });
+richardplatzControllers.controller('impressumController', ['$scope', '$routeParams',
+    function ($scope, $routeParams) {
 
-        $scope.setImage = function (imageUrl) {
-            $scope.mainImageUrl = imageUrl;
-        };
-    }]);
-
-
-richardplatzControllers.controller('impressumController', ['$scope', '$routeParams', 'Phone',
-    function ($scope, $routeParams, Phone) {
-        $scope.phone = Phone.get({phoneId: $routeParams.phoneId}, function (phone) {
-            $scope.mainImageUrl = phone.images[0];
-        });
-
-        $scope.setImage = function (imageUrl) {
-            $scope.mainImageUrl = imageUrl;
-        };
     }]);
 
 

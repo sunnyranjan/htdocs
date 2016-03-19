@@ -67,12 +67,7 @@
                                     ng-click="categoryChange('none',1)"></button>
 
                         </div>
-                        <div class="col-sm-4 col-xs-6 text-center wrapCategory">
-                            <div class="cateoryText">Weiter</div>
-                            <button type="button" class="btn btn-circle btn-raised btn-info text-center"
-                                    data-ng-click="jumpNext()">ok
-                            </button>
-                        </div>
+
                     </div>
                 </div>
 
@@ -197,25 +192,25 @@
                                 {{currentUserComment}}
                             </div>
                         </div>
-                        <div class="col-sm-6">
-                            <div class="col-xs-6 ">
-                                <button type="button" class="btn btn-info btn-circle btn-raised btn-xs buttonRating"  ng-click="updateLike(commentIdUser)">
+                        <div class="col-xs-6 text-center">
+                            <div class="col-xs-12 text-center">
+                                <button type="button" class="btn btn-info btn-circle btn-raised btn-sm buttonRating"  ng-click="updateLike(commentIdUser)">
                                     <span class="glyphicon glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
                                 </button>
                             </div>
-                            <div class="col-xs-6 ">
+                            <div class="col-xs-12 text-center" style="margin-top: 5px">
                                 <span class="badge">{{currentUserLikes}}</span>
                             </div>
 
 
                         </div>
-                        <div class="col-sm-6">
-                            <div class="col-xs-6 no-padding">
-                                <button type="button" class="btn btn-info btn-circle btn-raised btn-xs buttonRating" ng-click="updateUnlike(commentIdUser)">
+                        <div class="col-xs-6 text-center">
+                            <div class="col-xs-12 text-center">
+                                <button type="button" class="btn btn-info btn-circle btn-raised btn-sm buttonRating" ng-click="updateUnlike(commentIdUser)">
                                     <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
                                 </button>
                             </div>
-                            <div class="col-xs-6 " style="padding-left:0">
+                            <div class="col-xs-12 text-center" style="margin-top: 5px;">
                                 <span class="badge">{{currentUserUnlikes}}</span>
                             </div>
 
