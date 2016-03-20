@@ -247,6 +247,7 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
         $scope.comments = "";
         $scope.userAge = "";
         $scope.userSex = "";
+        $scope.headline = "";
         $scope.categoryChange = function (category, categoryId) {
             $scope.category = category;
             $scope.categoryId = categoryId;
@@ -282,6 +283,7 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
             saveUserComment.ageId = $scope.userAge;
             saveUserComment.sexId = $scope.userSex;
             saveUserComment.contact = $scope.emailUser;
+            saveUserComment.headline = $scope.headline;
             console.log(saveUserComment);
 
             //now we post the comment
@@ -379,6 +381,7 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
             $scope.color = "";
             $scope.rating = "";
             $scope.comments = "";
+            $scope.headline = "";
             $scope.userAge = "";
             $scope.userSex = "";
             $scope.emailUser = "";
@@ -730,7 +733,7 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
                     zIndex: 99999,
                     pixelOffset: new google.maps.Size(-300, 0),
                     closeBoxMargin: "0px",
-                    infoBoxClearance: new google.maps.Size(0, 140)
+                    infoBoxClearance: new google.maps.Size(0, 80)
                 };
 
                 var windowWidth = $(window).width();

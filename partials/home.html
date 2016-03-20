@@ -104,17 +104,24 @@
                     <div class=" infoWindowHeadline text-center"><h5 class=" ">Schreib einen Kommentar oder deine
                         Idee.</h5></div>
                     <div class="row paddingTop">
-                        <div class="col-sm-12">
-                            <div class="col-sm-12">
+                        <div class="col-xs-12">
+                            <div class="col-xs-4">
                                 <md-input-container style="width:100%; ">
-                                    <label>Hier Schreiben</label>
+                                    <label>Thema</label>
+                                    <textarea type="text" ng-model="headline"></textarea>
+                                </md-input-container>
+
+                            </div>
+                            <div class="col-xs-8">
+                                <md-input-container style="width:100%; ">
+                                    <label>Kommentare</label>
                                     <textarea type="text" ng-model="comments"></textarea>
                                 </md-input-container>
                             </div>
 
-                            <div class="col-sm-6">
+                            <div class="col-xs-6">
                                 <md-input-container style="width: 100%;">
-                                    <label>Wie alt bist du?</label>
+                                    <label>Alter</label>
                                     <md-select ng-model="userAge">
                                         <md-option ng-repeat="age in vm.options.ages" value="{{age.value}}">
                                             {{age.label}}
@@ -123,7 +130,7 @@
                                 </md-input-container>
                             </div>
 
-                            <div class="col-sm-6">
+                            <div class="col-xs-6">
                                 <md-input-container style="width: 100%;">
                                     <label>Geschlecht</label>
                                     <md-select ng-model="userSex">
@@ -133,13 +140,13 @@
                                     </md-select>
                                 </md-input-container>
                             </div>
-                            <div class="col-sm-6">
+                            <div class="col-xs-6">
                                 <md-input-container style="width: 100%;">
                                     <label>Email(Optional)</label>
                                     <input ng-model="emailUser" type="email">
                                 </md-input-container>
                             </div>
-                            <div class="col-sm-6 ">
+                            <div class="col-xs-6 ">
                                 Diese dient auschließlich dazu Kontakt zwischen Dir und uns herzustellen. Die Adresse
                                 wird anderen nicht angezeigt. Es erfolgt keine anderweitige Verwendung.
                             </div>
