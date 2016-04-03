@@ -1,5 +1,36 @@
 <div class="container-fluid" style="height:100%">
+    <md-fab-speed-dial style="z-index: 99;position:absolute; left:0;margin: 8px 14px !important"
+                       ng-hide="demo.hidden" md-direction="left" md-open="demo.isOpen"
+                       class="md-scale " ng-class="{ 'md-hover-full': demo.hover }" ng-mouseenter="demo.isOpen=true" ng-mouseleave="demo.isOpen=false">
+        <md-fab-trigger>
+            <md-button
+                       aria-label="filter layers"
+                       class="md-fab md-primary">
+                <md-tooltip md-direction="down" md-visible="tooltipVisible">Filter</md-tooltip>
+                <md-icon class="material-icons md-36">layers</md-icon>
+            </md-button>
+        </md-fab-trigger>
 
+        <md-fab-actions>
+            <div ng-repeat="item in demo.items">
+                <md-button aria-label="{{item.name}}" class="md-fab md-raised md-mini" ng-click="demo.openDialog($event, item)">
+                    <md-tooltip md-direction="{{item.direction}}" md-visible="tooltipVisible" md-autohide="false">
+                        {{item.name}}
+                    </md-tooltip>
+
+                    <md-icon md-svg-src="{{item.icon}}" aria-label="{{item.name}}"></md-icon>
+                </md-button>
+            </div>
+        </md-fab-actions>
+    </md-fab-speed-dial>
+
+
+
+
+    <!--<md-button  style="z-index: 99;position:absolute; left:0;margin: 8px 14px !important" class=" md-icon-button md-primary md-fab"  ng-click="toggleRight()" ng-hide="isOpenRight()"
+                aria-label="Menu Sidebar">
+        <md-icon  class="material-icons md-36">layers</md-icon>
+    </md-button>-->
 
     <div id="map" style="height:100%;width:100%;">
     </div>
@@ -140,16 +171,15 @@
                                     </md-select>
                                 </md-input-container>
                             </div>
-                            <div class="col-xs-6">
+                            <div class="col-sm-6">
                                 <md-input-container style="width: 100%;">
-                                    <label>Email(Optional)</label>
+                                    <label>Email (optional-unsichtbar)</label>
                                     <input ng-model="emailUser" type="email">
                                 </md-input-container>
                             </div>
-                            <div class="col-xs-6 ">
+                            <div class="col-sm-6 ">
                                 <div class="alert alert-info alert-dismissible" role="alert">
-                                    Diese dient auschließlich dazu Kontakt zwischen Dir und uns herzustellen. Die Adresse
-                                    wird anderen nicht angezeigt. Es erfolgt keine anderweitige Verwendung.
+                                    Die Email dient auschließlich dazu Kontakt zwischen Dir und uns herzustellen.
                                 </div>
                             </div>
 

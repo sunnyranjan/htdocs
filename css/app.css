@@ -743,11 +743,20 @@ body {
 }
 
 .partials {
-    background: url(../img/svg/fbbhiaag.svg) no-repeat center center;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+    background: url(../img/svg/people_logo.svg) no-repeat center center;
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    -o-background-size: contain;
+    background-size: contain;
+}
+
+
+md-icon {
+    height: 32px;
+    width:32px;
+}
+.material-icons.md-36 {
+    font-size: 32px;
 }
 
 

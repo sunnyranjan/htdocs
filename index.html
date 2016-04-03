@@ -28,6 +28,7 @@
     <!-- Bootstrap -->
 
     <link rel="stylesheet" href="img/font-awesome-4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" >
     <link rel="stylesheet" href="css/normalize.css">
     <!--<link rel="stylesheet" href="css/main.css">-->
     <script src="js/vendor/modernizr-2.8.3.min.js"></script>
@@ -54,9 +55,14 @@
 
     <div ng-controller="AppCtrl" style="height:100%" style="position:relative;" md-theme={{theme}} >
 
-        <md-button  style="z-index: 99;position:absolute; right:0;margin: 8px 14px !important" class=" md-icon-button"  ng-click="toggleRight()" ng-hide="isOpenRight()"
+        <md-button  style="z-index: 99;position:absolute; right:0;margin: 8px 14px !important"
+                    class="md-primary md-fab"
+                    ng-click="toggleRight()"
+                    ng-hide="isOpenRight()"
                    aria-label="Menu Sidebar">
-            <md-icon md-svg-icon="img/icons/menu.svg"></md-icon>
+            <md-tooltip md-direction="down"
+                        md-visible="tooltipVisible">Menu</md-tooltip>
+            <md-icon  class ="material-icons md-36">menu</md-icon>
         </md-button>
 
         <div ng-cloak="" ng-view class="view-frame" style="height:100%">
