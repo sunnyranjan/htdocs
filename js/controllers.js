@@ -491,7 +491,7 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
                         var commentBoxOptions = {
                             content: vm.commentNode,
                             alignBottom: true,
-                            pixelOffset: new google.maps.Size(-100, -18),
+                            pixelOffset: new google.maps.Size(-150, -18),
                             closeBoxMargin: "0px",
                             boxClass:boxClassColor
                         };
@@ -586,19 +586,39 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
 
 
 
+            var windowWidth = $(window).width();
+            if(windowWidth <= 550){
+                //first and foremost initialize the map
+                map = new google.maps.Map(document.getElementById('map'), {
+                    center: {lat: 52.472489, lng: 13.448529},
+                    zoom: 15,
+                    minZoom: 15,
+                    zoomControl:false,
+                    mapTypeControl: false,
+                    //styles: [{ featureType: "poi", elementType: "labels", stylers: [{ visibility: "off" }]}],
+                    streetViewControl: false
+
+                });
+            }
+            else {
+                //first and foremost initialize the map
+                map = new google.maps.Map(document.getElementById('map'), {
+                    center: {lat: 52.472489, lng: 13.448529},
+                    zoom: 16,
+                    minZoom: 16,
+                    zoomControl:false,
+                    mapTypeControl: false,
+                    //styles: [{ featureType: "poi", elementType: "labels", stylers: [{ visibility: "off" }]}],
+                    streetViewControl: false
+
+                });
+            }
 
 
-            //first and foremost initialize the map
-            map = new google.maps.Map(document.getElementById('map'), {
-                center: {lat: 52.472489, lng: 13.448529},
-                zoom: 16,
-                minZoom: 16,
-                zoomControl:false,
-                mapTypeControl: false,
-                //styles: [{ featureType: "poi", elementType: "labels", stylers: [{ visibility: "off" }]}],
-                streetViewControl: false
 
-            });
+
+
+
 
 
             vm.step1 = true;

@@ -610,8 +610,8 @@ body {
     }
 }
 .commentClass {
-    width: 200px;
-    max-height: 200px;
+    width: 300px;
+    max-height: 400px;
     overflow: auto;
     background-color: transparent;
     border-radius: 2px;
