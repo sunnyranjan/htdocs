@@ -13,6 +13,14 @@ var richardplatzApp = angular.module('richardplatzApp', [
 
 richardplatzApp.config(['$routeProvider', '$mdThemingProvider',
     function ($routeProvider, $mdThemingProvider) {
+        var neonRedMap = $mdThemingProvider.extendPalette('pink', {
+            '500': 'E3217E'
+        });
+        // Register the new color palette map with the name <code>neonRed</code>
+        $mdThemingProvider.definePalette('neonRed', neonRedMap);
+        // Use that theme for the primary intentions
+        $mdThemingProvider.theme('default')
+            .primaryPalette('neonRed')
 
         $mdThemingProvider.theme('lime')
             .primaryPalette('light-blue')
