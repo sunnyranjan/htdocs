@@ -158,6 +158,32 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
         });
         vm.successMessage = false;
         vm.errorMessage= false;
+        vm.hidden = false;
+        vm.isOpen = false;
+        vm.hover = false;
+
+        // On opening, add a delayed property which shows tooltips after the speed dial has opened
+        // so that they have the proper position; if closing, immediately hide the tooltips
+        $scope.$watch('vm.isOpen', function(isOpen) {
+            if (isOpen) {
+                $timeout(function() {
+                    $scope.tooltipVisible = vm.isOpen;
+                }, 600);
+            } else {
+                $scope.tooltipVisible = vm.isOpen;
+            }
+        });
+
+        vm.items = [
+            { name: "Wohnen", icon: "../img/svg/home.svg", direction: "right", class:"home" },
+            { name: "Nachbarschaft", icon: "../img/svg/neighbour.svg", direction: "right", class:"neighbour" },
+            { name: "Verkehr", icon: "../img/svg/infrastructure.svg", direction: "right", class:"infrastructure" },
+            { name: "Plätze und Grünflächen", icon: "../img/svg/tree.svg", direction: "right", class: "tree" },
+            { name: "Einkaufen", icon: "../img/svg/shopping.svg", direction: "right", class: "shopping" },
+            { name: "Sport und Freizeit", icon: "../img/svg/sport.svg", direction: "right", class:"sport" },
+            { name: "Bildung und Kultur", icon: "../img/svg/education.svg", direction: "right", class: "education" },
+            { name: "Keine Kategory", icon: "img/icons/hangout.svg", direction: "right", class:"other" }
+        ];
 
         //for shooping (shoping cart)
         vm.svg.shop = "M16,0.094C7.215,0.094,0.094,7.216,0.094,16c0,8.783,7.121,15.906,15.906,15.906S31.906,24.783,31.906,16 " +
