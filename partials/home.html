@@ -1,24 +1,24 @@
 <div class="container-fluid" style="height:100%">
     <md-fab-speed-dial style="z-index: 99;position:absolute; left:0;margin: 8px 14px !important"
-                       ng-hide="demo.hidden" md-direction="left" md-open="demo.isOpen"
-                       class="md-scale " ng-class="{ 'md-hover-full': demo.hover }" ng-mouseenter="demo.isOpen=true" ng-mouseleave="demo.isOpen=false">
+                        md-direction="down"
+                       class="md-scale "  >
         <md-fab-trigger>
             <md-button
                        aria-label="filter layers"
-                       class="md-fab md-primary">
+                       class="md-fab md-primary md-raised">
                 <md-tooltip md-direction="down" md-visible="tooltipVisible">Filter</md-tooltip>
                 <md-icon class="material-icons md-36">layers</md-icon>
             </md-button>
         </md-fab-trigger>
 
         <md-fab-actions>
-            <div ng-repeat="item in demo.items">
-                <md-button aria-label="{{item.name}}" class="md-fab md-raised md-mini" ng-click="demo.openDialog($event, item)">
+            <div ng-repeat="item in vm.items">
+                <md-button aria-label="{{item.name}}" class="md-fab md-raised md-mini" ng-class="item.class" ng-click="demo.openDialog($event, item)">
                     <md-tooltip md-direction="{{item.direction}}" md-visible="tooltipVisible" md-autohide="false">
                         {{item.name}}
                     </md-tooltip>
 
-                    <md-icon md-svg-src="{{item.icon}}" aria-label="{{item.name}}"></md-icon>
+
                 </md-button>
             </div>
         </md-fab-actions>
