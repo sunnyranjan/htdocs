@@ -165,7 +165,7 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
 
         // On opening, add a delayed property which shows tooltips after the speed dial has opened
         // so that they have the proper position; if closing, immediately hide the tooltips
-        $scope.$watch('vm.isOpen', function(isOpen) {
+        $scope.$watch('vm.isOpen', function(isOpen) {console.log(isOpen)
             if (isOpen) {
                 $timeout(function() {
                     $scope.tooltipVisible = vm.isOpen;
@@ -675,6 +675,8 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
             }
 
             function filterCategory (_categoryId){
+                vm.isOpen = true;
+                $timeout(function (){vm.isOpen = true;}, 0);
                 vm.selectedCategories[_categoryId]  = !vm.selectedCategories[_categoryId];
             }
 
