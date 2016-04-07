@@ -75,15 +75,12 @@
     <md-sidenav style="height:100%;overflow:auto !important" class="md-sidenav-right" md-component-id="right" md-whiteframe="24">
 
         <md-content ng-controller="RightCtrl" layout-padding="">
-            <md-button class="md-icon-button md-primary md-fab" ng-click="close()" md-whiteframe="24"
-                       aria-label="Menu Sidebar">
-                <md-icon md-svg-icon="img/icons/menu.svg"></md-icon>
-            </md-button>
 
-            <header class="nav-header text-center">
-                <a ng-href="/" class="docs-logo" href="/">
+
+            <header class="nav-header text-center" ng-click="close()">
+                <div class="docs-logo">
                     <img src="img/svg/logo_richard.svg" alt="" height="250" >
-                </a>
+                </div>
             </header>
             <ul>
                 <li data-ng-repeat="nav in navigation" data-ng-class="vm.getClass('{{nav.url}}')">
