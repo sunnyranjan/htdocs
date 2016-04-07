@@ -649,9 +649,24 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
             vm.step1 = true;
             vm.step2 = false;
             vm.step3 = false;
+            vm.visibility = "visibility";
             vm.setMapOnAll = setMapOnAll;
             vm.clearMarkers = clearMarkers;
             vm.showMarkers = showMarkers;
+            vm.toggleVisibility = toggleVisibility;
+
+            function toggleVisibility (){
+                if(vm.visibility === "visibility") {
+                    vm.visibility = "visibility_off";
+                    clearMarkers();
+                }else if (vm.visibility === "visibility_off") {
+                    vm.visibility ="visibility";
+                    showMarkers();
+                }
+
+            }
+
+
 
             // Sets the map on all markers in the array.
             function setMapOnAll(map) {
