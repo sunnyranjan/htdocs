@@ -13,7 +13,7 @@
 
         <md-fab-actions>
             <div ng-repeat="item in vm.items" >
-                <md-button aria-label="{{item.name}}" class="md-fab md-mini no-padding-button" md-whiteframe="24"  ng-click="demo.openDialog($event, item)" style="background-color: white">
+                <md-button aria-label="{{item.name}}" class="md-fab md-mini no-padding-button" md-whiteframe="24"  ng-click="vm.filterCategory(item.categoryId)" style="background-color: white">
                     <md-tooltip md-direction="{{item.direction}}" md-visible="tooltipVisible" md-autohide="false">
                         {{item.name}}
                     </md-tooltip>
@@ -41,9 +41,7 @@
             <div id="infoWindowContent" class='infoWindowClass' md-whiteframe="24">
                 <div data-ng-show="vm.step1" class="insidePane">
 
-                    <div class=" infoWindowHeadline text-center"><h5 class=" ">Klicke auf einen Ort in der Karte, zu dem
-                        du was
-                        sagen möchtest!</h5></div>
+                    <div class=" infoWindowHeadline text-center"><h5 class=" ">Wähle eine Kategorie zu der du etwas sagen möchtest.</h5></div>
 
                     <div class="row">
                         <div class="col-sm-4 col-xs-6 text-center wrapCategory">
