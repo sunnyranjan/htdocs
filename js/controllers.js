@@ -114,6 +114,7 @@ richardplatzControllers.controller('AppCtrl', function ($scope, $timeout, $mdSid
 richardplatzControllers.controller('homeController', ['$scope', '$userComment', '$window', '$http', '_categories', '_ratings','$timeout', '$compile',
     function ($scope, $userComment, $window, $http, _categories, _ratings, $timeout,$compile) {
         var vm = this;
+        vm.markers = [];
 
         //enable caching for better user performance
         $.ajaxSetup({
@@ -642,14 +643,29 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
 
 
 
-
-
-
-
-
             vm.step1 = true;
             vm.step2 = false;
             vm.step3 = false;
+            vm.setMapOnAll = setMapOnAll;
+            vm.clearMarkers = clearMarkers;
+            vm.showMarkers = showMarkers;
+
+            // Sets the map on all markers in the array.
+            function setMapOnAll(map) {
+                for (var i = 0; i < markers.length; i++) {
+                    markers[i].setMap(map);
+                }
+            }
+
+                // Removes the markers from the map, but keeps them in the array.
+            function clearMarkers() {
+                setMapOnAll(null);
+            }
+
+            // Shows any markers currently in the array.
+            function showMarkers() {
+                setMapOnAll(map);
+            }
 
 
             var polygonCoord = [
