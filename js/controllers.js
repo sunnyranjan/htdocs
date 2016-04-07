@@ -176,14 +176,14 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
         });
 
         vm.items = [
-            { name: "Wohnen", icon: "../img/svg/home.svg", direction: "right", class:"home" },
-            { name: "Nachbarschaft", icon: "../img/svg/neighbour.svg", direction: "right", class:"neighbour" },
-            { name: "Verkehr", icon: "../img/svg/infrastructure.svg", direction: "right", class:"infrastructure" },
-            { name: "Plätze und Grünflächen", icon: "../img/svg/tree.svg", direction: "right", class: "tree" },
-            { name: "Einkaufen", icon: "../img/svg/shopping.svg", direction: "right", class: "shopping" },
-            { name: "Sport und Freizeit", icon: "../img/svg/sport.svg", direction: "right", class:"sport" },
-            { name: "Bildung und Kultur", icon: "../img/svg/education.svg", direction: "right", class: "education" },
-            { name: "Keine Kategory", icon: "", direction: "right", class:"other" }
+            { name: "Wohnen", icon: "../img/svg/home.svg", direction: "right", class:"home", categoryId:7 },
+            { name: "Nachbarschaft", icon: "../img/svg/neighbour.svg", direction: "right", class:"neighbour", categoryId: 4},
+            { name: "Verkehr", icon: "../img/svg/infrastructure.svg", direction: "right", class:"infrastructure", categoryId:8 },
+            { name: "Plätze und Grünflächen", icon: "../img/svg/tree.svg", direction: "right", class: "tree", categoryId: 5 },
+            { name: "Einkaufen", icon: "../img/svg/shopping.svg", direction: "right", class: "shopping" , categoryId:3},
+            { name: "Sport und Freizeit", icon: "../img/svg/sport.svg", direction: "right", class:"sport", categoryId: 6},
+            { name: "Bildung und Kultur", icon: "../img/svg/education.svg", direction: "right", class: "education", categoryId: 2},
+            { name: "Keine Kategory", icon: "", direction: "right", class:"other" , categoryId: 1}
         ];
 
         //for shooping (shoping cart)
@@ -515,7 +515,10 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
                         });
 
 
-                       vm.markers.push(Commentmarker)
+                       vm.markers.push({
+                               marker:Commentmarker,
+                               category:categoryId
+                       });
 
 
                         var commentBoxOptions = {
@@ -530,7 +533,6 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
 
                         //now we attach a click event to marker that will open a infobox window
                         Commentmarker.addListener('click', function (event) {
-                            console.log(this)
 
                             // Here we save all necessary information about comment box attached
                             // to each marker
@@ -654,6 +656,12 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
             vm.clearMarkers = clearMarkers;
             vm.showMarkers = showMarkers;
             vm.toggleVisibility = toggleVisibility;
+            vm.filterCategory = filterCategory;
+            vm.selectedCategories = [];
+            for(var i = 1; i <= 8; i++) {
+                vm.selectedCategories[i] = false;
+            }
+            console.log(vm.selectedCategories)
 
             function toggleVisibility (){
                 if(vm.visibility === "visibility") {
@@ -666,12 +674,39 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
 
             }
 
+            function filterCategory (_categoryId){
+                vm.selectedCategories[_categoryId]  = !vm.selectedCategories[_categoryId];
+            }
 
+            $scope.$watch('vm.selectedCategories', function (n, o) {
+                if(n !== o){
+                    var selectedCat = [];
+                    angular.forEach(n , function(v,k){
+                        if(v){
+                            selectedCat.push(k)
+                        }
+
+                    });
+                    console.log(selectedCat);
+
+                    for (var i = 0; i < vm.markers.length; i++) {
+
+                        if(selectedCat.indexOf(vm.markers[i].category) > -1){
+                            vm.markers[i].marker.setMap(map);
+                        }
+                        else {
+                            vm.markers[i].marker.setMap(null);
+                        }
+
+                    }
+                }
+
+            }, true);
 
             // Sets the map on all markers in the array.
             function setMapOnAll(map) {
-                for (var i = 0; i < vm.markers.length; i++) {
-                    vm.markers[i].setMap(map);
+                for (var i = 0; i < vm.markers.length; i++) {console.log(vm.markers[i])
+                    vm.markers[i].marker.setMap(map);
                 }
             }
 
