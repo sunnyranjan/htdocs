@@ -771,15 +771,29 @@ md-icon {
 
 .pink-icons {
     color: #E3217E !important;
+    stroke: #E3217E;
+    stroke-width:0.4;
 
 }
 .pink-icons:hover {
     color: #8B154E !important;
+    stroke: #8B154E;
+    stroke-width:0.4;
 }
 .no-padding-button {
     padding-left: 0 !important;
     padding-top: 0 !important;
 }
+
+.nav-header {
+    border-radius: 2px ;
+    cursor: pointer;
+}
+.nav-header:hover {
+    background-color: rgba(158, 158, 158, 0.2);
+}
+
+
 
 
 
