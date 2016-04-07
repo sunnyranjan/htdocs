@@ -183,7 +183,7 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
             { name: "Einkaufen", icon: "../img/svg/shopping.svg", direction: "right", class: "shopping" },
             { name: "Sport und Freizeit", icon: "../img/svg/sport.svg", direction: "right", class:"sport" },
             { name: "Bildung und Kultur", icon: "../img/svg/education.svg", direction: "right", class: "education" },
-            { name: "Keine Kategory", icon: "img/icons/hangout.svg", direction: "right", class:"other" }
+            { name: "Keine Kategory", icon: "", direction: "right", class:"other" }
         ];
 
         //for shooping (shoping cart)
@@ -515,6 +515,9 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
                         });
 
 
+                       vm.markers.push(Commentmarker)
+
+
                         var commentBoxOptions = {
                             content: vm.commentNode,
                             alignBottom: true,
@@ -652,12 +655,12 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
 
             // Sets the map on all markers in the array.
             function setMapOnAll(map) {
-                for (var i = 0; i < markers.length; i++) {
-                    markers[i].setMap(map);
+                for (var i = 0; i < vm.markers.length; i++) {
+                    vm.markers[i].setMap(map);
                 }
             }
 
-                // Removes the markers from the map, but keeps them in the array.
+            // Removes the markers from the map, but keeps them in the array.
             function clearMarkers() {
                 setMapOnAll(null);
             }
