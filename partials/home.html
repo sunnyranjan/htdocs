@@ -3,22 +3,21 @@
                         md-direction="down"
                        class="md-scale "  >
         <md-fab-trigger>
-            <md-button
+            <md-button md-whiteframe="24"
                        aria-label="filter layers"
-                       class="md-fab md-primary md-raised">
+                       class=" md-icon-button md-primary md-fab">
                 <md-tooltip md-direction="down" md-visible="tooltipVisible">Filter</md-tooltip>
                 <md-icon class="material-icons md-36">layers</md-icon>
             </md-button>
         </md-fab-trigger>
 
         <md-fab-actions>
-            <div ng-repeat="item in vm.items">
-                <md-button aria-label="{{item.name}}" class="md-fab md-raised md-mini" ng-class="item.class" ng-click="demo.openDialog($event, item)">
+            <div ng-repeat="item in vm.items" >
+                <md-button aria-label="{{item.name}}" class="md-fab md-mini no-padding-button" md-whiteframe="24"  ng-click="demo.openDialog($event, item)" style="background-color: white">
                     <md-tooltip md-direction="{{item.direction}}" md-visible="tooltipVisible" md-autohide="false">
                         {{item.name}}
                     </md-tooltip>
-
-
+                    <md-icon md-svg-src="{{item.icon}}" aria-label="android " class="material-icons md-40 pink-icons" ></md-icon>
                 </md-button>
             </div>
         </md-fab-actions>
@@ -27,16 +26,19 @@
 
 
 
-    <!--<md-button  style="z-index: 99;position:absolute; left:0;margin: 8px 14px !important" class=" md-icon-button md-primary md-fab"  ng-click="toggleRight()" ng-hide="isOpenRight()"
+
+    <md-button  style="z-index: 99;position:absolute; left:75px;margin: 8px 14px !important" md-whiteframe="24" class=" md-icon-button md-primary md-fab"  ng-click="toggleRight()" ng-hide="isOpenRight()"
                 aria-label="Menu Sidebar">
-        <md-icon  class="material-icons md-36">layers</md-icon>
-    </md-button>-->
+        <md-icon  class="material-icons md-36 ">visibility</md-icon>
+    </md-button>
+
+
 
     <div id="map" style="height:100%;width:100%;">
     </div>
     <div style="display:none;">
         <div class="container-fluid">
-            <div id="infoWindowContent" class='infoWindowClass'>
+            <div id="infoWindowContent" class='infoWindowClass' md-whiteframe="24">
                 <div data-ng-show="vm.step1" class="insidePane">
 
                     <div class=" infoWindowHeadline text-center"><h5 class=" ">Klicke auf einen Ort in der Karte, zu dem
@@ -223,7 +225,7 @@
     </div>
     <div style="display:none;">
         <div class="container-fluid">
-            <div id ="infoCommentWindow" class='commentClass'>
+            <div id ="infoCommentWindow" class='commentClass' md-whiteframe="24">
                 <div class="insideCommentPane" >
                     <div class="row" >
                         <div class="col-sm-12 commentFetched">

@@ -1,9 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 15.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg version="1.1" id="Ebene_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 width="32px" height="32px" viewBox="0 0 32 32" enable-background="new 0 0 32 32" xml:space="preserve">
-<path fill="grey" d="M15.969,0.125c-8.785,0-15.906,7.122-15.906,15.906c0,8.783,7.122,15.906,15.906,15.906
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+<path d="M15.969,0.125c-8.785,0-15.906,7.122-15.906,15.906c0,8.783,7.122,15.906,15.906,15.906
 	c8.785,0,15.906-7.123,15.906-15.906C31.875,7.247,24.754,0.125,15.969,0.125z M26.238,10.68c0.787,0,1.426,0.639,1.426,1.424
 	c0,0.786-0.639,1.424-1.426,1.424c-0.786,0-1.424-0.638-1.424-1.424S25.452,10.68,26.238,10.68z M22.001,8.089
 	c1.169,0,2.122,0.952,2.122,2.121c0,1.168-0.953,2.117-2.122,2.117s-2.118-0.948-2.118-2.117C19.883,9.04,20.832,8.089,22.001,8.089
