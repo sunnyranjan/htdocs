@@ -27,9 +27,9 @@
 
 
 
-    <md-button  style="z-index: 99;position:absolute; left:75px;margin: 8px 14px !important" md-whiteframe="24" class=" md-icon-button md-primary md-fab"  ng-click="toggleRight()" ng-hide="isOpenRight()"
+    <md-button  style="z-index: 99;position:absolute; left:75px;margin: 8px 14px !important" md-whiteframe="24" class=" md-icon-button md-primary md-fab"  ng-click="vm.toggleVisibility()"
                 aria-label="Menu Sidebar">
-        <md-icon  class="material-icons md-36 ">visibility</md-icon>
+        <md-icon  class="material-icons md-36 ">{{vm.visibility}}</md-icon>
     </md-button>
 
 
