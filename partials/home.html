@@ -1,8 +1,8 @@
 <div class="container-fluid" style="height:100%">
-    <md-fab-speed-dial ng-cloak style="z-index: 99;position:absolute; left:0;margin: 8px 14px !important"
+    <md-fab-speed-dial style="z-index: 99;position:absolute; left:0;margin: 8px 14px !important"
                         md-direction="down"
-                       class="md-fling md-hover-full"
-                       md-open="vm.isOpen" ng-show="vm.hidden">
+                       class="md-fling "
+                        md-is-open="vm.isOpen">
         <md-fab-trigger>
             <md-button md-whiteframe="24"
                        aria-label="filter layers"
@@ -14,10 +14,11 @@
 
         <md-fab-actions ">
             <div ng-repeat="item in vm.items" >
-                <md-button aria-label="{{item.name}}" class="md-fab md-mini no-padding-button" md-whiteframe="24"  ng-click="vm.filterCategory(item.categoryId, $event)" style="background-color: white">
-                    <md-tooltip md-direction="{{item.direction}}" md-visible="tooltipVisible" md-autohide="false">
-                        {{item.name}}
-                    </md-tooltip>
+                <md-button aria-label="{{item.name}}"
+                           class="md-fab md-mini no-padding-button"
+                           md-whiteframe="24"
+                           ng-click="vm.filterCategory(item.categoryId, $event)"
+                           style="background-color: white">
                     <md-icon md-svg-src="{{item.icon}}" aria-label="{{item.name}}" class="material-icons md-40 pink-icons" ></md-icon>
                 </md-button>
             </div>
