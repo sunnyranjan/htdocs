@@ -774,11 +774,12 @@ md-icon {
     stroke: #E3217E;
     stroke-width:0.4;
 }
-.pink-icons:hover {
+.pink-icons:hover, .pink-icons:focus, .pink-icons:active, .pink-icons:focus:active{
     color: #8B154E !important;
     stroke: #8B154E;
     stroke-width:0.4;
 }
+
 .no-padding-button {
     padding-left: 0 !important;
     padding-top: 0 !important;

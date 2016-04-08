@@ -674,7 +674,8 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
 
             }
 
-            function filterCategory (_categoryId){
+            function filterCategory (_categoryId, $event){console.log($event);
+                $event.preventDefault();
                 vm.isOpen = true;
                 $timeout(function (){vm.isOpen = true;}, 0);
                 vm.selectedCategories[_categoryId]  = !vm.selectedCategories[_categoryId];
