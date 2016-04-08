@@ -793,7 +793,7 @@ md-icon {
     background-color: rgba(158, 158, 158, 0.2);
 }
 md-sidenav {
-    z-index: 100 !important;
+    z-index: 200 !important;
 }
 
 
