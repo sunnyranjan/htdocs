@@ -163,6 +163,10 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
         vm.isOpen = false;
         vm.hover = false;
 
+        $timeout(function (){
+            vm.isOpen = false;
+            vm.hidden = true;},1000);
+
         // On opening, add a delayed property which shows tooltips after the speed dial has opened
         // so that they have the proper position; if closing, immediately hide the tooltips
         $scope.$watch('vm.isOpen', function(isOpen) {console.log(isOpen)
