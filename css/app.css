@@ -795,6 +795,9 @@ md-icon {
 md-sidenav {
     z-index: 200 !important;
 }
+.md-fab.md-focused {
+    color: #000 !important;
+}
 
 
 

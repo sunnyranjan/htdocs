@@ -1,18 +1,18 @@
 <div class="container-fluid" style="height:100%">
-    <md-fab-speed-dial md-trigger="click" style="z-index: 99;position:absolute; left:0;margin: 8px 14px !important"
+    <md-fab-speed-dial ng-cloak style="z-index: 99;position:absolute; left:0;margin: 8px 14px !important"
                         md-direction="down"
-                       class="md-fling"
-                       md-open="vm.isOpen">
+                       class="md-fling md-hover-full"
+                       md-open="vm.isOpen" ng-show="vm.hidden">
         <md-fab-trigger>
             <md-button md-whiteframe="24"
                        aria-label="filter layers"
                        class=" md-icon-button md-primary md-fab">
-                <md-tooltip md-direction="down" md-visible="tooltipVisible" md-trigger="click" md-delay	="200">Filter</md-tooltip>
+
                 <md-icon class="material-icons md-36">layers</md-icon>
             </md-button>
         </md-fab-trigger>
 
-        <md-fab-actions>
+        <md-fab-actions ">
             <div ng-repeat="item in vm.items" >
                 <md-button aria-label="{{item.name}}" class="md-fab md-mini no-padding-button" md-whiteframe="24"  ng-click="vm.filterCategory(item.categoryId, $event)" style="background-color: white">
                     <md-tooltip md-direction="{{item.direction}}" md-visible="tooltipVisible" md-autohide="false">
