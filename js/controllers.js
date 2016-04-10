@@ -160,16 +160,14 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
         vm.successMessage = false;
         vm.errorMessage= false;
         vm.hidden = false;
-        vm.isOpen = false;
+        vm.speedDialOpen = false;
         vm.hover = false;
 
-        $timeout(function (){
-            vm.isOpen = false;
-            vm.hidden = true;},1000);
+
 
         // On opening, add a delayed property which shows tooltips after the speed dial has opened
         // so that they have the proper position; if closing, immediately hide the tooltips
-        $scope.$watch('vm.isOpen', function(isOpen) {console.log(isOpen)
+        /*$scope.$watch('vm.isOpen', function(isOpen) {console.log(isOpen)
             if (isOpen) {
                 $timeout(function() {
                     $scope.tooltipVisible = vm.isOpen;
@@ -177,7 +175,7 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
             } else {
                 $scope.tooltipVisible = vm.isOpen;
             }
-        });
+        });*/
 
         vm.items = [
             { name: "Wohnen", icon: "../img/svg/home.svg", direction: "right", class:"home", categoryId:7 },
@@ -677,12 +675,14 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
                 }
 
             }
-
+            var timeoutCat;
             function filterCategory (_categoryId, $event){console.log($event);
-                $event.preventDefault();
-                vm.isOpen = true;
-                $timeout(function (){vm.isOpen = true;}, 0);
+                vm.speedDialOpen = true;
                 vm.selectedCategories[_categoryId]  = !vm.selectedCategories[_categoryId];
+                if(angular.isDefined(timeoutCat)) {
+                    $timeout.cancel(timeoutCat)
+                }
+               // timeoutCat =$timeout(function (){vm.speedDialOpen = true;},1000);
             }
 
             $scope.$watch('vm.selectedCategories', function (n, o) {
