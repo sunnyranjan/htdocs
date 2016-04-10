@@ -55,7 +55,7 @@
 
     <div ng-controller="AppCtrl" style="height:100%" style="position:relative;" md-theme={{theme}} >
 
-        <md-button  style="z-index: 99;position:absolute; right:0;margin: 8px 14px !important"
+        <md-button  style="position:absolute; right:0;margin: 8px 14px !important"
                     class="md-primary md-fab" md-whiteframe="24"
                     ng-click="toggleRight()"
                     ng-hide="isOpenRight()"
@@ -71,7 +71,10 @@
 
     </div>
 
-    <md-sidenav style="height:100%;overflow:auto !important" class="md-sidenav-right" md-component-id="right" md-whiteframe="24">
+    <md-sidenav style="height:100%;overflow:auto !important"
+                class="md-sidenav-right"
+                md-component-id="right"
+                md-whiteframe="24">
 
         <md-content ng-controller="RightCtrl" layout-padding="">
 

@@ -802,5 +802,21 @@ md-sidenav {
 
 
 
+md-backdrop.md-sidenav-backdrop-custom{
+    background-color: rgba(33,33,33,1.0); !important;
+    opacity: .48;
+    z-index: 100 !important;
+}
+md-backdrop.disabled
+{
+    display:none;
+}
 
 
+md-backdrop._md-sidenav-backdrop {
+z-index: 130;
+}
+
+._md-css-variables{
+    z-index: 120 !important;
+}

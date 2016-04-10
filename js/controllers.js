@@ -663,7 +663,24 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
             for(var i = 1; i <= 8; i++) {
                 vm.selectedCategories[i] = false;
             }
-            console.log(vm.selectedCategories)
+            vm.backdropOpen = false;
+
+            vm.openBackdrop = openBackdrop;
+
+            function openBackdrop(){
+
+                    $scope.backdropOpen = !$scope.backdropOpen;
+                console.log(angular.element('md-backdrop'))
+                    if ($scope.backdropOpen){
+                        if(angular.element('md-backdrop').length > 1)
+                            angular.element('md-backdrop')[0].remove();
+                        angular.element('md-backdrop.md-sidenav-backdrop-custom').removeClass('disabled');
+                    }
+                    else
+                        angular.element('md-backdrop.md-sidenav-backdrop-custom').addClass('disabled');
+
+            };
+
 
             function toggleVisibility (){
                 if(vm.visibility === "visibility") {
@@ -682,7 +699,6 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
                 if(angular.isDefined(timeoutCat)) {
                     $timeout.cancel(timeoutCat)
                 }
-               // timeoutCat =$timeout(function (){vm.speedDialOpen = true;},1000);
             }
 
             $scope.$watch('vm.selectedCategories', function (n, o) {
