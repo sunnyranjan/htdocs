@@ -313,7 +313,6 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
             saveUserComment.sexId = $scope.userSex;
             saveUserComment.contact = $scope.emailUser;
             saveUserComment.headline = $scope.headline;
-            console.log(saveUserComment);
 
             //now we post the comment
             $http.post("http://api.yourkiez.de/comments.json",  JSON.stringify(saveUserComment)).then(successPost, errorPost);
@@ -377,7 +376,6 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
                     var infoboxToMarker = new InfoBox(newCommentBoxOptions);
 
                     savedMarker.addListener('click', function (event) {
-                        console.log(this)
 
                         //infoboxToMarker.setPosition(event.latLng);
                         // open the info window
@@ -439,8 +437,6 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
                     // here we generate the markers
                     angular.forEach(response.data.comments, function (value, key) {
 
-
-                        console.log(response);
                         var commentId,colorId,categoryId,latiudeComment, longitudeComment,iconComment, boxClassColor, userComment;
                         commentId = value.id;
                         latiudeComment = value.latitude;
@@ -560,7 +556,6 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
             }
 
             function errorCallback(response) {
-                console.log(response);
             }
 
 
@@ -579,7 +574,6 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
                 //Now we need to see if the like and unlike buttons are enabled or disabled
                 // per comment
 
-                console.log(commentBoxParams.likesUnlikesEnabled)
                 if(!$scope.arrayofLikes[commentBoxParams.id])
                 $(vm.commentNode).find('.buttonRating').prop('disabled', true)
                 else {
@@ -663,6 +657,7 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
             for(var i = 1; i <= 8; i++) {
                 vm.selectedCategories[i] = false;
             }
+
             vm.backdropOpen = false;
 
             vm.openBackdrop = openBackdrop;
@@ -670,7 +665,6 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
             function openBackdrop(){
 
                     $scope.backdropOpen = !$scope.backdropOpen;
-                console.log(angular.element('md-backdrop'))
                     if ($scope.backdropOpen){
                         if(angular.element('md-backdrop').length > 1)
                             angular.element('md-backdrop')[0].remove();
@@ -683,22 +677,34 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
 
 
             function toggleVisibility (){
+                console.log(vm.selectedCategories)
                 if(vm.visibility === "visibility") {
                     vm.visibility = "visibility_off";
+                    angular.element('.category-buttons').addClass('categorActive');
+
+
+                    angular.forEach(vm.selectedCategories, function (value, k) {
+                        vm.selectedCategories[k] = true;
+                    })
                     clearMarkers();
                 }else if (vm.visibility === "visibility_off") {
                     vm.visibility ="visibility";
+
+                    angular.element('.category-buttons').removeClass('categorActive');
+                    angular.forEach(vm.selectedCategories, function (value, k) {
+                        vm.selectedCategories[k]= false;
+                    })
                     showMarkers();
                 }
 
             }
-            var timeoutCat;
+
+
+
             function filterCategory (_categoryId, $event, id){
 
                 angular.element('#category_'+_categoryId).toggleClass('categorActive');
 
-                console.log($event);
-                console.log(angular.element('#'+id))
                 //keep the speed dial open
                 vm.speedDialOpen = true;
                 vm.selectedCategories[_categoryId]  = !vm.selectedCategories[_categoryId];
@@ -733,7 +739,7 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
 
             // Sets the map on all markers in the array.
             function setMapOnAll(map) {
-                for (var i = 0; i < vm.markers.length; i++) {console.log(vm.markers[i])
+                for (var i = 0; i < vm.markers.length; i++) {
                     vm.markers[i].marker.setMap(map);
                 }
             }
