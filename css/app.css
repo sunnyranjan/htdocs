@@ -777,23 +777,10 @@ md-icon {
     stroke-width:0.4;
 }
 
-.md-button.category-buttons:hover, .md-button.category-buttons:focus, .md-button.category-buttons:active, .md-button.category-buttons:focus:active{
-    fill: #8B154E ;
-    stroke: #8B154E;
-    stroke-width:0.4;
-}
-
-
-
 .pink-icons {
     fill: inherit;
     stroke: inherit;
     stroke-width:inherit;
-}
-.pink-icons:hover, .pink-icons:focus, .pink-icons:active, .pink-icons:focus:active{
-    fill: inherit;
-    stroke: #8B154E;
-    stroke-width:0.4;
 }
 
 .no-padding-button {
