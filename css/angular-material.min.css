@@ -730,7 +730,6 @@ button.md-button::-moz-focus-inner {
     width: 56px;
     height: 56px;
     vertical-align: middle;
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
     border-radius: 50%;
     background-clip: padding-box;
     overflow: hidden;

@@ -693,12 +693,17 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
 
             }
             var timeoutCat;
-            function filterCategory (_categoryId, $event){console.log($event);
+            function filterCategory (_categoryId, $event, id){
+
+                angular.element('#category_'+_categoryId).toggleClass('categorActive');
+
+                console.log($event);
+                console.log(angular.element('#'+id))
+                //keep the speed dial open
                 vm.speedDialOpen = true;
                 vm.selectedCategories[_categoryId]  = !vm.selectedCategories[_categoryId];
-                if(angular.isDefined(timeoutCat)) {
-                    $timeout.cancel(timeoutCat)
-                }
+
+
             }
 
             $scope.$watch('vm.selectedCategories', function (n, o) {

@@ -3,7 +3,7 @@
     <md-backdrop class="md-sidenav-backdrop md-opaque md-default-theme md-sidenav-backdrop-custom disabled"
                  ng-click="vm.openBackdrop()"></md-backdrop>
 
-    <md-fab-speed-dial ng-cloak style=" position:absolute; left:0;margin: 8px 14px !important"
+    <md-fab-speed-dial style=" position:absolute; left:0;margin: 4px 8px !important"
                        md-direction="down"
                        md-trigger="click"
                        class="md-scale _md-css-variables"
@@ -12,18 +12,19 @@
             <md-button md-whiteframe="24"
                        ng-click="vm.openBackdrop()"
                        aria-label="filter layers"
-                       class=" md-icon-button md-primary md-fab">
+                       class="md-primary md-fab">
                 <md-icon class="material-icons md-36">layers</md-icon>
             </md-button>
         </md-fab-trigger>
 
         <md-fab-actions>
-        <div ng-repeat="item in vm.items" >
-            <md-button aria-label="{{item.name}}"
-                       class="md-fab md-mini no-padding-button"
+        <div ng-repeat="item in vm.items track by $index" >
+            <md-button id= {{'category_'+item.categoryId}}  aria-label="{{item.name}}"
+                       class="md-fab md-mini no-padding-button category-buttons"
                        md-whiteframe="24"
-                       ng-click="vm.filterCategory(item.categoryId, $event)"
-                       style="background-color: white;">
+                       ng-click="vm.filterCategory(item.categoryId, $event, item.name)"
+                       style="background-color: white;"
+                       >
                 <md-icon md-svg-src="{{item.icon}}" aria-label="{{item.name}}"
                          class="material-icons md-40 pink-icons"></md-icon>
             </md-button>
@@ -33,7 +34,7 @@
 
 
     <md-button style="position:absolute; left:75px;margin: 8px 14px !important" md-whiteframe="24"
-               class=" md-icon-button md-primary md-fab" ng-click="vm.toggleVisibility()"
+               class=" md-primary md-fab" ng-click="vm.toggleVisibility()"
                aria-label="Menu Sidebar">
         <md-icon class="material-icons md-36">{{vm.visibility}}</md-icon>
     </md-button>
