@@ -675,16 +675,8 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
 
             };
 
-
-            var firstTime = true;
-
-
             function toggleVisibility (){
 
-                if(firstTime){
-
-                }
-                console.log(vm.selectedCategories)
                 if(vm.visibility === "visibility") {
 
                     angular.element('.category-buttons').addClass('categorActive');
