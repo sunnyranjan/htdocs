@@ -111,8 +111,8 @@ richardplatzControllers.controller('AppCtrl', function ($scope, $timeout, $mdSid
     });
 
 
-richardplatzControllers.controller('homeController', ['$scope', '$userComment', '$window', '$http', /*'_categories', '_ratings',*/'$timeout', '$compile',
-    function ($scope, $userComment, $window, $http,/* _categories, _ratings,*/ $timeout,$compile) {
+richardplatzControllers.controller('homeController', ['$scope',  '$window', '$http', /*'_categories', '_ratings',*/'$timeout', '$compile',
+    function ($scope,  $window, $http,/* _categories, _ratings,*/ $timeout,$compile) {
         var vm = this;
         vm.markers = [];
 
@@ -941,8 +941,15 @@ richardplatzControllers.controller('nutzungsbedingungenController', ['$scope', '
     }]);
 
 
-richardplatzControllers.controller('kommentareController', ['$scope', '$routeParams',
-    function ($scope, $routeParams) {
+richardplatzControllers.controller('kommentareController', ['$scope', '$routeParams', '$http',
+    function ($scope, $routeParams, $http) {
+        $http.get('http://api.yourkiez.de/comments.json').then(successCallback, errorCallback);
+        function successCallback(data) {
+
+        }
+        function errorCallback(data) {
+
+        }
 
     }]);
 
