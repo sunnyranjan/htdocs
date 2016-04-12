@@ -67,37 +67,37 @@ richardplatzControllers.controller('AppCtrl', function ($scope, $timeout, $mdSid
         $scope.navigation  = [
             {
                 name:"Karte",
-                url:"#/karte",
+                url:"/karte",
                 icon:"fa-map-marker"
             },
             {
                 name:"Hilfe",
-                url:"#/hilfe",
+                url:"/hilfe",
                 icon: "fa-info"
             },
             {
                 name:"Um was geht es",
-                url:"#/projekt",
+                url:"/projekt",
                 icon: "fa-question"
             },
             {
                 name:"Termine",
-                url:"#/termine",
+                url:"/termine",
                 icon:"fa-calendar"
             },
             {
                 name:"Nutzungsbedingungen",
-                url:"#/nutzungsbedingungen",
+                url:"/nutzungsbedingungen",
                 icon:"fa-user"
             },
             {
                 name:"Kommentare",
-                url:"#/kommentare",
+                url:"/kommentare",
                 icon:"fa-comment"
             },
             {
                 name:"Impressum",
-                url:"#/impressum",
+                url:"/impressum",
                 icon:"fa-paragraph"
             }
         ]

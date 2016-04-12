@@ -11,8 +11,9 @@ var richardplatzApp = angular.module('richardplatzApp', [
     'richardplatzServices'
 ]);
 
-richardplatzApp.config(['$routeProvider', '$mdThemingProvider',
-    function ($routeProvider, $mdThemingProvider) {
+richardplatzApp.config(['$routeProvider', '$mdThemingProvider', '$locationProvider',
+    function ($routeProvider, $mdThemingProvider, $locationProvider) {
+
         var neonRedMap = $mdThemingProvider.extendPalette('pink', {
             '500': 'E3217E'
         });
@@ -27,8 +28,11 @@ richardplatzApp.config(['$routeProvider', '$mdThemingProvider',
             .accentPalette('light-blue')
             .warnPalette('light-blue');
 
-        $routeProvider.
-            when('/karte', {
+        $routeProvider
+            .when('/',{
+                redirectTo: '/karte'
+            })
+            .when('/karte', {
                 templateUrl: 'partials/home.html',
                 controller: 'homeController',
                 controllerAs: 'vm',
@@ -67,18 +71,18 @@ richardplatzApp.config(['$routeProvider', '$mdThemingProvider',
                     }]
 
                 }
-            }).
-            when('/hilfe', {
+            })
+            .when('/hilfe', {
                 templateUrl: 'partials/hilfe.html',
                 controller: 'hilfeController',
                 controllerAs: 'hi'
-            }).
-            when('/projekt', {
+            })
+            .when('/projekt', {
                 templateUrl: 'partials/projekt.html',
                 controller: 'projektController',
                 controllerAs: 'pr'
-            }).
-            when('/termine', {
+            })
+            .when('/termine', {
                 templateUrl: 'partials/termine.html',
                 controller: 'termineController',
                 controllerAs: 'te'
@@ -101,4 +105,9 @@ richardplatzApp.config(['$routeProvider', '$mdThemingProvider',
             otherwise({
                 redirectTo: '/karte'
             });
+
+        $locationProvider.html5Mode({
+            enabled: true,
+            requireBase: false
+        });
     }]);
