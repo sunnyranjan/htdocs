@@ -111,8 +111,8 @@ richardplatzControllers.controller('AppCtrl', function ($scope, $timeout, $mdSid
     });
 
 
-richardplatzControllers.controller('homeController', ['$scope', '$userComment', '$window', '$http', '_categories', '_ratings','$timeout', '$compile',
-    function ($scope, $userComment, $window, $http, _categories, _ratings, $timeout,$compile) {
+richardplatzControllers.controller('homeController', ['$scope', '$userComment', '$window', '$http', /*'_categories', '_ratings',*/'$timeout', '$compile',
+    function ($scope, $userComment, $window, $http,/* _categories, _ratings,*/ $timeout,$compile) {
         var vm = this;
         vm.markers = [];
 
@@ -149,14 +149,14 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
             {label: "Frau", value: 3}
         ];
         $scope.emailUser = "";
-        vm.categoryMapObject = {};
+        /*vm.categoryMapObject = {};
         angular.forEach(_categories.category, function (value, key) {
 
         });
         vm.ratingsMapObject = {};
         angular.forEach(_ratings.ratings, function (value, key) {
 
-        });
+        });*/
         vm.successMessage = false;
         vm.errorMessage= false;
         vm.hidden = false;
@@ -647,7 +647,7 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
             vm.step1 = true;
             vm.step2 = false;
             vm.step3 = false;
-            vm.visibility = "visibility";
+            vm.visibility = "visibility_off";
             vm.setMapOnAll = setMapOnAll;
             vm.clearMarkers = clearMarkers;
             vm.showMarkers = showMarkers;
@@ -676,25 +676,33 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
             };
 
 
+            var firstTime = true;
+
+
             function toggleVisibility (){
+
+                if(firstTime){
+
+                }
                 console.log(vm.selectedCategories)
                 if(vm.visibility === "visibility") {
-                    vm.visibility = "visibility_off";
+
                     angular.element('.category-buttons').addClass('categorActive');
 
 
                     angular.forEach(vm.selectedCategories, function (value, k) {
                         vm.selectedCategories[k] = true;
                     })
-                    clearMarkers();
+                    showMarkers();
+                    vm.visibility = "visibility_off";
                 }else if (vm.visibility === "visibility_off") {
-                    vm.visibility ="visibility";
 
                     angular.element('.category-buttons').removeClass('categorActive');
                     angular.forEach(vm.selectedCategories, function (value, k) {
                         vm.selectedCategories[k]= false;
                     })
-                    showMarkers();
+                    clearMarkers();
+                    vm.visibility ="visibility";
                 }
 
             }
@@ -712,7 +720,7 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
 
             }
 
-            $scope.$watch('vm.selectedCategories', function (n, o) {
+            $scope.$watch('vm.selectedCategories', function (n, o) {console.log(n);
                 if(n !== o){
                     var selectedCat = [];
                     angular.forEach(n , function(v,k){
@@ -721,7 +729,7 @@ richardplatzControllers.controller('homeController', ['$scope', '$userComment', 
                         }
 
                     });
-                    console.log(selectedCat);
+
 
                     for (var i = 0; i < vm.markers.length; i++) {
 

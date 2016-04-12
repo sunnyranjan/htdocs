@@ -51,7 +51,7 @@
     </script>
 
 </head>
-<body ng-cloak >
+<body ng-cloak>
 
 
 <div class="container-fluid" style="height:100%" >
@@ -67,7 +67,7 @@
             <md-icon  class ="material-icons md-raised md-36">menu</md-icon>
         </md-button>
 
-        <div ng-cloak="" ng-view class="view-frame" style="height:100%">
+        <div ng-cloak ng-view class="view-frame" style="height:100%">
 
         </div>
 
@@ -87,7 +87,7 @@
                     <img src="img/svg/logo_richard.svg" alt="" height="250" >
                 </div>
             </header>
-            <ul>
+            <ul class="no-padding">
                 <li data-ng-repeat="nav in navigation" data-ng-class="vm.getClass('{{nav.url}}')">
                     <menu-link section="page"  ng-click="close()">
 
@@ -99,7 +99,6 @@
                             <i data-ng-class="nav.icon" class="fa fa-lg fa-fw text-left"></i>   {{nav.name}}
                         <div class="md-ripple-container"></div></a>
                     </menu-link>
-
                 </li>
             </ul>
 

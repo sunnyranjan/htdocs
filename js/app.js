@@ -35,7 +35,7 @@ richardplatzApp.config(['$routeProvider', '$mdThemingProvider', '$locationProvid
             .when('/karte', {
                 templateUrl: 'partials/home.html',
                 controller: 'homeController',
-                controllerAs: 'vm',
+                controllerAs: 'vm'/*,
                 resolve: {
                     _categories: ['$http', '$q', function ($http, $q) {
                         var delay = $q.defer();
@@ -56,7 +56,6 @@ richardplatzApp.config(['$routeProvider', '$mdThemingProvider', '$locationProvid
                     _ratings: ['$http', '$q', function ($http, $q) {
                         var delay = $q.defer();
                         activate();
-
                         return delay.promise;
                         function activate () {
                             $http.get('http://api.yourkiez.de/ratings.json').then(successCallback, errorCallback);
@@ -70,7 +69,7 @@ richardplatzApp.config(['$routeProvider', '$mdThemingProvider', '$locationProvid
 
                     }]
 
-                }
+                }*/
             })
             .when('/hilfe', {
                 templateUrl: 'partials/hilfe.html',
