@@ -821,3 +821,12 @@ md-backdrop._md-sidenav-backdrop {
 ._md-css-variables{
     z-index: 110 !important;
 }
+
+
+.jumbotron-custom{
+    padding-top :10px !important;
+    padding-bottom: 10px !important;
+    padding: 0px ;
+     margin-bottom: 0px !important;
+    background-color: #789ACB;
+}
