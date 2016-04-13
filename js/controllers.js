@@ -879,7 +879,7 @@ richardplatzControllers.controller('homeController', ['$scope',  '$window', '$ht
                 var myOptions = {
                     content: vm.contentNode,
                     alignBottom: true,
-                    zIndex: 99999,
+                    zIndex: 40,
                     pixelOffset: new google.maps.Size(-300, 0),
                     closeBoxMargin: "0px",
                     infoBoxClearance: new google.maps.Size(0, 80)

@@ -43,7 +43,7 @@
     <div id="map" style="height:100%;width:100%;">
     </div>
     <div style="display:none;">
-        <div class="container-fluid">
+        <div class="container-fluid" style="z-index: 40 !important;" >
             <div id="infoWindowContent" class='infoWindowClass' md-whiteframe="24">
                 <div data-ng-show="vm.step1" class="insidePane">
 
@@ -178,13 +178,13 @@
                                     </md-select>
                                 </md-input-container>
                             </div>
-                            <div class="col-sm-6">
+                            <div class="col-xs-6">
                                 <md-input-container style="width: 100%;">
                                     <label>Email (optional-unsichtbar)</label>
                                     <input ng-model="emailUser" type="email">
                                 </md-input-container>
                             </div>
-                            <div class="col-sm-6 ">
+                            <div class="col-xs-6 ">
                                 <div class="alert alert-info alert-dismissible" role="alert">
                                     Die Email dient auschließlich dazu Kontakt zwischen Dir und uns herzustellen.
                                 </div>
@@ -272,6 +272,4 @@
             </div>
         </div>
     </div>
-
-
 </div>
