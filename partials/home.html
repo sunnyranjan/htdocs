@@ -33,7 +33,7 @@
     </md-fab-speed-dial>
 
 
-    <md-button style="position:absolute; left:75px;margin: 8px 14px !important" md-whiteframe="24"
+    <md-button style="position:absolute; left:75px;margin: 8px 14px !important" md-whiteframe="4"
                class=" md-primary md-fab" ng-click="vm.toggleVisibility()"
                aria-label="Menu Sidebar">
         <md-icon class="material-icons md-36">{{vm.visibility}}</md-icon>
@@ -42,12 +42,13 @@
 
     <div id="map" style="height:100%;width:100%;">
     </div>
-    <div style="display:none;">
-        <div class="container-fluid" style="z-index: 40 !important;" >
-            <div id="infoWindowContent" class='infoWindowClass' md-whiteframe="24">
+    <div style="display:none;" style="z-index: 200 !important;">
+        <div class="container-fluid" style="z-index: 200 !important; " >
+            <div id="infoWindowContent" class='infoWindowClass' md-whiteframe="24" style="z-index: 200 !important; ">
                 <div data-ng-show="vm.step1" class="insidePane">
 
-                    <div class=" infoWindowHeadline text-center"><h5 class=" ">Wähle eine Kategorie zu der du etwas
+                    <div class=" infoWindowHeadline text-center">
+                        <h5 class=" ">Wähle eine Kategorie zu der du etwas
                         sagen möchtest.</h5></div>
 
                     <div class="row">

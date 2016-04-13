@@ -835,3 +835,11 @@ md-backdrop._md-sidenav-backdrop {
 .alert{
     padding : 6px !important;
 }
+
+.page-footer {
+    height: 106px;
+    width: 100%;
+    position: absolute;
+    display: block;
+    bottom: 0px;
+}
