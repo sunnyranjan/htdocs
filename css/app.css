@@ -831,3 +831,7 @@ md-backdrop._md-sidenav-backdrop {
     margin-bottom: 0px !important;
     background-color: #789ACB;
 }
+
+.alert{
+    padding : 6px !important;
+}
