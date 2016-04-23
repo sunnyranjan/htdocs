@@ -3,23 +3,49 @@
 /* Directives */
 var richardPlatzDirectives = angular.module('richardPlatzDirectives', [])
 richardPlatzDirectives
-    .directive('directUpdate', function () {
-        console.log("erewre")
+    .directive('dropzone', function() {
         return {
-            restrict: 'E',
-            priority: 500,
-            scope: {
-                tools: '=directUpdate'
-            },
+            restrict: 'C',
+            link: function(scope, element, attrs) {
 
-            controller: ['$scope', '$element', '$compile', function ($scope, $element, $compile) {
-                var vm = this;
-                console.log("oshfoiwrfwo");
-            }],
-            compile: function (){
-                console.log('äääääää')
+                var config = {
+                    url: 'http://localhost:8080/upload',
+                    
+                    paramName: "uploadfile",
+                    maxThumbnailFilesize: 10,
+                    parallelUploads: 1,
+                    autoProcessQueue: false
+                };
+
+                var eventHandlers = {
+                    'addedfile': function(file) {
+                        scope.file = file;
+                        if (this.files[1]!=null) {
+                            this.removeFile(this.files[0]);
+                        }
+                        scope.$apply(function() {
+                            scope.fileAdded = true;
+                        });
+                    },
+
+                    'success': function (file, response) {
+                    }
+
+                };
+
+                var dropzone = new Dropzone(element[0], config);
+
+                angular.forEach(eventHandlers, function(handler, event) {
+                    dropzone.on(event, handler);
+                });
+
+                scope.processDropzone = function() {
+                    dropzone.processQueue();
+                };
+
+                scope.resetDropzone = function() {
+                    dropzone.removeAllFiles();
+                }
             }
-
-        };
-
-})
+        }
+    });

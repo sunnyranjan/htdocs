@@ -941,15 +941,11 @@ richardplatzControllers.controller('nutzungsbedingungenController', ['$scope', '
     }]);
 
 
-richardplatzControllers.controller('kommentareController', ['$scope', '$routeParams', '$http',
-    function ($scope, $routeParams, $http) {
-        $http.get('http://api.yourkiez.de/comments.json').then(successCallback, errorCallback);
-        function successCallback(data) {
+richardplatzControllers.controller('kommentareController', ['$scope', '$routeParams', '$http','$userComment',
+    function ($scope, $routeParams, $http, $userComment) {console.log($userComment);
+        var user =$userComment.query();
 
-        }
-        function errorCallback(data) {
 
-        }
 
     }]);
 
