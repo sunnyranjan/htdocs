@@ -169,14 +169,22 @@ richardplatzControllers.controller('homeController', ['$scope',  '$window', '$ht
             '<div class="dz-default dz-message"> Ziehe das Foto in dieses Feld<br>' +
             'oder klick hier</div>'+
             '</form>'+
-            '<div class="col-xs-12 text-center" style="margin:5px 0px"><button type="button" class="btn btn-info btn-raised "><i class="fa fa-trash" aria-hidden="true"></i></button></div>';
+            '<div class="col-xs-12 text-center" style="margin:5px 0px"><button type="button" class="btn btn-info btn-raised " ng-click="reset()"><i class="fa fa-trash" aria-hidden="true"></i></button></div>';
         var contentHtml = $compile(html)($scope);
         $('#imageUpload').popover({
             html: true,
             placement: "top",
             content:contentHtml,
             trigger: 'click'
-        })
+        });
+        function uploadFile() {
+            $scope.processDropzone();
+        };
+
+        $scope.reset = function() {
+            $scope.resetDropzone();
+        };
+
 
 
         // On opening, add a delayed property which shows tooltips after the speed dial has opened
@@ -315,8 +323,27 @@ richardplatzControllers.controller('homeController', ['$scope',  '$window', '$ht
 
         };
 
-
         $scope.formSubmit = function () {
+
+            //first of all we will check if the image file is there or not
+            if($scope.file){
+                uploadFile();
+            }
+            else{
+                console.log($scope.file);
+                postComment();
+            }
+
+
+        }
+
+        $scope.postPicture = function (response){
+            var imageId = response.result.imageId;
+            postComment(imageId);
+        }
+
+        function postComment (imageId) {
+
             var saveUserComment = {};
             saveUserComment.latitude = $scope.latitude.toString();
             saveUserComment.longitude = $scope.longitude.toString();
@@ -327,15 +354,17 @@ richardplatzControllers.controller('homeController', ['$scope',  '$window', '$ht
             saveUserComment.sexId = $scope.userSex;
             saveUserComment.contact = $scope.emailUser;
             saveUserComment.headline = $scope.headline;
+            if(imageId){
+                saveUserComment.imageId = imageId;
+            }
 
             //now we post the comment
             $http.post("http://api.yourkiez.de/comments.json",  JSON.stringify(saveUserComment)).then(successPost, errorPost);
 
             function successPost (){
                 vm.successMessage = true;
-
-
                 $timeout(function (){
+
                     //remove infobox
                     vm.infobox.setMap(null);
                     //remove the marker
@@ -399,22 +428,28 @@ richardplatzControllers.controller('homeController', ['$scope',  '$window', '$ht
                     });
                     reinitialize();
 
-                },1000);
+                },1500);
 
 
             }
             function errorPost () {
-                vm.errorMessage = true
-
+                vm.errorMessage = true;
+                reinitialize();
             }
-
-
-
 
         }
 
 
+
+
+
         function reinitialize() {
+
+            //reset the dropzone
+            $scope.reset();
+            //hide the popover
+            $('#imageUpload').popover('hide');
+            // reset all other values
             $scope.latitude = "";
             $scope.longitude = "";
             $scope.category = "none";
@@ -553,6 +588,9 @@ richardplatzControllers.controller('homeController', ['$scope',  '$window', '$ht
                                 id : commentId,
                                 commentText: userComment,
                                 borderColor: iconComment.fillColor,
+                                category: "",
+                                headline: value.headline,
+                                imageId: value.imageId,
                                 marker: Commentmarker,
                                 likes: value.liked,
                                 unlikes: value.disliked
@@ -581,6 +619,9 @@ richardplatzControllers.controller('homeController', ['$scope',  '$window', '$ht
                 $scope.currentUserComment = commentBoxParams.commentText;
                 $scope.currentUserLikes = commentBoxParams.likes;
                 $scope.currentUserUnlikes = commentBoxParams.unlikes;
+                $scope.currentHeadline = commentBoxParams.headline;
+                $scope.currentCategory =commentBoxParams.category;
+
                 vm.commentInfobox = new InfoBox(commentBoxParams.options);
 
                 //change the color of the box according to the rating

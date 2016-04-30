@@ -6,6 +6,7 @@ richardPlatzDirectives
     .directive('dropzone', function() {
         return {
             restrict: 'A',
+
             link: function(scope, element, attrs) {
 
                 var config = {
@@ -29,6 +30,9 @@ richardPlatzDirectives
                     },
 
                     'success': function (file, response) {
+                        console.log(response);
+                        scope.postPicture(response);
+
                     }
 
                 };
@@ -45,6 +49,8 @@ richardPlatzDirectives
 
                 scope.resetDropzone = function() {
                     dropzone.removeAllFiles();
+                    scope.fileAdded = false;
+                    scope.file = undefined;
                 }
             }
         }
