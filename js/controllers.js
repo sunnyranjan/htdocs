@@ -164,6 +164,20 @@ richardplatzControllers.controller('homeController', ['$scope',  '$window', '$ht
         vm.hover = false;
 
 
+        var html =
+            '<form action="" class="dropzone" dropzone="" id="dropzone">' +
+            '<div class="dz-default dz-message"> Ziehe das Foto in dieses Feld<br>' +
+            'oder klick hier</div>'+
+            '</form>'+
+            '<div class="col-xs-12 text-center" style="margin:5px 0px"><button type="button" class="btn btn-info btn-raised "><i class="fa fa-trash" aria-hidden="true"></i></button></div>';
+        var contentHtml = $compile(html)($scope);
+        $('#imageUpload').popover({
+            html: true,
+            placement: "top",
+            content:contentHtml,
+            trigger: 'click'
+        })
+
 
         // On opening, add a delayed property which shows tooltips after the speed dial has opened
         // so that they have the proper position; if closing, immediately hide the tooltips

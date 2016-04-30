@@ -5,12 +5,12 @@ var richardPlatzDirectives = angular.module('richardPlatzDirectives', [])
 richardPlatzDirectives
     .directive('dropzone', function() {
         return {
-            restrict: 'C',
+            restrict: 'A',
             link: function(scope, element, attrs) {
 
                 var config = {
-                    url: 'http://localhost:8080/upload',
-                    
+                    url: 'http://api.yourkiez.de/images/add',
+                    maxFilesize: 100,
                     paramName: "uploadfile",
                     maxThumbnailFilesize: 10,
                     parallelUploads: 1,
