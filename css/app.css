@@ -280,21 +280,21 @@ body {
 }
 .btn-info,
 .dropdown-toggle.btn-info {
-    background-color: #03a9f4;
+    background-color: #789ACB;
 }
 .btn-info:hover,
 .dropdown-toggle.btn-info:hover {
-    background-color: #03a9f4;
+    background-color: #789ACB;
 }
 .btn-info:active,
 .dropdown-toggle.btn-info:active,
 .btn-info.active,
 .dropdown-toggle.btn-info.active {
-    background-color: #03a9f4;
+    background-color: #789ACB;
 }
 .btn-info:focus,
 .dropdown-toggle.btn-info:focus {
-    background-color: #0288d1;
+    background-color: #485c79;
 }
 .btn-info:disabled,
 .dropdown-toggle.btn-info:disabled,
@@ -309,16 +309,16 @@ body {
     background-color: #0277bd;
 }
 .btn-flat.btn-info {
-    color: #03a9f4;
+    color: #789ACB;
     background-color: transparent;
 }
 .btn-flat.btn-info:hover {
-    color: #03a9f4;
+    color: #789ACB;
     background-color: #e5e5e5;
 }
 .btn-flat.btn-info:active,
 .btn-flat.btn-info.active {
-    color: #0288d1;
+    color: #485c79;
     background-color: #cccccc;
 }
 .btn-flat.btn-info:focus {
@@ -615,7 +615,7 @@ body {
     max-height: 400px;
     overflow: auto;
     background-color: transparent;
-    border-radius: 2px;
+    border-radius: 20px;
     margin:0px !important;
     padding:0px !important;
 }
@@ -657,18 +657,19 @@ body {
 
 #infoWindowContent {
     background-color: transparent;
-    border: 1px solid #03a9f4;
-    border-radius: 2px;
+    border: 1px solid #789ACB;
+    border-radius: 20px;
     margin:0px !important;
     overflow-y: hidden !important;
     overflow-x: hidden !important;
+    padding:0px;
 
 }
 
 .insidePane {
     background-color:#ffffff !important;
     margin: 0 !important;
-    border-radius: 2px;
+    border-radius: 19px;
     height:100% !important;
     padding-bottom : 10px !important;
 }
@@ -677,7 +678,7 @@ body {
 .insideCommentPane{
     background-color:#ffffff !important;
     margin: 0 !important;
-    border-radius: 2px;
+    border-radius: 20px;
     height:100% !important;
     padding-bottom : 10px !important;
 }
@@ -685,17 +686,18 @@ body {
 
 /*close button styling*/
 .infoBox > img {
-    border: 3px solid #03a9f4 !important;
+    border: 3px solid #789ACB !important;
     border-radius: 50%;
     height:22px !important;
     width : 22px !important;
 }
 
 .infoWindowHeadline {
-    background-color: #03a9f4;
+    background-color: #789ACB;
     width: 100%;
     padding: 10px 3px;
-    border-radius: 2px;
+    border-radius: 0px;
+    border: 1px #789ACB solid;
 
 }
 
@@ -793,6 +795,15 @@ md-icon {
     fill: inherit;
     stroke: inherit;
     stroke-width:inherit;
+}
+
+.grey-icons {
+    fill: #999;
+    stroke: #999;
+    stroke-width:0;
+    height: 24px !important;
+    width: 24px !important;
+    margin:2px;
 }
 
 .no-padding-button {

@@ -245,7 +245,13 @@
             <div id="infoCommentWindow" class='commentClass' md-whiteframe="24">
                 <div class="insideCommentPane">
                     <div class="row" >
-                        <div class="col-sm-12" style="padding:10px 10px 0px 10px !important;" >
+                        <div class="col-sm-12" style="padding:10px 10px 0px 10px !important;">
+                            <div class="col-sm-12">
+                                <span class="badge" style="margin:2px 0px;font-size:16px !important;font-weight:normal !important; padding: 4px 10px !important;">{{currentCategory}}</span>
+                                <md-icon md-svg-src="{{categoryIcon}}"
+                                         aria-label="{{}}"
+                                         class="material-icons grey-icons"></md-icon>
+                            </div>
                             <div class="col-sm-12" style="font-size:15px;color:#789ACB">
                                 {{currentHeadline}}
                             </div>

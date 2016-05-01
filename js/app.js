@@ -17,16 +17,20 @@ richardplatzApp.config(['$routeProvider', '$mdThemingProvider', '$locationProvid
         var neonRedMap = $mdThemingProvider.extendPalette('pink', {
             '500': 'E3217E'
         });
+
+        var richardplatzblue = $mdThemingProvider.extendPalette('light-blue', {
+            '500': '789ACB'
+        });
         // Register the new color palette map with the name <code>neonRed</code>
         $mdThemingProvider.definePalette('neonRed', neonRedMap);
+        $mdThemingProvider.definePalette('richardplatzblue', richardplatzblue);
         // Use that theme for the primary intentions
         $mdThemingProvider.theme('default')
             .primaryPalette('neonRed')
 
         $mdThemingProvider.theme('lime')
-            .primaryPalette('light-blue')
-            .accentPalette('light-blue')
-            .warnPalette('light-blue');
+            .primaryPalette('richardplatzblue');
+
 
         $routeProvider
             .when('/',{

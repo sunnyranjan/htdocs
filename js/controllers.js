@@ -1,7 +1,7 @@
 'use strict';
 /* Controllers */
 var richardplatzControllers = angular.module('richardplatzControllers', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache',]);
-richardplatzControllers.controller('modalController', function($scope) {
+richardplatzControllers.controller('modalController', function ($scope) {
     $scope.closeSpeechBubble = function () {
         $('#info-bubble').modal('hide');
     }
@@ -64,41 +64,41 @@ richardplatzControllers.controller('AppCtrl', function ($scope, $timeout, $mdSid
     })
     .controller('RightCtrl', function ($scope, $timeout, $mdSidenav, $log) {
 
-        $scope.navigation  = [
+        $scope.navigation = [
             {
-                name:"Karte",
-                url:"/karte",
-                icon:"fa-map-marker"
+                name: "Karte",
+                url: "/karte",
+                icon: "fa-map-marker"
             },
             {
-                name:"Hilfe",
-                url:"/hilfe",
+                name: "Hilfe",
+                url: "/hilfe",
                 icon: "fa-info"
             },
             {
-                name:"Um was geht es",
-                url:"/projekt",
+                name: "Um was geht es",
+                url: "/projekt",
                 icon: "fa-question"
             },
             {
-                name:"Termine",
-                url:"/termine",
-                icon:"fa-calendar"
+                name: "Termine",
+                url: "/termine",
+                icon: "fa-calendar"
             },
             {
-                name:"Nutzungsbedingungen",
-                url:"/nutzungsbedingungen",
-                icon:"fa-user"
+                name: "Nutzungsbedingungen",
+                url: "/nutzungsbedingungen",
+                icon: "fa-user"
             },
             {
-                name:"Kommentare",
-                url:"/kommentare",
-                icon:"fa-comment"
+                name: "Kommentare",
+                url: "/kommentare",
+                icon: "fa-comment"
             },
             {
-                name:"Impressum",
-                url:"/impressum",
-                icon:"fa-paragraph"
+                name: "Impressum",
+                url: "/impressum",
+                icon: "fa-paragraph"
             }
         ]
 
@@ -111,8 +111,8 @@ richardplatzControllers.controller('AppCtrl', function ($scope, $timeout, $mdSid
     });
 
 
-richardplatzControllers.controller('homeController', ['$scope',  '$window', '$http', /*'_categories', '_ratings',*/'$timeout', '$compile',
-    function ($scope,  $window, $http,/* _categories, _ratings,*/ $timeout,$compile) {
+richardplatzControllers.controller('homeController', ['$scope', '$window', '$http', /*'_categories', '_ratings',*/'$timeout', '$compile',
+    function ($scope, $window, $http, /* _categories, _ratings,*/ $timeout, $compile) {
         var vm = this;
         vm.markers = [];
 
@@ -150,15 +150,15 @@ richardplatzControllers.controller('homeController', ['$scope',  '$window', '$ht
         ];
         $scope.emailUser = "";
         /*vm.categoryMapObject = {};
-        angular.forEach(_categories.category, function (value, key) {
+         angular.forEach(_categories.category, function (value, key) {
 
-        });
-        vm.ratingsMapObject = {};
-        angular.forEach(_ratings.ratings, function (value, key) {
+         });
+         vm.ratingsMapObject = {};
+         angular.forEach(_ratings.ratings, function (value, key) {
 
-        });*/
+         });*/
         vm.successMessage = false;
-        vm.errorMessage= false;
+        vm.errorMessage = false;
         vm.hidden = false;
         vm.speedDialOpen = false;
         vm.hover = false;
@@ -167,47 +167,93 @@ richardplatzControllers.controller('homeController', ['$scope',  '$window', '$ht
         var html =
             '<form action="" class="dropzone" dropzone="" id="dropzone">' +
             '<div class="dz-default dz-message"> Ziehe das Foto in dieses Feld<br>' +
-            'oder klick hier</div>'+
-            '</form>'+
+            'oder klick hier</div>' +
+            '</form>' +
             '<div class="col-xs-12 text-center" style="margin:5px 0px"><button type="button" class="btn btn-info btn-raised " ng-click="reset()"><i class="fa fa-trash" aria-hidden="true"></i></button></div>';
         var contentHtml = $compile(html)($scope);
         $('#imageUpload').popover({
             html: true,
             placement: "top",
-            content:contentHtml,
+            content: contentHtml,
             trigger: 'click'
         });
         function uploadFile() {
             $scope.processDropzone();
         };
 
-        $scope.reset = function() {
+        $scope.reset = function () {
             $scope.resetDropzone();
         };
-
 
 
         // On opening, add a delayed property which shows tooltips after the speed dial has opened
         // so that they have the proper position; if closing, immediately hide the tooltips
         /*$scope.$watch('vm.isOpen', function(isOpen) {console.log(isOpen)
-            if (isOpen) {
-                $timeout(function() {
-                    $scope.tooltipVisible = vm.isOpen;
-                }, 600);
-            } else {
-                $scope.tooltipVisible = vm.isOpen;
-            }
-        });*/
+         if (isOpen) {
+         $timeout(function() {
+         $scope.tooltipVisible = vm.isOpen;
+         }, 600);
+         } else {
+         $scope.tooltipVisible = vm.isOpen;
+         }
+         });*/
 
         vm.items = [
-            { name: "Wohnen", icon: "../img/svg/home.svg", direction: "right", class:"home", categoryId:7 },
-            { name: "Nachbarschaft", icon: "../img/svg/neighbour.svg", direction: "right", class:"neighbour", categoryId: 4},
-            { name: "Verkehr", icon: "../img/svg/infrastructure.svg", direction: "right", class:"infrastructure", categoryId:8 },
-            { name: "Plätze und Grünflächen", icon: "../img/svg/tree.svg", direction: "right", class: "tree", categoryId: 5 },
-            { name: "Einkaufen", icon: "../img/svg/shopping.svg", direction: "right", class: "shopping" , categoryId:3},
-            { name: "Sport und Freizeit", icon: "../img/svg/sport.svg", direction: "right", class:"sport", categoryId: 6},
-            { name: "Bildung und Kultur", icon: "../img/svg/education.svg", direction: "right", class: "education", categoryId: 2},
-            { name: "Keine Kategory", icon: "", direction: "right", class:"other" , categoryId: 1}
+            {
+                name: "Wohnen",
+                icon: "../img/svg/home.svg",
+                direction: "right",
+                class: "home",
+                categoryId: 7
+            },
+            {
+                name: "Nachbarschaft",
+                icon: "../img/svg/neighbour.svg",
+                direction: "right",
+                class: "neighbour",
+                categoryId: 4
+            },
+            {
+                name: "Verkehr",
+                icon: "../img/svg/infrastructure.svg",
+                direction: "right",
+                class: "infrastructure",
+                categoryId: 8
+            },
+            {
+                name: "Plätze und Grünflächen",
+                icon: "../img/svg/tree.svg",
+                direction: "right",
+                class: "tree",
+                categoryId: 5
+            },
+            {
+                name: "Einkaufen",
+                icon: "../img/svg/shopping.svg",
+                direction: "right",
+                class: "shopping",
+                categoryId: 3},
+            {
+                name: "Sport und Freizeit",
+                icon: "../img/svg/sport.svg",
+                direction: "right",
+                class: "sport",
+                categoryId: 6
+            },
+            {
+                name: "Bildung und Kultur",
+                icon: "../img/svg/education.svg",
+                direction: "right",
+                class: "education",
+                categoryId: 2
+            },
+            {
+                name: "Keine Kategory",
+                icon: "",
+                direction: "right",
+                class: "other",
+                categoryId: 1
+            }
         ];
 
         //for shooping (shoping cart)
@@ -309,8 +355,8 @@ richardplatzControllers.controller('homeController', ['$scope',  '$window', '$ht
         $scope.colorChange = function (color, rating) {
             //change the color of the icon
             if (angular.isDefined(marker)) {
-                var markerIcon =marker.getIcon();
-                markerIcon.fillColor =  color;
+                var markerIcon = marker.getIcon();
+                markerIcon.fillColor = color;
                 marker.setIcon(markerIcon);
 
             }
@@ -326,10 +372,10 @@ richardplatzControllers.controller('homeController', ['$scope',  '$window', '$ht
         $scope.formSubmit = function () {
 
             //first of all we will check if the image file is there or not
-            if($scope.file){
+            if ($scope.file) {
                 uploadFile();
             }
-            else{
+            else {
                 console.log($scope.file);
                 postComment();
             }
@@ -337,12 +383,12 @@ richardplatzControllers.controller('homeController', ['$scope',  '$window', '$ht
 
         }
 
-        $scope.postPicture = function (response){
+        $scope.postPicture = function (response) {
             var imageId = response.result.imageId;
             postComment(imageId);
         }
 
-        function postComment (imageId) {
+        function postComment(imageId) {
 
             var saveUserComment = {};
             saveUserComment.latitude = $scope.latitude.toString();
@@ -354,16 +400,16 @@ richardplatzControllers.controller('homeController', ['$scope',  '$window', '$ht
             saveUserComment.sexId = $scope.userSex;
             saveUserComment.contact = $scope.emailUser;
             saveUserComment.headline = $scope.headline;
-            if(imageId){
+            if (imageId) {
                 saveUserComment.imageId = imageId;
             }
 
             //now we post the comment
-            $http.post("http://api.yourkiez.de/comments.json",  JSON.stringify(saveUserComment)).then(successPost, errorPost);
+            $http.post("http://api.yourkiez.de/comments.json", JSON.stringify(saveUserComment)).then(successPost, errorPost);
 
-            function successPost (){
+            function successPost() {
                 vm.successMessage = true;
-                $timeout(function (){
+                $timeout(function () {
 
                     //remove infobox
                     vm.infobox.setMap(null);
@@ -372,7 +418,7 @@ richardplatzControllers.controller('homeController', ['$scope',  '$window', '$ht
 
                     var content = '<div class="container-fluid" >' +
                         '<div class="col-sm-12" style="border: 1px solid' + $scope.color +
-                        ' !important; background-color:white !important; max-height:200px !important; width:200px !important ; padding: 10px'+' "> ' +
+                        ' !important; background-color:white !important; max-height:200px !important; width:200px !important ; padding: 10px' + ' "> ' +
                         '<p class="text-center">' + saveUserComment.description + '</p></div></div>'
 
                     var latlng = new google.maps.LatLng($scope.latitude, $scope.longitude);
@@ -388,7 +434,7 @@ richardplatzControllers.controller('homeController', ['$scope',  '$window', '$ht
                     });
                     var newCommentColor;
 
-                    switch($scope.rating) {
+                    switch ($scope.rating) {
                         case 1:
                             newCommentColor = "veryBad";
                             break;
@@ -428,19 +474,17 @@ richardplatzControllers.controller('homeController', ['$scope',  '$window', '$ht
                     });
                     reinitialize();
 
-                },1500);
+                }, 1500);
 
 
             }
-            function errorPost () {
+
+            function errorPost() {
                 vm.errorMessage = true;
                 reinitialize();
             }
 
         }
-
-
-
 
 
         function reinitialize() {
@@ -462,7 +506,7 @@ richardplatzControllers.controller('homeController', ['$scope',  '$window', '$ht
             $scope.userSex = "";
             $scope.emailUser = "";
             vm.successMessage = false;
-            vm.errorMessage= false;
+            vm.errorMessage = false;
         }
 
 
@@ -486,44 +530,56 @@ richardplatzControllers.controller('homeController', ['$scope',  '$window', '$ht
                     // here we generate the markers
                     angular.forEach(response.data.comments, function (value, key) {
 
-                        var commentId,colorId,categoryId,latiudeComment, longitudeComment,iconComment, boxClassColor, userComment;
+                        var commentId, colorId, categoryId, latiudeComment, longitudeComment, iconComment, boxClassColor, userComment, categoryName;
                         commentId = value.id;
                         latiudeComment = value.latitude;
                         longitudeComment = value.longitude;
                         colorId = value.ratingId;
                         categoryId = value.categoryId;
                         userComment = value.description;
-                        
+
                         //first place markers on all moderated comments
                         switch (categoryId) {
                             case 1:
-                                 iconComment = angular.copy(vm.icon.none);
+                                iconComment = angular.copy(vm.icon.none);
+                                categoryName = "Keine Kategory";
                                 break;
                             case 2:
-                                 iconComment = angular.copy(vm.icon.education);
+                                iconComment = angular.copy(vm.icon.education);
+                                categoryName = "Bildung und Kultur";
                                 break;
                             case 3:
-                                 iconComment = angular.copy(vm.icon.shop);
+                                iconComment = angular.copy(vm.icon.shop);
+                                categoryName = "Einkaufen";
+
                                 break;
                             case 4:
-                                 iconComment = angular.copy(vm.icon.neighbour);
+                                iconComment = angular.copy(vm.icon.neighbour);
+                                categoryName = "Nachbarschaft";
+
                                 break;
                             case 5:
-                                 iconComment = angular.copy(vm.icon.tree);
+                                iconComment = angular.copy(vm.icon.tree);
+                                categoryName = "Plätze und Grünflächen	";
+
                                 break;
                             case 6:
-                                 iconComment = angular.copy(vm.icon.sport);
+                                iconComment = angular.copy(vm.icon.sport);
+                                categoryName = "Sport und Freizeit";
+
                                 break;
                             case 7:
-                                 iconComment = angular.copy(vm.icon.home);
+                                iconComment = angular.copy(vm.icon.home);
+                                categoryName = "Wohnen";
                                 break;
                             case 8:
-                                 iconComment = angular.copy(vm.icon.infrastructure);
+                                iconComment = angular.copy(vm.icon.infrastructure);
+                                categoryName = "Verkehr";
                                 break;
                         }
 
 
-                        switch(colorId) {
+                        switch (colorId) {
                             case 1:
                                 iconComment.fillColor = "#CD333F";
                                 boxClassColor = "veryBad";
@@ -556,16 +612,16 @@ richardplatzControllers.controller('homeController', ['$scope',  '$window', '$ht
                         //Now place the marker at the corresponding location
                         var Commentmarker = new google.maps.Marker({
                             icon: iconComment,
-                            position: new google.maps.LatLng(latiudeComment,longitudeComment),
+                            position: new google.maps.LatLng(latiudeComment, longitudeComment),
                             map: map,
                             animation: google.maps.Animation.DROP
                         });
 
 
-                       vm.markers.push({
-                               marker:Commentmarker,
-                               category:categoryId
-                       });
+                        vm.markers.push({
+                            marker: Commentmarker,
+                            category: categoryId
+                        });
 
 
                         var commentBoxOptions = {
@@ -573,7 +629,7 @@ richardplatzControllers.controller('homeController', ['$scope',  '$window', '$ht
                             alignBottom: true,
                             pixelOffset: new google.maps.Size(-150, -18),
                             closeBoxMargin: "0px",
-                            boxClass:boxClassColor
+                            boxClass: boxClassColor
                         };
 
                         $scope.arrayofLikes[commentId] = true;
@@ -584,11 +640,12 @@ richardplatzControllers.controller('homeController', ['$scope',  '$window', '$ht
                             // Here we save all necessary information about comment box attached
                             // to each marker
                             var commentBoxParams = {
-                                options : commentBoxOptions,
-                                id : commentId,
+                                options: commentBoxOptions,
+                                id: commentId,
                                 commentText: userComment,
                                 borderColor: iconComment.fillColor,
-                                category: "",
+                                categoryLabel: categoryName,
+                                categoryId: value.categoryId,
                                 headline: value.headline,
                                 imageId: value.imageId,
                                 marker: Commentmarker,
@@ -596,7 +653,7 @@ richardplatzControllers.controller('homeController', ['$scope',  '$window', '$ht
                                 unlikes: value.disliked
                             };
 
-                            if(vm.commentInfobox)
+                            if (vm.commentInfobox)
                                 vm.commentInfobox.setMap(null);
 
                             generateCommentBox(commentBoxParams);
@@ -611,7 +668,7 @@ richardplatzControllers.controller('homeController', ['$scope',  '$window', '$ht
             }
 
 
-            function generateCommentBox(commentBoxParams){
+            function generateCommentBox(commentBoxParams) {
 
                 //first of all set the current id for updating
                 //like and dislike
@@ -620,7 +677,16 @@ richardplatzControllers.controller('homeController', ['$scope',  '$window', '$ht
                 $scope.currentUserLikes = commentBoxParams.likes;
                 $scope.currentUserUnlikes = commentBoxParams.unlikes;
                 $scope.currentHeadline = commentBoxParams.headline;
-                $scope.currentCategory =commentBoxParams.category;
+                $scope.currentCategory = commentBoxParams.categoryLabel;
+                for(var i = 1; i <= vm.items.length; i++ ){
+                    if(vm.items[i].categoryId == commentBoxParams.categoryId){
+                        $scope.categoryObj = vm.items[i];
+                        console.log($scope.categoryObj)
+                        $scope.categoryIcon = $scope.categoryObj.icon;
+                        break;
+                    }
+                }
+
 
                 vm.commentInfobox = new InfoBox(commentBoxParams.options);
 
@@ -629,8 +695,8 @@ richardplatzControllers.controller('homeController', ['$scope',  '$window', '$ht
                 //Now we need to see if the like and unlike buttons are enabled or disabled
                 // per comment
 
-                if(!$scope.arrayofLikes[commentBoxParams.id])
-                $(vm.commentNode).find('.buttonRating').prop('disabled', true)
+                if (!$scope.arrayofLikes[commentBoxParams.id])
+                    $(vm.commentNode).find('.buttonRating').prop('disabled', true)
                 else {
                     $(vm.commentNode).find('.buttonRating').prop('disabled', false)
                 }
@@ -643,40 +709,43 @@ richardplatzControllers.controller('homeController', ['$scope',  '$window', '$ht
                 $scope.$apply();
 
 
-                $scope.updateLike = function (){
+                $scope.updateLike = function () {
                     //like
-                    $http.post('http://api.yourkiez.de/comments/like/' +$scope.currentCommentId +'.json').then(successLike, errorLike);
-                    function successLike (response){
+                    $http.post('http://api.yourkiez.de/comments/like/' + $scope.currentCommentId + '.json').then(successLike, errorLike);
+                    function successLike(response) {
                         $scope.arrayofLikes[$scope.currentCommentId] = false;
                         $(vm.commentNode).find('.buttonRating').prop('disabled', true);
 
                     }
-                    function errorLike (){}
+
+                    function errorLike() {
+                    }
 
                 }
                 $scope.updateUnlike = function () {
                     //unlike
-                    $http.post('http://api.yourkiez.de/comments/dislike/' +$scope.currentCommentId +'.json').then(successUnlike, errorUnlike);
+                    $http.post('http://api.yourkiez.de/comments/dislike/' + $scope.currentCommentId + '.json').then(successUnlike, errorUnlike);
 
-                    function successUnlike (response){
+                    function successUnlike(response) {
                         $scope.arrayofLikes[$scope.currentCommentId] = false;
                         $(vm.commentNode).find('.buttonRating').prop('disabled', true);
 
                     }
-                    function errorUnlike (){}
+
+                    function errorUnlike() {
+                    }
                 }
             }
 
 
-
             var windowWidth = $(window).width();
-            if(windowWidth <= 550){
+            if (windowWidth <= 550) {
                 //first and foremost initialize the map
                 map = new google.maps.Map(document.getElementById('map'), {
                     center: {lat: 52.472489, lng: 13.448529},
                     zoom: 15,
                     minZoom: 15,
-                    zoomControl:false,
+                    zoomControl: false,
                     mapTypeControl: false,
                     //styles: [{ featureType: "poi", elementType: "labels", stylers: [{ visibility: "off" }]}],
                     streetViewControl: false
@@ -689,14 +758,13 @@ richardplatzControllers.controller('homeController', ['$scope',  '$window', '$ht
                     center: {lat: 52.472489, lng: 13.448529},
                     zoom: 16,
                     minZoom: 16,
-                    zoomControl:false,
+                    zoomControl: false,
                     mapTypeControl: false,
                     //styles: [{ featureType: "poi", elementType: "labels", stylers: [{ visibility: "off" }]}],
                     streetViewControl: false
 
                 });
             }
-
 
 
             vm.step1 = true;
@@ -709,7 +777,7 @@ richardplatzControllers.controller('homeController', ['$scope',  '$window', '$ht
             vm.toggleVisibility = toggleVisibility;
             vm.filterCategory = filterCategory;
             vm.selectedCategories = [];
-            for(var i = 1; i <= 8; i++) {
+            for (var i = 1; i <= 8; i++) {
                 vm.selectedCategories[i] = false;
             }
 
@@ -717,22 +785,22 @@ richardplatzControllers.controller('homeController', ['$scope',  '$window', '$ht
 
             vm.openBackdrop = openBackdrop;
 
-            function openBackdrop(){
+            function openBackdrop() {
 
-                    $scope.backdropOpen = !$scope.backdropOpen;
-                    if ($scope.backdropOpen){
-                        if(angular.element('md-backdrop').length > 1)
-                            angular.element('md-backdrop')[0].remove();
-                        angular.element('md-backdrop.md-sidenav-backdrop-custom').removeClass('disabled');
-                    }
-                    else
-                        angular.element('md-backdrop.md-sidenav-backdrop-custom').addClass('disabled');
+                $scope.backdropOpen = !$scope.backdropOpen;
+                if ($scope.backdropOpen) {
+                    if (angular.element('md-backdrop').length > 1)
+                        angular.element('md-backdrop')[0].remove();
+                    angular.element('md-backdrop.md-sidenav-backdrop-custom').removeClass('disabled');
+                }
+                else
+                    angular.element('md-backdrop.md-sidenav-backdrop-custom').addClass('disabled');
 
             };
 
-            function toggleVisibility (){
+            function toggleVisibility() {
 
-                if(vm.visibility === "visibility") {
+                if (vm.visibility === "visibility") {
 
                     angular.element('.category-buttons').addClass('categorActive');
 
@@ -742,36 +810,36 @@ richardplatzControllers.controller('homeController', ['$scope',  '$window', '$ht
                     })
                     showMarkers();
                     vm.visibility = "visibility_off";
-                }else if (vm.visibility === "visibility_off") {
+                } else if (vm.visibility === "visibility_off") {
 
                     angular.element('.category-buttons').removeClass('categorActive');
                     angular.forEach(vm.selectedCategories, function (value, k) {
-                        vm.selectedCategories[k]= false;
+                        vm.selectedCategories[k] = false;
                     })
                     clearMarkers();
-                    vm.visibility ="visibility";
+                    vm.visibility = "visibility";
                 }
 
             }
 
 
+            function filterCategory(_categoryId, $event, id) {
 
-            function filterCategory (_categoryId, $event, id){
-
-                angular.element('#category_'+_categoryId).toggleClass('categorActive');
+                angular.element('#category_' + _categoryId).toggleClass('categorActive');
 
                 //keep the speed dial open
                 vm.speedDialOpen = true;
-                vm.selectedCategories[_categoryId]  = !vm.selectedCategories[_categoryId];
+                vm.selectedCategories[_categoryId] = !vm.selectedCategories[_categoryId];
 
 
             }
 
-            $scope.$watch('vm.selectedCategories', function (n, o) {console.log(n);
-                if(n !== o){
+            $scope.$watch('vm.selectedCategories', function (n, o) {
+                console.log(n);
+                if (n !== o) {
                     var selectedCat = [];
-                    angular.forEach(n , function(v,k){
-                        if(v){
+                    angular.forEach(n, function (v, k) {
+                        if (v) {
                             selectedCat.push(k)
                         }
 
@@ -780,7 +848,7 @@ richardplatzControllers.controller('homeController', ['$scope',  '$window', '$ht
 
                     for (var i = 0; i < vm.markers.length; i++) {
 
-                        if(selectedCat.indexOf(vm.markers[i].category) > -1){
+                        if (selectedCat.indexOf(vm.markers[i].category) > -1) {
                             vm.markers[i].marker.setMap(map);
                         }
                         else {
@@ -811,17 +879,17 @@ richardplatzControllers.controller('homeController', ['$scope',  '$window', '$ht
 
 
             var polygonCoord = [
-                {lat:52.473932,lng: 13.456454},
-                {lat:52.472705,lng: 13.455735},
-                {lat:52.471722,lng: 13.454572},
-                {lat:52.470734,lng: 13.452331},
-                {lat:52.469023,lng: 13.441489},
-                {lat:52.473930,lng: 13.440374},
-                {lat:52.474403,lng: 13.444707},
-                {lat:52.474852,lng: 13.446731},
-                {lat:52.476316,lng: 13.447391},
-                {lat:52.475735,lng: 13.449030},
-                {lat:52.476833,lng: 13.450316}
+                {lat: 52.473932, lng: 13.456454},
+                {lat: 52.472705, lng: 13.455735},
+                {lat: 52.471722, lng: 13.454572},
+                {lat: 52.470734, lng: 13.452331},
+                {lat: 52.469023, lng: 13.441489},
+                {lat: 52.473930, lng: 13.440374},
+                {lat: 52.474403, lng: 13.444707},
+                {lat: 52.474852, lng: 13.446731},
+                {lat: 52.476316, lng: 13.447391},
+                {lat: 52.475735, lng: 13.449030},
+                {lat: 52.476833, lng: 13.450316}
             ];
 
             var richardPlatzBorder = new google.maps.Polygon({
@@ -829,8 +897,8 @@ richardplatzControllers.controller('homeController', ['$scope',  '$window', '$ht
                 strokeColor: '#03a9f4',
                 strokeOpacity: 0.7,
                 strokeWeight: 1,
-                fillColor:"#03a9f4",
-                fillOpacity:0.05
+                fillColor: "#03a9f4",
+                fillOpacity: 0.05
 
             });
 
@@ -841,7 +909,7 @@ richardplatzControllers.controller('homeController', ['$scope',  '$window', '$ht
                 vm.step2 = false;
                 vm.step3 = false;
                 vm.successMessage = false;
-                vm.errorMessage= false;
+                vm.errorMessage = false;
                 //in jquery u must scope apply
                 $scope.$apply();
                 placeMarker(event.latLng, map);
@@ -895,7 +963,7 @@ richardplatzControllers.controller('homeController', ['$scope',  '$window', '$ht
                 vm.step2 = false;
                 vm.step3 = false;
                 vm.successMessage = false;
-                vm.errorMessage= false;
+                vm.errorMessage = false;
                 //in jquery u must scope apply
                 $scope.$apply();
                 placeMarker(event.latLng, map);
@@ -969,10 +1037,10 @@ richardplatzControllers.controller('homeController', ['$scope',  '$window', '$ht
     }]);
 
 /*
-* hilfe controller
-* */
+ * hilfe controller
+ * */
 richardplatzControllers.controller('hilfeController', ['$scope', '$routeParams',
-    function ($scope, $routeParams ) {
+    function ($scope, $routeParams) {
 
     }]);
 
@@ -981,7 +1049,6 @@ richardplatzControllers.controller('projektController', ['$scope', '$routeParams
     function ($scope, $routeParams) {
 
     }]);
-
 
 
 richardplatzControllers.controller('termineController', ['$scope', '$routeParams',
@@ -996,10 +1063,10 @@ richardplatzControllers.controller('nutzungsbedingungenController', ['$scope', '
     }]);
 
 
-richardplatzControllers.controller('kommentareController', ['$scope', '$routeParams', '$http','$userComment',
-    function ($scope, $routeParams, $http, $userComment) {console.log($userComment);
-        var user =$userComment.query();
-
+richardplatzControllers.controller('kommentareController', ['$scope', '$routeParams', '$http', '$userComment',
+    function ($scope, $routeParams, $http, $userComment) {
+        console.log($userComment);
+        var user = $userComment.query();
 
 
     }]);
