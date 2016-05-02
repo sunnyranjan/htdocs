@@ -807,6 +807,15 @@ md-icon {
     margin:2px;
 }
 
+.white-icons {
+    fill: #FFFFFF;
+    stroke: #FFFFFF;
+    stroke-width:0;
+    height: 20px !important;
+    width: 20px !important;
+    margin-right:6px;
+}
+
 .no-padding-button {
     padding-left: 0 !important;
     padding-top: 0 !important;
@@ -1262,14 +1271,36 @@ md-backdrop._md-sidenav-backdrop {
     min-height: 0px !important;
 }
 
-.panel-heading .accordion-toggle:after {
+.panel-heading.accordion-toggle {
+    background-color:  #789ACB;;
+
+}
+
+.panel-heading.accordion-toggle h4:after {
     /* symbol for "opening" panels */
     font-family: 'Glyphicons Halflings';  /* essential for enabling glyphicon */
     content: "\e114";    /* adjust as needed, taken from bootstrap.css */
     float: right;        /* adjust as needed */
-    color: grey;         /* adjust as needed */
+    color: #FFFFFF;         /* adjust as needed */
 }
-.panel-heading .accordion-toggle.collapsed:after {
+.panel-heading.accordion-toggle.collapsed h4:after {
     /* symbol for "collapsed" panels */
     content: "\e080";    /* adjust as needed, taken from bootstrap.css */
+}
+
+.custom-title {
+    color: #FFFFFF;
+    border-color: #789ACB;
+}
+
+.panel.panel-default.custom-panel{
+    border-color: #789ACB;
+    margin-bottom:5px;
+}
+
+.commentBubbles {
+    border: 1px solid #789ACB;
+    border-radius: 16px;
+    margin: 5px;
+    padding: 20px;
 }
