@@ -669,6 +669,19 @@ richardplatzControllers.controller('homeController', ['$scope', '$window', '$htt
 
 
             function generateCommentBox(commentBoxParams) {
+                if(commentBoxParams.imageId)
+                {
+                    $http.get("http://api.yourkiez.de/images/"+ commentBoxParams.imageId+ ".json").then(successCallBackImage, errorCallBackImage)
+                }
+
+                function successCallBackImage(response){
+                    console.log(response)
+
+                }
+
+                function errorCallBackImage(response){
+
+                }
 
                 //first of all set the current id for updating
                 //like and dislike
@@ -1063,10 +1076,82 @@ richardplatzControllers.controller('nutzungsbedingungenController', ['$scope', '
     }]);
 
 
-richardplatzControllers.controller('kommentareController', ['$scope', '$routeParams', '$http', '$userComment',
-    function ($scope, $routeParams, $http, $userComment) {
-        console.log($userComment);
-        var user = $userComment.query();
+richardplatzControllers.controller('kommentareController', ['$scope', '$routeParams', '$http', '$userComment','$filter',
+    function ($scope, $routeParams, $http, $userComment, $filter) {
+        var ko = this;
+        ko.categoryList = [
+            {
+                name: "Wohnen",
+                icon: "../img/svg/home.svg",
+                direction: "right",
+                class: "home",
+                categoryId: 7
+            },
+            {
+                name: "Nachbarschaft",
+                icon: "../img/svg/neighbour.svg",
+                direction: "right",
+                class: "neighbour",
+                categoryComments: [],
+                categoryId: 4
+            },
+            {
+                name: "Verkehr",
+                icon: "../img/svg/infrastructure.svg",
+                direction: "right",
+                class: "infrastructure",
+                categoryComments: [],
+                categoryId: 8
+            },
+            {
+                name: "Plätze und Grünflächen",
+                icon: "../img/svg/tree.svg",
+                direction: "right",
+                class: "tree",
+                categoryComments: [],
+                categoryId: 5
+            },
+            {
+                name: "Einkaufen",
+                icon: "../img/svg/shopping.svg",
+                direction: "right",
+                class: "shopping",
+                categoryComments: [],
+                categoryId: 3},
+            {
+                name: "Sport und Freizeit",
+                icon: "../img/svg/sport.svg",
+                direction: "right",
+                class: "sport",
+                categoryComments: [],
+                categoryId: 6
+            },
+            {
+                name: "Bildung und Kultur",
+                icon: "../img/svg/education.svg",
+                direction: "right",
+                class: "education",
+                categoryComments: [],
+                categoryId: 2
+            },
+            {
+                name: "Keine Kategory",
+                icon: "",
+                direction: "right",
+                class: "other",
+                categoryComments: [],
+                categoryId: 1
+            }
+        ];
+        $userComment.query(function (data) {
+        ko.commentsArray = data.comments;
+
+            angular.forEach(ko.categoryList, function (value, key)
+            {
+                ko.categoryList[key].categoryComments = $filter('filter')(ko.commentsArray, {categoryId : value.categoryId});
+
+            })
+        });
 
 
     }]);
