@@ -39,7 +39,7 @@
                         <div id="{{category.class}}" class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div ng-repeat="comments in category.categoryComments">
-                                    <div class="commentBubbles">
+                                    <div class="commentBubbles" ng-class = "'commentBubbles'+comments.ratingId">
                                         {{comments.description}}
                                     </div>
 

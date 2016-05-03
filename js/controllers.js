@@ -1079,6 +1079,7 @@ richardplatzControllers.controller('nutzungsbedingungenController', ['$scope', '
 richardplatzControllers.controller('kommentareController', ['$scope', '$routeParams', '$http', '$userComment','$filter',
     function ($scope, $routeParams, $http, $userComment, $filter) {
         var ko = this;
+        ko.getRatings = getRatings;
         ko.categoryList = [
             {
                 name: "Wohnen",
@@ -1152,6 +1153,21 @@ richardplatzControllers.controller('kommentareController', ['$scope', '$routePar
 
             })
         });
+        function getRatings(id){
+            switch(id){
+                case 1:
+                    return 'verygoodComments';
+                case 2:
+                    return ;
+                case 3:
+                    return;
+                case 4:
+                    return;
+                case 5:
+                    return;
+            }
+
+        }
 
 
     }]);

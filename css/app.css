@@ -1299,8 +1299,36 @@ md-backdrop._md-sidenav-backdrop {
 }
 
 .commentBubbles {
-    border: 1px solid #789ACB;
+
     border-radius: 16px;
     margin: 5px;
     padding: 20px;
+}
+
+
+.commentBubbles1 {
+    background-color: #CD333F !important;
+    border: 1px solid #CD333F;
+    color: #FFFFFF;
+
+}
+
+.commentBubbles2 {
+    background-color: #EB6841 !important;
+    border: 1px solid #EB6841;
+    color: #FFFFFF;
+}
+.commentBubbles3 {
+    background-color: #EDC951 !important;
+    border: 1px solid #EDC951;
+}
+.commentBubbles4 {
+    background-color: #88A65E !important;
+    border: 1px solid #88A65E;
+    color: #FFFFFF;
+}
+.commentBubbles5 {
+    background-color: #5E8C6A !important;
+    border: 1px solid #5E8C6A;
+    color: #FFFFFF;
 }
