@@ -261,7 +261,12 @@
                                 {{currentUserComment}}
                             </div>
                         </div>
-                        <div class="col-xs-6 text-center">
+                        <div class="col-xs-4" ng-if="currentImageUrl">
+                            <div class="col-sm-12 ">
+                                <img src="{{currentImageUrl}}" height="120" alt="" style="; border-radius: 16px;">
+                            </div>
+                        </div>
+                        <div class="col-xs-4 text-center" ng-if="currentImageUrl">
                             <div class="col-xs-12 text-center">
                                 <button type="button" class="btn btn-info btn-circle btn-raised btn-sm buttonRating"
                                         ng-click="updateLike(commentIdUser)">
@@ -271,10 +276,31 @@
                             <div class="col-xs-12 text-center" style="margin-top: 5px">
                                 <span class="badge">{{currentUserLikes}}</span>
                             </div>
-
+                        </div>
+                        <div class="col-xs-4 text-center" ng-if="currentImageUrl">
+                            <div class="col-xs-12 text-center">
+                                <button type="button" class="btn btn-info btn-circle btn-raised btn-sm buttonRating"
+                                        ng-click="updateUnlike(commentIdUser)">
+                                    <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
+                                </button>
+                            </div>
+                            <div class="col-xs-12 text-center" style="margin-top: 5px;">
+                                <span class="badge">{{currentUserUnlikes}}</span>
+                            </div>
 
                         </div>
-                        <div class="col-xs-6 text-center">
+                        <div class="col-xs-6 text-center" ng-if="!currentImageUrl">
+                            <div class="col-xs-12 text-center">
+                                <button type="button" class="btn btn-info btn-circle btn-raised btn-sm buttonRating"
+                                        ng-click="updateLike(commentIdUser)">
+                                    <span class="glyphicon glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+                                </button>
+                            </div>
+                            <div class="col-xs-12 text-center" style="margin-top: 5px">
+                                <span class="badge">{{currentUserLikes}}</span>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 text-center" ng-if="!currentImageUrl">
                             <div class="col-xs-12 text-center">
                                 <button type="button" class="btn btn-info btn-circle btn-raised btn-sm buttonRating"
                                         ng-click="updateUnlike(commentIdUser)">

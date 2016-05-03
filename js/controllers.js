@@ -669,18 +669,18 @@ richardplatzControllers.controller('homeController', ['$scope', '$window', '$htt
 
 
             function generateCommentBox(commentBoxParams) {
+                $scope.currentImageUrl = "";
                 if(commentBoxParams.imageId)
                 {
                     $http.get("http://api.yourkiez.de/images/"+ commentBoxParams.imageId+ ".json").then(successCallBackImage, errorCallBackImage)
                 }
 
                 function successCallBackImage(response){
-                    console.log(response)
-
+                    $scope.currentImageUrl = 'http://api.yourkiez.de/'+ response.data.image.url;
                 }
 
                 function errorCallBackImage(response){
-
+                    $scope.currentImageUrl= '';
                 }
 
                 //first of all set the current id for updating
