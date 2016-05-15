@@ -680,7 +680,7 @@ richardplatzControllers.controller('homeController', ['$scope', '$window', '$htt
                 }
 
                 function errorCallBackImage(response){
-                    $scope.currentImageUrl= '';
+                    $scope.currentImageUrl = '';
                 }
 
                 //first of all set the current id for updating
